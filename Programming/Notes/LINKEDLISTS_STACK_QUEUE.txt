@@ -1,0 +1,102 @@
+Double Linked List
+
+"Class choice"
+- A carousel of classes that can be cycled through forward or back, When the last (tail) node is reached it will not loop around to the head node, one cannot go directly to one of the nodes without going through the nodes between the head node and the node they want to select
+
+In a class called PlayerClass
+-each PlayerClass object contains:
+
+  A name
+  A pointer to the next playerClass
+  A Pointer to the previous PlayerClass
+
+
+The following PlayerClass Objects are created
+
+PlayerClass Knight
+	Knight
+	Pointer to Next (wizard)
+	Pointer to Previous (0) // Because it's the head node
+
+PlayerClass Wizard
+	Wizard
+	Pointer to Next (Rogue)
+	Pointer to Previous(Knight)
+
+PlayerClass Rogue
+	Rogue
+	Pointer to Next (0) // because it's the last one.
+	Pointer to Previous (Wizard)
+
+
+[p2Previous (0)]
+[Knight]  <- [p2Knight] 
+[p2Wizard]-> [Wizard] <-[p2Wizard]
+             [p2Rogue]->[Rogue]
+	                [p2Next(0)]
+
+Stack
+
+Stack of things:
+
+[thing1]
+{Thing2}
+[Thing3]
+{Thing4}
+
+lets do these stacks of things!
+
+       ->
+{Thing2}
+[Thing3]
+{Thing4}    [thing1] Thing one done!
+
+
+       
+
+       ->
+[Thing3]    {Thing2} Thing two done!
+{Thing4}    [thing1] 
+
+
+
+
+            [Thing3] Thing three done!
+      ->    {Thing2} 
+{Thing4}    [thing1] 
+
+
+            
+            {Thing4} Thing four Done! 
+	    [Thing3] 
+            {Thing2} 
+     ->     [thing1] 
+
+
+Now lets resolve this stack of things!
+
+           <- Thing four resolved!
+            [Thing3] 
+            {Thing2} 
+{Thing4}    [thing1] 
+
+
+
+           <- Thing three resolved! 
+[Thing3]    {Thing2} 
+{Thing4}    [thing1] 
+
+
+
+{Thing2}            
+[Thing3]    <- Thing two resolved! 
+{Thing4}    [thing1] 
+
+
+[thing1]
+{Thing2}            
+[Thing3]    
+{Thing4}    <- Thing one resolved!
+
+DONE!
+

@@ -1,0 +1,33 @@
+Score Update
+
+// References.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+//Creates function with void return called "ScoreUpdate" (Referencing '&' an int data type named "scoreRef" as it's value.)
+void ScoreUpdate(int& scoreRef)
+{
+//Increases scoreRef by 1.
+scoreRef++;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	// Defines int variable "score" with a current value of 1000.
+	int score = 1000;
+	// Defines the reference variable above as being = score.
+	int& ScoreRef = score;
+
+	//Prints the value of score at this point.
+	cout << score << endl;
+	
+	ScoreUpdate(ScoreRef);
+	// runs the ScoreUpdate function created above to increase the score by 1.
+
+	cout << score << endl;
+	//Prints the new value of score.
+
+	return 0;

@@ -1,0 +1,146 @@
+2D Coordinate 1
+x = a
+y = b
+
+(a,b)
+
+2D Coordinate 2
+
+x = c
+y = d
+
+(c,d)
+
+
+
+Dot product in 2D Space
+ x1 x2    y1 y2
+(a)(c) + (b)(d) = e (dot product)
+
+
+-Function to get dot product
+float Dot(vector2d v)
+{
+
+return (x*v.x)+(y*v.y);
+}
+
+
+Sprite
+
+Sprite dimensions
+-Height
+-Width
+
+Sprite position
+-Vector
+-x,y
+
+Sprite Texture
+-"./images/Ball.png"
+
+
+in the H file I have:
+
+class Sprite
+{
+public:
+	Sprite(void); //default constructor
+	Sprite(float a_fWidth, float a_fHeight, float a_fYPosition, float a_fXPosition, char *a_pTextureName, bool a_bDrawFromCenter;)
+	~Sprite(void);//destructor
+
+
+
+18, 30
+Animal.h
+
+
+class Animal
+
+public:
+
+Animal(void);
+~Animal(void);
+
+Private:
+char* Type;
+int NumberofLegs;
+int FurLength;
+
+
+________________________________
+
+
+Animal.cpp
+
+Animal::Animal(Void);
+{
+	CreateAnimal(char* Type, int NumberofLegs, int FurLength);
+}
+
+
+______________________________
+
+Animal Cat (feline, 4, long);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cat.draw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

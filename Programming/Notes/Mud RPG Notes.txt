@@ -1,0 +1,38 @@
+Enemies appear
+
+	User chooses Action (in this case attack function)
+	
+		Attack funtion asks the player what weapon they would like to use (Sword or Fist)
+			
+
+
+Function Battle Loop---------------Event:Enemies appear
+Define ActionChoice as cin >>
+Ask Player what they want to do, Attack or Escape
+Switch statement:
+
+	Attack **************
+		define enemy identifiers (Array)
+		define Enemy Health (Array)
+		Player Health = 100
+		Attack function
+			Define Weapon Choice (player input)
+			Define Sword Damage = 50
+			Define Fist Damage = 25
+		
+		Ask Player Which Enemy they want to Attack - cin >> 
+		Ask Player what weapon they want to use - cin >>
+		Switch Statement:
+		
+			Sword------
+				Enemyhealth of [Enemy selected] -= sword damage;
+				Break;
+
+			Fist-------
+				Enemyhealth of [Enemy selected] -= Fist damage;
+	Break;***************
+
+	Escape **************
+	"You run away, escaping danger!"
+	Break;***************
+While loop: If escape = true, then Break out of battle loop; ------------------------------------

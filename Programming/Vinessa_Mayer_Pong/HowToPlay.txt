@@ -1,0 +1,16 @@
+HOW TO PLAY:
+
+Player One uses W to go UP and S to go DOWN.
+
+Player Two uses the UP Arrow to go up and the Down Arrow to go DOWN.
+
+While in the game, you can return to the main menu by selecting backspace.
+
+To exit game, you'll need to do so from the menu.
+
+HOORAY!
+
+Tips for winning from the pros:
+
+MOVE FIRST! -- the other player cannot move while you are moving.
+BE READY TO MOVE! -- If stuck not being able to move, wait until your opponant pauses or changes directions - THAT IS YOUR TIME TO STRIKE!

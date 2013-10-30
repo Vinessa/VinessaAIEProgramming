@@ -1,0 +1,162 @@
+
+
+Normal Movement=======================
+1. if Player 1 is moving up and
+   player 2 is moving up
+	move player 1 up
+	move player 2 up
+
+1a. if Player 1 is moving down and
+   player 2 is moving down
+	move player 1 down
+	move player 2 down
++Boost===================================
+
+2. if player 1 is moving up and
+player 2 is moving up and
+player 1 is boosting
+
+	move player 1 up + boost
+	move player 2 up
+
+2a. if player 1 is moving down and
+player 2 is moving down and
+player 1 is boosting
+
+	move player 1 down + boost
+	move player 2 down
+
+3. if player 2 is moving up and
+player 1 is moving up and
+player 2 is boosting
+
+	move player 2 up + boost
+	move player 1 up
+
+3a. if player 2 is moving down and
+player 1 is moving down and
+player 2 is boosting
+
+	move player 2 down + boost
+	move player 1 down
+
+4. if player 1 is moving up and
+Player 2 is moving up and
+Player 1 is boosting and
+Player 2 is boosting
+
+	Move player 1 up + boost
+	Move player 2 up + boost
+
+4a. if player 1 is moving down and
+Player 2 is moving down and
+Player 1 is boosting and
+Player 2 is boosting
+
+	Move player 1 down + boost
+	Move player 2 down + boost
+
++Debuff========================================
+
+5. if Player 1 is moving up and
+   player 2 is moving up and
+   player 2 is using debuff
+	move player 1 up + Debuff
+	move player 2 up
+
+5a. if Player 1 is moving down and
+   player 2 is moving down and
+   player 2 is using debuff
+	move player 1 down + Debuff
+	move player 2 down
+
+6. if Player 2 is moving up and
+   player 1 is moving up and
+   player 1 is using debuff
+	move player 2 up + Debuff
+	move player 1 up
+
+6a. if Player 2 is moving down and
+   player 1 is moving down and
+   player 1 is using debuff
+	move player 2 down + Debuff
+	move player 1 down
+
+7. if Player 1 is moving up and
+   player 2 is moving up and
+   player 2 is using debuff and
+   player 1 is using debuff
+
+	move player 1 up + Debuff
+	move player 2 up + Debuff
+
+7a. if Player 1 is moving down and
+   player 2 is moving down and
+   player 2 is using debuff and
+   player 1 is using debuff
+
+	move player 1 down + Debuff
+	move player 2 down + Debuff
+
++Debuff and +Boost ======================================================= P1, P2
+
+8. if Player 1 is moving up and  (P1+ up, p2- up)
+   player 2 is moving up and
+   Player 1 is using buff
+   player 2 is using debuff 
+
+	move player 1 up
+	move player 2 up
+
+8a. if Player 1 is moving down and (p1+ down, p2- down)
+   player 2 is moving down and
+   Player 1 is using buff
+   player 2 is using debuff 
+
+	move player 1 down
+	move player 2 down
+
+8b. if Player 2 is moving down and (P1- down, p2+down)
+   player 1 is moving down and
+   Player 2 is using buff
+   player 1 is using debuff 
+
+	move player 2 down
+	move player 1 down
+
+8c. if Player 2 is moving up and (P1- up, p2+ up)
+   player 1 is moving up and
+   Player 2 is using buff
+   player 1 is using debuff 
+
+	move player 2 up
+	move player 1 up
+
++All the things! ==============================================
+UP
+If player 1 is boosting and
+Player 2 is boosting and
+player 1 is debuffing and
+player 2 is debuffing
+
+move player 1 up
+move player 2 up
+
+Down
+If player 1 is boosting and
+Player 2 is boosting and
+player 1 is debuffing and
+player 2 is debuffing
+
+move player 1 down
+move player 2 down
+-----------------
+
+up
+if player 1 is boosting and
+player 1 is debuffing and
+player 2 is debuffing
+
+move player 1 up
+move player 2 up -debuff
+

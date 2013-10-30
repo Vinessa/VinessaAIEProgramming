@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calculator", "Calculator.vcxproj", "{A21D6F87-0132-44CB-A825-683E11578E09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A21D6F87-0132-44CB-A825-683E11578E09}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A21D6F87-0132-44CB-A825-683E11578E09}.Debug|Win32.Build.0 = Debug|Win32
+		{A21D6F87-0132-44CB-A825-683E11578E09}.Release|Win32.ActiveCfg = Release|Win32
+		{A21D6F87-0132-44CB-A825-683E11578E09}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
