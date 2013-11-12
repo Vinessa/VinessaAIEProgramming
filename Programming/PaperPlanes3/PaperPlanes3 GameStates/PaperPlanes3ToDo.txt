@@ -1,0 +1,39 @@
+EnemyCollisionCheck();
+
+for (std:: list<Enemy>:: iterator IT = ENEMYLISTNAME.begin(); IT != ENEMYLISTNAME.end(); ++IT)
+{
+	if ((((Bullet m_Position) < (Enemy Position.X + Sprite_W /2))&& 
+	((Bullet m_Position) > (Enemy Position.X - Sprite_W /2))) && 
+	(((Bullet m_Position) < (Enemy Position.Y + Sprite_H /2))&& 
+	((Bullet m_Position) > (Enemy Position.Y - Sprite_H /2))))
+
+{
+
+return true;
+
+}
+
+
+
+
+
+Void CreateEnemyWave():
+EnemySpawnPositionX = 100;
+EnemySpawnPositionY = 100;
+{
+
+for( i=0; i < 5; i++)
+	
+	{
+		Enemy UFO("./images/UFO.png", 32,32,UFOSpawnPositionX,UFOSpawnPositionY,0,0,1);
+		UFOWave.push_back(UFO);
+		UFO.Move();
+		UFOSpawnPositionX += 100;
+		UFOSpawnPositionY += 100;
+	}
+}
+
+
+tOdO:
+
+-mAKE dIE FUNCTION FOR hERO
