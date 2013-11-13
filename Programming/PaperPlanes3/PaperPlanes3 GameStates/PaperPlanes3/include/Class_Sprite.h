@@ -13,7 +13,10 @@
 #ifndef _SPRITE_H_
 #define _SPRITE_H_
 
+//char array of
 
+//sprintf array name, "what to print (%f)"
+//drawstring (arrayname
 
 class Sprite
 {

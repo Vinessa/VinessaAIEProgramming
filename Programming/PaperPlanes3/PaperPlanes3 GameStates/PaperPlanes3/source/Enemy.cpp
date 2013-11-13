@@ -4,8 +4,9 @@ Enemy::Enemy()
 {
 }
 
-Enemy::Enemy(const char* a_TextureName, int a_Sprite_W, int a_Sprite_H, float a_Position_X, float a_Position_Y, float a_Velocity_X, float a_Velocity_Y, int a_Health)
+Enemy::Enemy(const char* a_TextureName, int a_Sprite_W, int a_Sprite_H, float a_Position_X, float a_Position_Y, float a_Velocity_X, float a_Velocity_Y, int a_Health, float& PlayerScore)
 {
+	score = &PlayerScore;
 	time = 0;
 	Init(a_TextureName, a_Sprite_W,  a_Sprite_H, a_Position_X, a_Position_Y);
 	m_SpriteID = CreateSprite( m_TextureName, m_Sprite_W, m_Sprite_H, true );
@@ -128,6 +129,7 @@ void Enemy::Die()
 	m_Velocity.SetY(0);
 	m_Position.SetX(-500);
 	m_Position.SetY(-500);
+	score +=100;
 	IsAlive = false;
 }
 

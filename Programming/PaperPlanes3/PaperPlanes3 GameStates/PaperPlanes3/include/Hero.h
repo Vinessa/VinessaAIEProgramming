@@ -23,7 +23,8 @@ public:
 	void SetBulletList(std::list<Bullet *> a_list);
 	void TakeDamage();
 	void Die();
-
+	void Respawn();
+	float GetLives();
 	//VARIABLES/////////////////////////////
 	bool IsAlive; //Alive or Dead? >^._.^<
 	int m_HeroHealth; //Current Health
@@ -32,7 +33,9 @@ public:
 	std::list<Bullet *> BulletList;
 	int i;
 	unsigned int m_DeathID;
-	
+	unsigned int m_RespawnID;
+	float Score;
+	float Lives;
 };
 
 #endif //_HERO_H_

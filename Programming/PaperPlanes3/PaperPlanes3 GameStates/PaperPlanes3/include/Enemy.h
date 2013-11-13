@@ -17,7 +17,7 @@ class Enemy :
 public:
 	//CONSTRUCTORS & DESTRUCTOR//
 	Enemy(void);
-	Enemy(const char* a_TextureName, int a_Sprite_W, int a_Sprite_H, float a_Position_x, float a_Position_y, float a_Velocity_X, float a_Velocity_Y, int a_Health);
+	Enemy(const char* a_TextureName, int a_Sprite_W, int a_Sprite_H, float a_Position_x, float a_Position_y, float a_Velocity_X, float a_Velocity_Y, int a_Health, float& PlayerScore);
 	~Enemy(void);
 	
 	
@@ -42,6 +42,7 @@ public:
 	
 	int i;
 	float time;
+	float *score;
 };
 
 #endif

@@ -23,6 +23,8 @@ class Timer;
 const int ciScreenX = 1080;
 const int ciScreenY = 720;
 
+float Score;
+
 void CheckForChoice();
 void MakeGame();
 
@@ -33,7 +35,7 @@ typedef enum GameStates
 	HIGHSCORES,
 	GAMESTATE,
 	ENDSTATE,
-
+	GAMEOVER,
 	PLAYER_STATE_COUNT, 
 }GameState;
 

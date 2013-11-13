@@ -18,7 +18,10 @@ Hero::Hero(const char* a_TextureName, int a_Sprite_W, int a_Sprite_H, float a_Po
 	m_Collider.SetRadius(8.0f);
 	Vector2D tempPosition(200,300);
 	m_DeathID = CreateSprite( "./images/Crumpled_Plane.png", m_Sprite_W, m_Sprite_H, true );
-	/*DeathImage = "./images/Crumpled_Plane.png";*/
+	m_RespawnID = CreateSprite( "./images/HERO.png", m_Sprite_W, m_Sprite_H, true );
+	Score = 1000;
+	Lives = 3;
+	
 
 	BulletList = std::list<Bullet*>();
 	for( i=0; i < 20; i++)
@@ -55,13 +58,34 @@ void Hero::CheckForFire(float dt)/// change back to bool
 			}
 		}
 	}
-
 }
 
+float Hero::GetLives()
+{
+	return Lives;
+}
+void Hero::Respawn()
+{
+	--Lives;
+	
+	if (Lives >=0 )
+	{
+	m_SpriteID = m_RespawnID;
+	IsAlive = true;
+	}
+}
 int MouseX;
 int MouseY;
 void Hero::UpdateHero(float dt)
 {
+	if(IsAlive== false)
+	{
+		RespawnTimer.UpdateCountdown();
+			if (RespawnTimer.IsTimeUp())
+			{
+				Respawn();
+			}
+	}
 	BulletCollisionCheck();
 	GetMouseLocation(MouseX, MouseY);
 	m_Position.SetX (MouseX);
@@ -94,7 +118,8 @@ void Hero::SetBulletList(std::list<Bullet *> a_list)
 
 void Hero::Die()
 {
-
+	Timer RespawnTimer;
+	RespawnTimer.SetTimer(3)
 	m_SpriteID = m_DeathID;
 	IsAlive = false;
 }
@@ -104,9 +129,9 @@ void Hero::TakeDamage()
 
 	if (m_HeroHealth > 0)
 	{
-	//	Score1.LosePoints();
 		--m_HeroHealth;
-
+		if(Score > 0)
+			Score -= 100;
 
 	}
 	else
