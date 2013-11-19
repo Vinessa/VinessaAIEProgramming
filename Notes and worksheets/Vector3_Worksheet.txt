@@ -1,0 +1,33 @@
+-3*-3 = 9. 12*12 = 144.
+
+9+144 = 153
+
+153 Squared = 12.369
+
+Magnitude of -3,12 = 12.369
+
+
+
+0.70*0.70 = 0.49
+-0.70* -0.70 = 0.49
+
+0.49+0.49 = 0.98
+Magnitude  = 0.99
+
+
+225+4 = 229
+
+229 Square rooted = 
+15.13
+
+Magnitude = [-2,14]15.13
+Normalized Vector2 of [-0.14, 0.99]
+
+
+
+Magnitude of [33,24] = 40.80
+Normalized vector2 = 0.80, 0.59
+
+Magnitude of [11,-4] = 11.70
+Normalized Vector2 = 0.9,-0.34
+
