@@ -10,6 +10,7 @@
 #define _VECTOR3_H_
 
 #include "math.h"
+#include "AIE.h"
 class Vector3
 {
 public:
