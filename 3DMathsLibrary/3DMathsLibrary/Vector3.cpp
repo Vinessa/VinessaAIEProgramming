@@ -73,14 +73,20 @@ float Vector3::EulerAngle(Vector3 &a_Vector3) //Euler Angle
 	return acos (A.GetDotProduct3D(B));
 }
 
-Vector3 Vector3::CrossProduct(Vector3 &a_OtherVector3)
+Vector3 Vector3::CrossProduct(Vector3 &a_OtherVector3) // Cross Product //
 {
 	Vector3 TemporaryVector3;
-	TemporaryVector3.SetX((m_Y - a_OtherVector3.GetY())  - (a_OtherVector3.GetZ() - m_Z));
-	TemporaryVector3.SetY((m_Z - a_OtherVector3.GetZ())  - (a_OtherVector3.GetX() - m_X));
-	TemporaryVector3.SetZ((m_X - a_OtherVector3.GetX())  - (a_OtherVector3.GetY() - m_Y));
+	TemporaryVector3.SetX((m_Y * a_OtherVector3.GetZ())  - (a_OtherVector3.GetZ() * m_Y));
+	TemporaryVector3.SetY((m_Z * a_OtherVector3.GetX())  - (a_OtherVector3.GetX() * m_Z));
+	TemporaryVector3.SetZ((m_X - a_OtherVector3.GetY())  - (a_OtherVector3.GetY() * m_X));
 	return TemporaryVector3;
 }
+
+Vector3 Vector3::LinearInterpolation(Vector3 v3_A, Vector3 v3_B, float dt) // Linear Interpolation //
+{ 
+	return v3_A + (v3_B - v3_A) *dt;
+}
+
 
 Vector3 Vector3:: operator - (float a_S) //Minus Scaler
 {
@@ -152,10 +158,6 @@ void Vector3::operator -= (const Vector3& a_V1) //-= Vector3
 
 }
 
-Vector3 Vector3::LinearInterpolation(Vector3 v3_A, Vector3 v3_B, float dt)
-{ 
-	return v3_A + (v3_B - v3_A) *dt;
-}
 
 
 
