@@ -34,6 +34,7 @@ public:
 	Vector2 operator - (Vector2& a_OtherVector); // Subtracts one Vector from another Vector
 
 	Vector2 operator * (float a_S); //Multiplies using a scaler
+	Vector2 operator / (float a_S); // Divide by scaler
 
 	void operator += (Vector2& a_OtherVector); //allows the use of  +=
 	void operator -= (Vector2& a_OtherVector); // Allows the use of -=
@@ -42,7 +43,7 @@ public:
 	float GetMagnitude2D();
 	void Normalize();
 	float EulerAngle(Vector2 &a_Vector2);
-	Vector2 CrossProduct();
+
 
 
 	float GetX(); // Returns X

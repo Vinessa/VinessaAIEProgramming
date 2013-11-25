@@ -81,7 +81,6 @@ Vector2 Vector2::operator / (float a_S) // Divide by scaler
 	Vector2 TemporaryVector;
 	TemporaryVector.m_X = this->m_X / a_S;
 	TemporaryVector.m_Y = this->m_Y / a_S;
-	TemporaryVector.m_Z = this->m_Z / a_S;
 	return TemporaryVector;
 }
 
@@ -160,7 +159,7 @@ void Vector2::SetY(float a_Y)
 
 Vector2 Vector2::GetNormal() //Get Normal of a Vector3
 {
-	Vector2 TemporaryVector = Vector2((m_X / GetMagnitude2D()), (m_Y / GetMagnitude2()));
+	Vector2 TemporaryVector = Vector2((m_X / GetMagnitude2D()), (m_Y / GetMagnitude2D()));
 	return TemporaryVector;
 }
 

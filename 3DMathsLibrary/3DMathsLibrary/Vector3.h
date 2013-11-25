@@ -23,7 +23,8 @@ public:
 	Vector3 GetNormal();
 	float GetDotProduct3D(Vector3 &a_Vector3);
 	float EulerAngle(Vector3 &a_Vector3);
-	Vector3 CrossProduct();
+	Vector3 CrossProduct(Vector3 &a_OtherVector3);
+	Vector3 LinearInterpolation(Vector3 v3_A, Vector3 v3_B, float dt);
 
 	Vector3 operator - (float a_S);
 	Vector3 operator + (float a_S);
@@ -42,7 +43,8 @@ public:
 	float GetZ();
 
 	void SetX(float a_X);	
-	void SetY(float a_Y);	
+	void SetY(float a_Y);
+	void SetZ(float a_Z);
 
 	float m_X;
 	float m_Y;
