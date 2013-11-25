@@ -1,6 +1,6 @@
 #ifndef _MATRICES_H_
 #define _MATRICES_H_
-#include "Vector2D.h"
+#include "Vector2.h"
 #include "Vector3.h"
 #include "math.h"
 
@@ -20,7 +20,7 @@ public:
 
 
 
-	Vector2D GetTranslations();
+	Vector2 GetTranslations();
 	float* GetRotation_3D();
 	float* GetRotation_X();
 	float* GetRotation_Y();

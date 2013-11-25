@@ -46,9 +46,9 @@ void Matrices::SetTranslation(float X, float Y)
 	Translation[3][2] = {Y};
 }
 
-Vector2D Matrices::GetTranslations()
+Vector2 Matrices::GetTranslations()
 {
-	Vector2D vTemp (Translation[3][1],Translation[3][2]);
+	Vector2 vTemp (Translation[3][1],Translation[3][2]);
 	return vTemp;
 }
 

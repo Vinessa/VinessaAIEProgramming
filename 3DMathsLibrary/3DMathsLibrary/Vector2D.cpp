@@ -1,36 +1,36 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// File:			Vector2D.cpp
+// File:			Vector2.cpp
 // Author:			Ian Rich
 // Date Created:	October 2013
 // Brief:			2D Vector Class Definition
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Vector2D.h"
+#include "Vector2.h"
 
 using namespace std;
 
 //////////////////////////////-- CONSTRUCTION / DESTRUCTION --////////////////////////////////////////////////////////////
 
 // default constructor
-Vector2D::Vector2D ()
+Vector2::Vector2 ()
 {
-	m_fX = 0.0;
-	m_fY = 0.0;
+	m_X = 0.0;
+	m_Y = 0.0;
 	m_fThreshold = .0005;
 	//cout<< "Default Vector Constructed!\n";
 }
 
 // constructor that takes in x and y values
-Vector2D::Vector2D (float a_fX, float a_fY)
+Vector2::Vector2 (float a_fX, float a_fY)
 {
-	m_fX = a_fX;
-	m_fY = a_fY;
+	m_X = a_fX;
+	m_Y = a_fY;
 	m_fThreshold = .0005;
 	//cout<< "Vector constructed with given values " << a_fX << " and " << a_fY <<"!\n";
 }
 
 // destructor
-Vector2D::~Vector2D ()
+Vector2::~Vector2 ()
 {
 	//cout<< "Vector Destroyed, Muhahah!\n";
 }
@@ -38,67 +38,67 @@ Vector2D::~Vector2D ()
 //////////////////////////////-- MATHS --////////////////////////////////////////////////////////////
 
 // subtracts a scalar from a vector, returns new vector
-Vector2D Vector2D::operator - (float a_fS)
+Vector2 Vector2::operator - (float a_S)
 {
-	Vector2D vTemp;
-	vTemp.m_fX = this->m_fX - a_fS;
-	vTemp.m_fY = this->m_fY - a_fS;
-	return vTemp;
+	Vector2 TemporaryVector;
+	TemporaryVector.m_X = this->m_X - a_S;
+	TemporaryVector.m_Y = this->m_Y - a_S;
+	return TemporaryVector;
 }
 
 // adds a scalar to a vector, returns new vector
-Vector2D Vector2D::operator + (float a_fS)
+Vector2 Vector2::operator + (float a_S)
 {
-	Vector2D vTemp;
-	vTemp.m_fX = this->m_fX + a_fS;
-	vTemp.m_fY = this->m_fY + a_fS;
-	return vTemp;
+	Vector2 TemporaryVector;
+	TemporaryVector.m_X = this->m_X + a_S;
+	TemporaryVector.m_Y = this->m_Y + a_S;
+	return TemporaryVector;
 }
 
 // multiplies a vector by a scalar, returns new vector
-Vector2D Vector2D::operator * (float a_fS)
+Vector2 Vector2::operator * (float a_S)
 {
-	Vector2D vTemp;
-	vTemp.m_fX = this->m_fX * a_fS;
-	vTemp.m_fY = this->m_fY * a_fS;
-	return vTemp;
+	Vector2 TemporaryVector;
+	TemporaryVector.m_X = this->m_X * a_S;
+	TemporaryVector.m_Y = this->m_Y * a_S;
+	return TemporaryVector;
 }
 
 // subtracts one vector from another, returns new vector
-Vector2D Vector2D::operator - (const Vector2D& a_rV2)
+Vector2 Vector2::operator - (const Vector2& a_OtherVector)
 {
-	Vector2D vTemp;
-	vTemp.m_fX = this->m_fX - a_rV2.m_fX;
-	vTemp.m_fY = this->m_fY - a_rV2.m_fY;
-	return vTemp;
+	Vector2 TemporaryVector;
+	TemporaryVector.m_X = this->m_X - a_OtherVector.m_X;
+	TemporaryVector.m_Y = this->m_Y - a_OtherVector.m_Y;
+	return TemporaryVector;
 }
 
 // adds one vector to another, returns new vector
-Vector2D Vector2D::operator + (const Vector2D& a_rV2)
+Vector2 Vector2::operator + (const Vector2& a_OtherVector)
 {
-	Vector2D vTemp;
-	vTemp.m_fX = this->m_fX + a_rV2.m_fX;
-	vTemp.m_fY = this->m_fY + a_rV2.m_fY;
-	return vTemp;
+	Vector2 TemporaryVector;
+	TemporaryVector.m_X = this->m_X + a_OtherVector.m_X;
+	TemporaryVector.m_Y = this->m_Y + a_OtherVector.m_Y;
+	return TemporaryVector;
 }
-void Vector2D::operator += (const Vector2D& a_rV2)
+void Vector2::operator += (const Vector2& a_OtherVector)
 {
 	
-	m_fX += a_rV2.m_fX;
-	m_fY += a_rV2.m_fY;
+	m_X += a_OtherVector.m_X;
+	m_Y += a_OtherVector.m_Y;
 	
 }
 
-void Vector2D::operator -= (const Vector2D& a_rV2)
+void Vector2::operator -= (const Vector2& a_OtherVector)
 {
-	m_fX -= a_rV2.m_fX;
-	m_fY -= a_rV2.m_fY;
+	m_X -= a_OtherVector.m_X;
+	m_Y -= a_OtherVector.m_Y;
 }
 
 // tests vector equality, returns bool
-bool Vector2D::Equals(const Vector2D& a_rV2)
+bool Vector2::Equals(const Vector2& a_OtherVector)
 {
-	if ((this->m_fX - a_rV2.m_fX < this->m_fThreshold) && (this->m_fY - a_rV2.m_fY < this->m_fThreshold))
+	if ((this->m_X - a_OtherVector.m_X < this->m_fThreshold) && (this->m_Y - a_OtherVector.m_Y < this->m_fThreshold))
 		return true;
 	else
 		return false;
@@ -107,25 +107,25 @@ bool Vector2D::Equals(const Vector2D& a_rV2)
 //////////////////////////////-- GET / SET --////////////////////////////////////////////////////////////
 
 // returns x value
-float Vector2D::GetX()
+float Vector2::GetX()
 {
-	return this->m_fX;
+	return this->m_X;
 }
 
 // returns y value
-float Vector2D::GetY()
+float Vector2::GetY()
 {
-	return this->m_fY;
+	return this->m_Y;
 }
 
 // sets x value
-void Vector2D::SetX(float a_fX)
+void Vector2::SetX(float a_fX)
 {
-	this->m_fX = a_fX;
+	this->m_X = a_fX;
 }
 
 // sets y value
-void Vector2D::SetY(float a_fY)
+void Vector2::SetY(float a_fY)
 {
-	this->m_fY = a_fY;
+	this->m_Y = a_fY;
 }
