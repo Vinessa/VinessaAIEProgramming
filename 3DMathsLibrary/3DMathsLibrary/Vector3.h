@@ -32,11 +32,11 @@ public:
 
 	Vector3 operator - (const Vector3& a_V1);
 	Vector3 operator + (const Vector3& a_V1);
-	
+
 
 	void operator += (const Vector3& a_V1);
 	void operator -= (const Vector3& a_V1);
-	
+
 	float GetX();	
 	float GetY();
 	float GetZ();

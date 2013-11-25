@@ -67,7 +67,7 @@ Vector3 Vector3::GetNormal() //Get Normal of a Vector3
 	return TempV3;
 }
 
-float Vector3::EulerAngle(Vector3 &a_Vector3) //Oiler Angle
+float Vector3::EulerAngle(Vector3 &a_Vector3) //Euler Angle
 {
 	Vector3 A = this->GetNormal();
 	Vector3 B = a_Vector3.GetNormal();
