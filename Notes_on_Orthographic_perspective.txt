@@ -9,4 +9,8 @@ PointX / PointZ = X
 
 PointY / PointZ = Y
 
+2D Point projected on the image plane from a 3D point = X,Y
+
+Or to compress it: Vector3 ProjectedPoint = (PointX/PointZ),(PointY/PointZ), (PointZ/PointZ- aka '1')
+
 (Technically we also divide PointZ / PointZ which equates to 1, and because in this API distance between the ImagePlane and the POV is always 1, it essentially cancels itself out, leaving you with a 2D coordinate for the point from a 3D coordinate, ommiting the value of Z with is the distance value. (This is not the case in API's that calculate the distance between the POV and the Image Plane as anything other than 1)
