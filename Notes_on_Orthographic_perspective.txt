@@ -1,0 +1,12 @@
+To Calculate the orthographic projection of a point in 3D Space to a point in 2D space:
+
+1. Find the point between the point of view and the object itself where it intersects with the image plane.
+(Along the Z coordinate, assuming the POV is 0,0,0 facing -Z). This is done by dividing the X and Y coordinate by the Z coordinate of the point we are trying to project from:
+
+(Point Z should be negative because of facing)
+
+PointX / PointZ = X
+
+PointY / PointZ = Y
+
+(Technically we also divide PointZ / PointZ which equates to 1, and because in this API distance between the ImagePlane and the POV is always 1, it essentially cancels itself out, leaving you with a 2D coordinate for the point from a 3D coordinate, ommiting the value of Z with is the distance value. (This is not the case in API's that calculate the distance between the POV and the Image Plane as anything other than 1)
