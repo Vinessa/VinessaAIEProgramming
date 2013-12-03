@@ -135,6 +135,11 @@ float Vector2::EulerAngle(Vector2 &a_Vector2) //Euler Angle
 	return acos (A.GetDotProduct2D(B));
 }
 
+Vector2 Vector2::LinearInterpolation(Vector2 v2_A, Vector2 v2_B, float dt) // Linear Interpolation //
+{ 
+	return v2_A + (v2_B - v2_A) *dt;
+}
+
 
 // Getters and Setters //
 float Vector2::GetX() // Returns X

@@ -54,6 +54,8 @@ public:
 
 	Vector2 GetNormal();
 	float GetDotProduct2D(Vector2 &a_Vector2);
+
+	Vector2 LinearInterpolation(Vector2 v2_A, Vector2 v2_B, float dt);
 	
 	
 

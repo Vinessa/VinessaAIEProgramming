@@ -129,6 +129,9 @@ void Matrices::CreateRotationMatrix_3D(float Degrees_X, float Degrees_Y, float D
 
 }
 
+void 
+
+
 
 
 float* Matrices::GetRotation_3D() //Returns a float pointer that points to all three arrays because a function is not allowed to return an array.
@@ -155,3 +158,43 @@ float*  Matrices::GetRotation_Z()
 	return Pointer;
 }
 
+
+void Matrices::SetRotation()
+{
+
+}
+
+void Matrices::ScaleMatrix(float a_ScaleX, float a_ScaleY)
+{
+	Scale[3][3]
+	{{a_ScaleX, 0,0}
+	 {0,a_ScaleY, 0}
+	 {0,0,0}};
+
+	 this -> *= Scale;
+}
+
+void Matrices::operator *=(Matrix& OtherMatrix)
+{
+	
+	//Assume the following:
+	//This [3][3]{{a,b,c}      OtherMatrix [3][3]{{A,B,C}
+	//            {d,e,f}                         {D,E,F}
+	//            {g,h,i}}                        {G,H,I}
+
+	//finds the dot product of the first row of this by multiplying matching members. In this case Sum1 = (a*B) + (b*D) + (c+G)
+
+float Sum1 = ((this[1][1] * OtherMatrix[1][1]) +
+			  (this[1][2] * OtherMatrix[1][2]) +
+              (this[1][3] * OtherMatrix[1][3])); 
+
+float Sum2 = ((this[1][1]* OtherMatrix[1
+
+
+
+/*this[1][1]{((this[1][1] * OtherMatrix[1][2]) +
+(this[1][2] * OtherMatrix[2][1]) +
+(this[1][3] * OtherMatrix[1][3]))};*/ //finds the dot product of the first row of this by multiplying matching members. In this case this[1][1] = (a*B) + (b*D) + (c+G) (AKA Sum1)
+
+
+}

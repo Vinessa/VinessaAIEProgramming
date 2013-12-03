@@ -36,6 +36,8 @@ public:
 
 	Vector3 ConvertDegreesToRadians(float Degrees_X, float Degrees_Y, float Degrees_Z);
 
+	void CreateScaleMatrix( float a_XScaler, float a_YScaler, float a_ZScaler);
+
 
 
 	float Array_A[][];
@@ -46,6 +48,7 @@ public:
 	float RotateY[][];
 	float RotateZ[][];
 	float RotateZ[][];
+	float Scale[][]
 
 	
 };
