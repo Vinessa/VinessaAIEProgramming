@@ -4,7 +4,7 @@
 // Date Created:	November 2013
 // Brief:			2D Vector Class .CPP, part of 3DMathsLibrary
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+#include "StdAfx.h"
 #include "Vector2.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,6 +30,8 @@ Vector2::~Vector2(void)
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///// MEMBER FUNCTIONS /////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+///OVERLOADED OPERATORS///
 
 // Additive //
 Vector2 Vector2::operator + (float a_S) // Adds using a scaler
@@ -85,17 +87,17 @@ Vector2 Vector2::operator / (float a_S) // Divide by scaler
 }
 
 // Comparisons //
-void Vector2::operator += (Vector2& a_OtherVector) //allows the use of  +=
-{
-	m_X += a_OtherVector.m_X;
-	m_Y += a_OtherVector.m_Y;
-}
-
-void Vector2::operator -= (Vector2& a_OtherVector) // Allows the use of -=
-{
-	m_X -= a_OtherVector.m_X;
-	m_Y -= a_OtherVector.m_Y;
-}
+//void Vector2::operator += (Vector2& a_OtherVector) //allows the use of  +=
+//{
+//	m_X += a_OtherVector.m_X;
+//	m_Y += a_OtherVector.m_Y;
+//}
+//
+//void Vector2::operator -= (Vector2& a_OtherVector) // Allows the use of -=
+//{
+//	m_X -= a_OtherVector.m_X;
+//	m_Y -= a_OtherVector.m_Y;
+//}
 
 bool Vector2::Equals( Vector2& a_OtherVector) // Tests to see if Vectors are equal
 {
@@ -105,21 +107,21 @@ bool Vector2::Equals( Vector2& a_OtherVector) // Tests to see if Vectors are equ
 		return false;
 }
 
-// Magnitude //
+///MAGNITUDE///
 float Vector2::GetMagnitude2D() // Get Magnitude of a vector
 {
 	return sqrt((m_X * m_X) + (m_Y * m_Y));
 }
 
-// DotProduct //
+///DOT-PRODUCT///
 float Vector2::GetDotProduct2D(Vector2 &a_OtherVector2) //Get DotProduct between two vectors
 {
-	return((m_X * a_OtherVector2.GetX()) +
-		(m_Y * a_OtherVector2.GetY();
+	return(((m_X) * (a_OtherVector2.GetX())) +
+		(m_Y) * (a_OtherVector2.GetY()));
 }
 
-// Normalize //
-void Vector2::Normalize() //Normalize a Vector3
+///NORMALISATION///
+void Vector2::Normalize() //Normalize a Vector2
 {
 	if (GetMagnitude2D() != 0)
 	{
@@ -128,6 +130,7 @@ void Vector2::Normalize() //Normalize a Vector3
 	}
 }
 
+///EULER///
 float Vector2::EulerAngle(Vector2 &a_Vector2) //Euler Angle
 {
 	Vector2 A = GetNormal();
@@ -135,9 +138,22 @@ float Vector2::EulerAngle(Vector2 &a_Vector2) //Euler Angle
 	return acos (A.GetDotProduct2D(B));
 }
 
-Vector2 Vector2::LinearInterpolation(Vector2 v2_A, Vector2 v2_B, float dt) // Linear Interpolation //
+///LINEAR INTERPOLATION///
+Vector2 Vector2::LinearInterpolation(Vector2 v2Destination, float dt) // Linear Interpolation //
 { 
-	return v2_A + (v2_B - v2_A) *dt;
+	/*Vector2 Temp;
+	Temp.SetX((this ->GetX()) + ((v2Destination.GetX() - m_X)*dt));
+	Temp.SetY((this ->GetY()) + ((v2Destination.GetY() - m_Y)*dt));
+	return Temp;*/
+
+	return ((v2Destination - *this ) * dt) +*this;
+	
+}
+
+///CROSS PRODUCT///
+float CrossProduct(Vector2 & v2_A, Vector2 & v2_B)// Cross Product.. fake cross product anyway. Assumes that the Z value is 0 and returns a float instead of a Vector2
+{
+    return (((v2_A.GetX()) * (v2_B.GetY())) - (v2_A.GetY()) * (v2_B.GetX()));
 }
 
 
@@ -164,8 +180,8 @@ void Vector2::SetY(float a_Y)
 
 Vector2 Vector2::GetNormal() //Get Normal of a Vector3
 {
-	Vector2 TemporaryVector = Vector2((m_X / GetMagnitude2D()), (m_Y / GetMagnitude2D()));
-	return TemporaryVector;
+	Vector2 TemporaryVector2 = Vector2((m_X / GetMagnitude2D()), (m_Y / GetMagnitude2D()));
+	return TemporaryVector2;
 }
 
 

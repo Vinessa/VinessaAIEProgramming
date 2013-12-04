@@ -5,8 +5,6 @@
 // Brief:			3D Vector Class Definition
 // Copyright: Vinessa Mayer 2013
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 #include "StdAfx.h"
 #include "Vector3.h"
 
@@ -17,6 +15,9 @@
 
 Vector3::Vector3(void)
 {
+	m_X = 0.0;
+	m_Y = 0.0;
+	m_Z = 0.0;
 }
 
 Vector3::Vector3(float a_X, float a_Y, float a_Z)
@@ -34,23 +35,80 @@ Vector3::~Vector3(void)
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-/////MEMBER FUNCTIONS////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
+////MEMBER FUNCTIONS////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
-float Vector3::GetMagnitude3D() // Get Magnitude of a vector
+///OVERLOADED OPERATORS///
+Vector3 Vector3:: operator - (float a_S) //Subtract by Scaler
+{
+	Vector3 TemporaryVector3;
+	TemporaryVector3.m_X = this->m_X - a_S;
+	TemporaryVector3.m_Y = this->m_Y - a_S;
+	TemporaryVector3.m_Z = this->m_Z - a_S;
+	return TemporaryVector3;
+}
+
+Vector3 Vector3:: operator + (float a_S) // Add by Scaler
+{
+	Vector3 TemporaryVector3;
+	TemporaryVector3.m_X = this->m_X + a_S;
+	TemporaryVector3.m_Y = this->m_Y + a_S;
+	TemporaryVector3.m_Z = this->m_Z + a_S;
+	return TemporaryVector3;
+}
+
+Vector3 Vector3:: operator * (float a_S) // Multiply by Scaler
+{
+	Vector3 TemporaryVector3;
+	TemporaryVector3.m_X = this->m_X * a_S;
+	TemporaryVector3.m_Y = this->m_Y * a_S;
+	TemporaryVector3.m_Z = this->m_Z * a_S;
+	return TemporaryVector3;
+}
+
+Vector3 Vector3:: operator / (float a_S) // Divide by Scaler
+{
+	Vector3 TemporaryVector3;
+	TemporaryVector3.m_X = this->m_X / a_S;
+	TemporaryVector3.m_Y = this->m_Y / a_S;
+	TemporaryVector3.m_Z = this->m_Z / a_S;
+	return TemporaryVector3;
+}
+
+Vector3 Vector3::operator - (const Vector3& a_V1) //Subtract by Vector3
+{
+	Vector3 TemporaryVector3;
+	TemporaryVector3.m_X = this->m_X - a_V1.m_X;
+	TemporaryVector3.m_Y = this->m_Y - a_V1.m_Y;
+	TemporaryVector3.m_Z = this->m_Z - a_V1.m_Z;
+	return TemporaryVector3;
+}
+
+Vector3 Vector3::operator + (const Vector3& a_V1) //Add by Vector3
+{
+	Vector3 TemporaryVector3;
+	TemporaryVector3.m_X = this->m_X + a_V1.m_X;
+	TemporaryVector3.m_Y = this->m_Y + a_V1.m_Y;
+	TemporaryVector3.m_Z = this->m_Z + a_V1.m_Z;
+	return TemporaryVector3;
+}
+
+///MAGNITUDE///
+float Vector3::GetMagnitude3D() //Returns a Scaler that is the Magnitude of this Vector3
 {
 	return sqrt((m_X * m_X) + (m_Y * m_Y) + (m_Z * m_Z));
 }
 
-float Vector3::GetDotProduct3D(Vector3 &a_OtherVector3) //Get DotProduct between two vectors
+///DOT-PRODUCT///
+float Vector3::GetDotProduct3D(Vector3 &a_OtherVector3) //Returns a Scaler that is the Dot Product between two Vector3's
 {
 	return((this -> m_X * a_OtherVector3.m_X) +
 		(this -> m_Y * a_OtherVector3.m_Y) +
 		(this -> m_Z * a_OtherVector3.m_Z));
 }
 
-
-void Vector3::Normalize() //Normalize a Vector3
+///NORMALISATION///
+void Vector3::Normalize() //Normalize this Vector3
 {
 	if (GetMagnitude3D() != 0)
 	{
@@ -60,12 +118,13 @@ void Vector3::Normalize() //Normalize a Vector3
 	}
 }
 
-Vector3 Vector3::GetNormal() //Get Normal of a Vector3
+Vector3 Vector3::GetNormal() //Return the normalized Vector of this Vector3
 {
-	Vector3 TemporaryVector3V3 = Vector3((this ->m_X / GetMagnitude3D()), (this ->m_Y / GetMagnitude3D()), (this ->m_Z / GetMagnitude3D()));
-	return TemporaryVector3V3;
+	Vector3 TemporaryVector3 = Vector3((this ->m_X / GetMagnitude3D()), (this ->m_Y / GetMagnitude3D()), (this ->m_Z / GetMagnitude3D()));
+	return TemporaryVector3;
 }
 
+///EULER///
 float Vector3::EulerAngle(Vector3 &a_Vector3) //Euler Angle
 {
 	Vector3 A = this->GetNormal();
@@ -73,6 +132,7 @@ float Vector3::EulerAngle(Vector3 &a_Vector3) //Euler Angle
 	return acos (A.GetDotProduct3D(B));
 }
 
+///CROSS PRODUCT///
 Vector3 Vector3::CrossProduct(Vector3 &a_OtherVector3) // Cross Product //
 {
 	Vector3 TemporaryVector3;
@@ -82,81 +142,13 @@ Vector3 Vector3::CrossProduct(Vector3 &a_OtherVector3) // Cross Product //
 	return TemporaryVector3;
 }
 
-Vector3 Vector3::LinearInterpolation(Vector3 v3_A, Vector3 v3_B, float dt) // Linear Interpolation //
+///LINEAR INTERPOLATION///
+Vector3 Vector3::LinearInterpolation(Vector3 v3_Destination, float dt) // Linear Interpolation //
 { 
-	return v3_A + (v3_B - v3_A) *dt;
+	return ((v3_Destination - *this) * dt) +*this;
 }
 
 
-Vector3 Vector3:: operator - (float a_S) //Minus Scaler
-{
-	Vector3 TemporaryVector3;
-	TemporaryVector3.m_X = this->m_X - a_S;
-	TemporaryVector3.m_Y = this->m_Y - a_S;
-	TemporaryVector3.m_Z = this->m_Z - a_S;
-	return TemporaryVector3;
-}
-
-Vector3 Vector3:: operator + (float a_S) // Add Scaler
-{
-	Vector3 TemporaryVector3;
-	TemporaryVector3.m_X = this->m_X + a_S;
-	TemporaryVector3.m_Y = this->m_Y + a_S;
-	TemporaryVector3.m_Z = this->m_Z + a_S;
-	return TemporaryVector3;
-}
-	
-Vector3 Vector3:: operator * (float a_S) // Multiply Scaler
-{
-	Vector3 TemporaryVector3;
-	TemporaryVector3.m_X = this->m_X * a_S;
-	TemporaryVector3.m_Y = this->m_Y * a_S;
-	TemporaryVector3.m_Z = this->m_Z * a_S;
-	return TemporaryVector3;
-}
-
-Vector3 Vector3:: operator / (float a_S) // Divide scaler
-{
-	Vector3 TemporaryVector3;
-	TemporaryVector3.m_X = this->m_X / a_S;
-	TemporaryVector3.m_Y = this->m_Y / a_S;
-	TemporaryVector3.m_Z = this->m_Z / a_S;
-	return TemporaryVector3;
-}
-
-Vector3 Vector3::operator - (const Vector3& a_V1) //Subtract Vector3
-{
-	Vector3 TemporaryVector3;
-	TemporaryVector3.m_X = this->m_X - a_V1.m_X;
-	TemporaryVector3.m_Y = this->m_Y - a_V1.m_Y;
-	TemporaryVector3.m_Z = this->m_Z - a_V1.m_Z;
-	return TemporaryVector3;
-}
-
-Vector3 Vector3::operator + (const Vector3& a_V1) //Add Vector3
-{
-	Vector3 TemporaryVector3;
-	TemporaryVector3.m_X = this->m_X + a_V1.m_X;
-	TemporaryVector3.m_Y = this->m_Y + a_V1.m_Y;
-	TemporaryVector3.m_Z = this->m_Z + a_V1.m_Z;
-	return TemporaryVector3;
-}
-
-void Vector3::operator += (const Vector3& a_V1) //+= Vector3
-{
-	m_X += a_V1.m_X;
-	m_Y += a_V1.m_Y;
-	m_Z += a_V1.m_Z;
-
-}
-
-void Vector3::operator -= (const Vector3& a_V1) //-= Vector3
-{
-	m_X -= a_V1.m_X;
-	m_Y -= a_V1.m_Y;
-	m_Z -= a_V1.m_Z;
-
-}
 
 
 
