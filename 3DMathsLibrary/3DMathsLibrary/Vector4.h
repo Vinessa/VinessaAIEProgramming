@@ -23,7 +23,9 @@ public:
 
 	float GetMagnitude4D();
 	void Normalize();
-	unsigned long ConvertToHexidecimal();
+	unsigned long ConvertRGBToHexidecimal();
+	Vector4 ConvertHexidecimaltoRGB(int a_HexValue, int a_AlphaValue);
+
 
 	float m_X;
 	float m_Y;
