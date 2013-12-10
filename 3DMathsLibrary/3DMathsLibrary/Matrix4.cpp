@@ -103,3 +103,37 @@ Matrix4 Matrix4::CreateScaleMatrix(float a_Scale_X, float a_Scale_Y, float a_Sca
 	ScaleMatrix.m_A4=0; ScaleMatrix.m_B4=0; ScaleMatrix.m_C4=0; ScaleMatrix.m_D4=0;
 
 	return ScaleMatrix;
+}
+
+	Matrix4 Matrix4::operator * (Matrix4& OtherMatrix4)
+{
+	//  A   B  C
+	//1[A1][B1][C1]
+	//2[A2][B2][C2]
+	//3[A3][B3][C3]     
+
+
+Matrix4 Result;
+
+Result.m_A1 = (m_A1 * OtherMatrix4.m_A1)+(m_A2 * OtherMatrix4.m_B1)+(m_A3 * OtherMatrix4.m_C1)+(m_A4 * OtherMatrix4.m_D1);
+Result.m_A2 = (m_A1 * OtherMatrix4.m_A2)+(m_A2 * OtherMatrix4.m_B2)+(m_A3 * OtherMatrix4.m_C2)+(m_A4 * OtherMatrix4.m_D2);
+Result.m_A3 = (m_A1 * OtherMatrix4.m_A3)+(m_A2 * OtherMatrix4.m_B3)+(m_A3 * OtherMatrix4.m_C3)+(m_A4 * OtherMatrix4.m_D3);
+Result.m_A4 = (m_A1 * OtherMatrix4.m_A4)+(m_A2 * OtherMatrix4.m_B4)+(m_A3 * OtherMatrix4.m_C4)+(m_C4 * OtherMatrix4.m_D4);
+
+Result.m_B1 = (m_B1 * OtherMatrix4.m_A1)+(m_B2 * OtherMatrix4.m_B1)+(m_B3 * OtherMatrix4.m_C1)+(m_B4 * OtherMatrix4.m_D1);
+Result.m_B2 = (m_B1 * OtherMatrix4.m_A2)+(m_B2 * OtherMatrix4.m_B2)+(m_B3 * OtherMatrix4.m_C2)+(m_B4 * OtherMatrix4.m_D2);
+Result.m_B3 = (m_B1 * OtherMatrix4.m_A3)+(m_B2 * OtherMatrix4.m_B3)+(m_B3 * OtherMatrix4.m_C3)+(m_B4 * OtherMatrix4.m_D3);
+Result.m_B4 = (m_B1 * OtherMatrix4.m_A4)+(m_B2 * OtherMatrix4.m_B4)+(m_B3 * OtherMatrix4.m_C4)+(m_B4 * OtherMatrix4.m_D4);
+
+Result.m_C1 = (m_C1 * OtherMatrix4.m_A1)+(m_C2 * OtherMatrix4.m_B1)+(m_C3 * OtherMatrix4.m_C1)+(m_C4 * OtherMatrix4.m_D1);
+Result.m_C2 = (m_C1 * OtherMatrix4.m_A2)+(m_C2 * OtherMatrix4.m_B2)+(m_C3 * OtherMatrix4.m_C2)+(m_C4 * OtherMatrix4.m_D2);
+Result.m_C3 = (m_C1 * OtherMatrix4.m_A3)+(m_C2 * OtherMatrix4.m_B3)+(m_C3 * OtherMatrix4.m_C3)+(m_C4 * OtherMatrix4.m_D3);
+Result.m_C4 = (m_C1 * OtherMatrix4.m_A4)+(m_C2 * OtherMatrix4.m_B4)+(m_C3 * OtherMatrix4.m_C4)+(m_C4 * OtherMatrix4.m_D4);
+
+Result.m_D1 = (m_D1 * OtherMatrix4.m_A1)+(m_D2 * OtherMatrix4.m_B1)+(m_D3 * OtherMatrix4.m_C1)+(m_D4 * OtherMatrix4.m_D1);
+Result.m_D3 = (m_D1 * OtherMatrix4.m_A2)+(m_D2 * OtherMatrix4.m_B2)+(m_D3 * OtherMatrix4.m_C2)+(m_D4 * OtherMatrix4.m_D2);
+Result.m_D2 = (m_D1 * OtherMatrix4.m_A3)+(m_D2 * OtherMatrix4.m_B3)+(m_D3 * OtherMatrix4.m_C3)+(m_D4 * OtherMatrix4.m_D3);
+Result.m_D4 = (m_D1 * OtherMatrix4.m_A4)+(m_D2 * OtherMatrix4.m_B4)+(m_D3 * OtherMatrix4.m_C4)+(m_D4 * OtherMatrix4.m_D4);
+
+
+return Result;
