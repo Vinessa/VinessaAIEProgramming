@@ -146,27 +146,29 @@ Matrix3 Matrix3::CreateScaleMatrix(float a_Scale_X, float a_Scale_Y)
 }
 
 
-void Matrix3::operator *=(Matrix& OtherMatrix)
+Matrix3 Matrix3::operator * (Matrix3& OtherMatrix3)
 {
-	
-	//Assume the following:
-	//This [3][3]{{a,b,c}      OtherMatrix [3][3]{{A,B,C}
-	//            {d,e,f}                         {D,E,F}
-	//            {g,h,i}}                        {G,H,I}
-
-	//finds the dot product of the first row of this by multiplying matching members. In this case Sum1 = (a*B) + (b*D) + (c+G)
-
-float Sum1 = ((this[1][1] * OtherMatrix[1][1]) +
-			  (this[1][2] * OtherMatrix[1][2]) +
-              (this[1][3] * OtherMatrix[1][3])); 
-
-float Sum2 = ((this[1][1]* OtherMatrix[1
+	//  A   B  C
+	//1[A1][B1][C1]
+	//2[A2][B2][C2]
+	//3[A3][B3][C3]     
 
 
+Matrix3 Result;
 
-/*this[1][1]{((this[1][1] * OtherMatrix[1][2]) +
-(this[1][2] * OtherMatrix[2][1]) +
-(this[1][3] * OtherMatrix[1][3]))};*/ //finds the dot product of the first row of this by multiplying matching members. In this case this[1][1] = (a*B) + (b*D) + (c+G) (AKA Sum1)
+Result.m_A1 = (m_A1* OtherMatrix3.m_A1)+(m_A2 * OtherMatrix3.m_B1)+(m_A3 * OtherMatrix3.m_C1);
+Result.m_A2 = (m_A1* OtherMatrix3.m_A2)+(m_A2 * OtherMatrix3.m_B2)+(m_A3 * OtherMatrix3.m_C2);
+Result.m_A3 = (m_A1* OtherMatrix3.m_A3)+(m_A2 * OtherMatrix3.m_B3)+(m_A3 * OtherMatrix3.m_C3);
+
+Result.m_B1 = (m_B1 * OtherMatrix3.m_A1)+(m_B2 * OtherMatrix3.m_B1)+(m_B3 * OtherMatrix3.m_C1);
+Result.m_B2 = (m_B1 * OtherMatrix3.m_A2)+(m_B2 * OtherMatrix3.m_B2)+(m_B3 * OtherMatrix3.m_C2);
+Result.m_B3 = (m_B1 * OtherMatrix3.m_A3)+(m_B2 * OtherMatrix3.m_B3)+(m_B3 * OtherMatrix3.m_C3);
+
+Result.m_C1 = (m_C1 * OtherMatrix3.m_A1)+(m_C2 * OtherMatrix3.m_B1)+(m_C3 * OtherMatrix3.m_C1);
+Result.m_C2 = (m_C1 * OtherMatrix3.m_A2)+(m_C2 * OtherMatrix3.m_B2)+(m_C3 * OtherMatrix3.m_C2);
+Result.m_C3 = (m_C1 * OtherMatrix3.m_A3)+(m_C2 * OtherMatrix3.m_B3)+(m_C3 * OtherMatrix3.m_C3);
+
+return Result;
 
 
 }

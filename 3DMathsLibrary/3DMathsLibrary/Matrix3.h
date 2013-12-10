@@ -19,6 +19,8 @@ public:
 	Matrix3 CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y);
 	Matrix3 CreateScaleMatrix(float a_Scale_X, float a_Scale_Y);
 
+	Matrix3 operator * (Matrix3& OtherMatrix3);
+
 
 
 	Vector2 GetTranslations();
