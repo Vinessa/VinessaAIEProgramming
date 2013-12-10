@@ -6,16 +6,27 @@
 
 Matrix3::Matrix3(void)
 {
-	int Matrix [3][3] = {{1,0,0},
-	{0,1,0},
-	{0,0,1}};
+	m_A1=0; m_B1=0; m_C1=0;
+	m_A2=0; m_B2=0; m_C2=0;
+	m_A3=0; m_B3=0; m_C3=0;
+
+	//  A   B  C
+	//1[A1][B1][C1]
+	//2[A2][B2][C2]
+	//3[A3][B3][C3]
 }
 
-Matrix3::Matrix3(const int N_ColumnsSize, const int m_RowSize)
+Matrix3::Matrix3(float a_A1, float a_B1, float a_C1, float a_A2, float a_B2, float a_C2, float a_A3, float a_B3, float a_C3)
 {
-	int Matrix [3][3]= {{1,0,0},
-	{0,1,0},
-	{0,0,1}};
+	m_A1 = a_A1; m_B1 = a_B1; m_C1 = a_C1;
+	m_A2 = a_A2; m_B2 = a_B2; m_C2 = a_C2;
+	m_A3 = a_A3; m_B3 = a_B3; m_C3 = a_C3;
+
+	 //  A   B  C
+	//1[A1][B1][C1]
+	//2[A2][B2][C2]
+	//3[A3][B3][C3]
+
 }
 
 Matrix3::~Matrix3(void)
@@ -23,113 +34,85 @@ Matrix3::~Matrix3(void)
 }
 
 
-void Matrix3::CreateIdentityMatrix(float X, float Y, float Z)
+Matrix3 Matrix3::CreateIdentityMatrix()
 {
-	Identity[3][3] = {{X,0,0},
-	{0,Y,0},
-	{0,0,Z}};
+	Matrix3 Identity;
+	Identity.m_A1=1; Identity.m_B1=0; Identity.m_C1=0;
+	Identity.m_A2=0; Identity.m_B2=1; Identity.m_C2=0;
+	Identity.m_A3=0; Identity.m_B3=0; Identity.m_C3=1;
+	return Identity;
+}
+
+Matrix3 Matrix3::CreateTranslationMatrix(float X, float Y)
+{
+	Matrix3 Translation;
+	Translation.m_A1=1; Translation.m_B1=0; Translation.m_C1=0;
+	Translation.m_A2=0; Translation.m_B2=1; Translation.m_C2=0;
+	Translation.m_A3=0; Translation.m_B3=0; Translation.m_C3=1;
+	return Translation;
+
 }
 
 
 
-
-void Matrix3::CreateTranslationMatrix(float X, float Y)
+Vector2 Matrix3::ConvertDegreesToRadians(float a_Degrees_X, float a_Degrees_Y)
 {
-	Translation[3][3] = {{0,0,X},
-	{0,0,Y},
-	{0,0,0}};
+	float XRads = (a_Degrees_X * 3.14) / 180;
+	float YRads = (a_Degrees_Y * 3.14) / 180;
+
+
+	Vector2 a_Rads(XRads,YRads);
+
+	return a_Rads;
 }
 
-void Matrix3::SetTranslation(float X, float Y)
+Matrix3 Matrix3::CreateRotationMatrix_X(float a_Degrees_X)
 {
-	Translation[3][1] = {X};
-	Translation[3][2] = {Y};
+	Vector3 Rads = (ConvertDegreesToRadians(a_Degrees_X, 0, 0));
+	Matrix3 RotX;
+
+	RotX.m_A1=1; RotX.m_B1=0; RotX.m_C1=0;
+	RotX.m_A2=0; RotX.m_B2=(acos(Rads.m_X)); RotX.m_C2=-(asin(Rads.m_X));
+	RotX.m_A3=0; RotX.m_B3=(asin(Rads.m_X)); RotX.m_C3=(acos(Rads.m_X));
+
+	return RotX;
 }
 
-Vector2 Matrix3::GetTranslations()
+Matrix3 Matrix3::CreateRotationMatrix_Y(float a_Degrees_Y)
 {
-	Vector2 vTemp (Translation[3][1],Translation[3][2]);
-	return vTemp;
-}
+	Vector3 Rads = (ConvertDegreesToRadians(0, a_Degrees_Y, 0));
+	Matrix3 RotY;
 
-Vector3 Matrix3::ConvertDegreesToRadians(float Degrees_X, float Degrees_Y, float Degrees_Z)
-{
-	float XRads = (Degrees_X * 3.14) / 180;
-	float YRads = (Degrees_Y * 3.14) / 180;
-	float ZRads = (Degrees_Z * 3.14) / 180;
-
-	Vector3 Rads(XRads,YRads,ZRads);
-
-	return Rads;
-}
-
-void Matrix3::CreateRotationMatrix_X(float Degrees_X)
-{
-	float Degrees_Y = 0;
-	float Degrees_Z = 0;
-	Vector3 Rads = (ConvertDegreesToRadians(Degrees_X, Degrees_Y, Degrees_Z));
-	RotateX[3][3] = {{1,0,0},
-	{0, acos(Rads.m_X),-(asin(Rads.m_X))},
-	{0, asin(Rads.m_X), acos(Rads.m_X)}};
-}
-
-void Matrix3::CreateRotationMatrix_Y(float Degrees_Y)
-{
-	float Degrees_X = 0;
-	float Degrees_Z = 0;
-	Vector3 Rads = (ConvertDegreesToRadians(Degrees_X, Degrees_Y, Degrees_Z));
-	RotateY[3][3] = {{acos(Rads.m_Y),0,asin(Rads.m_Y)},
-	{0,1,0},
-	{-(asin(Rads.m_Y),0, acos(Rads.m_Y)}};
+	RotY.m_A1=acos(Rads.m_Y); RotY.m_B1=0; RotY.m_C1=asin(Rads.m_Y);
+	RotY.m_A2= 0; RotY.m_B2= 1; RotY.m_C2= 0;
+	RotY.m_A3=-(asin(Rads.m_Y); RotY.m_B3= 0; RotY.m_C3=acos(Rads.m_Y);
+	
+	return RotY;
 } 
 
 
-void Matrix3::CreateRotationMatrix_Z(float Degrees_Z)
+Matrix3 Matrix3::CreateRotationMatrix_Z(float a_Degrees_Z)
 {
-	float Degrees_X = 0;
-	float Degrees_Y = 0;
-	Vector3 Rads = (ConvertDegreesToRadians(Degrees_X, Degrees_Y, Degrees_Z));
+	Vector3 Rads = (ConvertDegreesToRadians(0, 0, a_Degrees_Z));
+	Matrix3 RotZ;
 
-	RotateZ[3][3] = {{acos(Rads.m_Z),-(asin(Rads.m_Z)),0},
-	{asin(Rads.m_Z),acos(Rads.m_Z),0 },
-	{0,0,1}};
+	RotZ.m_A1 = acos(Rads.m_Z); RotZ.m_B1 = -(asin(Rads.m_Z)); RotZ.m_C1 = 0;
+	RotZ.m_A2 = asin(Rads.m_Z); RotZ.m_B2 = acos(Rads.m_Z); RotZ.m_C2= 0;
+	RotZ.m_A3 = 0; RotZ.m_B3 = 0; RotZ.m_C3 = 1;
+
+	return RotZ;
 } 
 
-void Matrix3::CreateRotationMatrix_3D(float Degrees_X, float Degrees_Y, float Degrees_Z)
+Matrix3 Matrix3::CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y)
 {
-	Vector3 Rads = (ConvertDegreesToRadians(Degrees_X, Degrees_Y, Degrees_Z));
-
-	RotateX[3][3] = {{1,0,0},
-	{0, acos(Rads.m_X),-(asin(Rads.m_X))},
-	{0, asin(Rads.m_X), acos(Rads.m_X)}};
-	//More readable:
-	//RotateX
-	//[    1    ][    0    ][    0    ]
-	//[    0    ][ cos(X)  ][ -sin(X) ]
-	//[    0    ][ sin(X)  ][  cos(X) ]   *Note: X = degrees converted to radians
-
-
-	RotateY[3][3] = {{acos(Rads.m_Y),0,asin(Rads.m_Y)},
-	{0,1,0},
-	{-(asin(Rads.m_Y),0, acos(Rads.m_Y)}};
-	//More readable:
-	//RotateY
-	//[  cos(Y) ][    0    ][  sin(Y) ]
-	//[    0    ][    1    ][    0    ]
-	//[ -sin(Y) ][    0    ][  cos(Y) ]   *Note: Y = degrees converted to radians
-
-	RotateZ[3][3] = {{acos(Rads.m_Z),-(asin(Rads.m_Z)),0},
-	{asin(Rads.m_Z),acos(Rads.m_Z),0 },
-	{0,0,1}};
-	//More readable:
-	//RotateZ
-	//[  cos(Z) ][ -sin(Z) ][    0    ]
-	//[  sin(Z) ][  cos(Z) ][    0    ]
-	//[    0    ][    0    ][    1    ]   *Note: Z = degrees converted to radians
+	Matrix3 RotXYZ;
+	RotXYZ = ((CreateRotationMatrix_X(a_Degrees_X)) * (CreateRotationMatrix_Y(a_Degrees_Y)));
+	
+	return RotXYZ;
 
 }
 
-void 
+ 
 
 
 
@@ -164,15 +147,24 @@ void Matrix3::SetRotation()
 
 }
 
-void Matrix3::ScaleMatrix(float a_ScaleX, float a_ScaleY)
+Matrix3 Matrix3::CreateScaleMatrix(float a_Scale_X, float a_Scale_Y)
 {
-	Scale[3][3]
-	{{a_ScaleX, 0,0}
-	 {0,a_ScaleY, 0}
-	 {0,0,0}};
+	ScaleMatrix[3][3]
+	 = {{a_ScaleX, 0,0}
+	{0,a_ScaleY, 0}
+	{0,0,0}};
 
-	 this -> *= Scale;
+	return ScaleMatrix;
 }
+//void Matrix3::ScaleMatrix(float a_ScaleX, float a_ScaleY)
+//{
+//	Scale[3][3]
+//	{{a_ScaleX, 0,0}
+//	 {0,a_ScaleY, 0}
+//	 {0,0,0}};
+//
+//	 this -> *= Scale;
+//}
 
 void Matrix3::operator *=(Matrix& OtherMatrix)
 {

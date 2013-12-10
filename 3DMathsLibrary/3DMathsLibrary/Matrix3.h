@@ -1,5 +1,5 @@
-#ifndef _Matrix3_H_
-#define _Matrix3_H_
+#ifndef _MATRIX3_H_
+#define _MATRIX3_H_
 #include "Vector2.h"
 #include "Vector3.h"
 #include "math.h"
@@ -8,15 +8,16 @@ class Matrix3
 {
 public:
 	Matrix3(void);
-	Matrix3(const int N_ColumnsSize, const int m_RowSize);
+	Matrix3(float a_A_1, float a_B_1, float a_C_1, float a_A_2, float a_B_2, float a_C_2, float a_A_3, float a_B_3, float a_C_3);
 	~Matrix3(void);
 
-	void CreateIdentityMatrix(float X, float Y, float Z);
-	void CreateRotationMatrix_3D(float Degrees_X, float Degrees_Y, float Degrees_Z);
-	void CreateTranslationMatrix(float X, float Y);
-	void CreateRotationMatrix_X(float Degrees_X);
-	void CreateRotationMatrix_Y(float Degrees_Y);
-	void CreateRotationMatrix_Z(float Degrees_Z);
+	Matrix3 CreateIdentityMatrix();
+	Matrix3 CreateTranslationMatrix(float X, float Y);
+	Matrix3 CreateRotationMatrix_X(float a_Degrees_X);
+	Matrix3 CreateRotationMatrix_Y(float a_Degrees_Y);
+	Matrix3 CreateRotationMatrix_Z(float a_Degrees_Z);
+	Matrix3 CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y);
+	Matrix3 CreateScaleMatrix(float a_Scale_X, float a_Scale_Y);
 
 
 
@@ -34,22 +35,16 @@ public:
 	void TransformVector();
 	void TransformPoint();
 
-	Vector3 ConvertDegreesToRadians(float Degrees_X, float Degrees_Y, float Degrees_Z);
+	Vector3 ConvertDegreesToRadians(float Degrees_X, float Degrees_Y);
 
-	void CreateScaleMatrix( float a_XScaler, float a_YScaler, float a_ZScaler);
+	Matrix3 CreateScaleMatrix( float a_XScaler, float a_YScaler);
 
+	//variables
 
-
-	float Array_A[][];
-	float Identity[][];
-	float Matrix[][];
-	float Translation[][];
-	float RotateX[][];
-	float RotateY[][];
-	float RotateZ[][];
-	float RotateZ[][];
-	float Scale[][]
-
+	float m_A1, m_B1, m_C1;
+	float m_A2, m_B2, m_C2;
+	float m_A3, m_B3, m_C3;
+	
 	
 };
 
