@@ -92,3 +92,14 @@ Matrix4 Matrix4::CreateRotationMatrix_3D(float a_Degrees_X, float a_Degrees_Y, f
 	return RotXYZ;
 
 }
+
+Matrix4 Matrix4::CreateScaleMatrix(float a_Scale_X, float a_Scale_Y, float a_Scale_Z)
+{
+	Matrix4 ScaleMatrix;
+
+	ScaleMatrix.m_A1=a_Scale_X, ScaleMatrix.m_B1=0; ScaleMatrix.m_C1=0; ScaleMatrix.m_D1=0;
+	ScaleMatrix.m_A2=0; ScaleMatrix.m_B2=a_Scale_Y; ScaleMatrix.m_C2=0; ScaleMatrix.m_D2=0;
+	ScaleMatrix.m_A3=0; ScaleMatrix.m_B3=0; ScaleMatrix.m_C3=a_Scale_Z; ScaleMatrix.m_D3=0;
+	ScaleMatrix.m_A4=0; ScaleMatrix.m_B4=0; ScaleMatrix.m_C4=0; ScaleMatrix.m_D4=0;
+
+	return ScaleMatrix;

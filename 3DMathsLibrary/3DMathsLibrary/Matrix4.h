@@ -16,6 +16,7 @@ public:
 	Matrix4 CreateRotationMatrix_Y(float a_Degrees_Y);
 	Matrix4 CreateRotationMatrix_Z(float a_Degrees_Z);
 	Matrix4 CreateRotationMatrix_3D(float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z);
+	Matrix4 CreateScaleMatrix(float a_Scale_X, float a_Scale_Y, float a_Scale_Z);
 
 
 	float m_A1, m_B1, m_C1, m_D1;

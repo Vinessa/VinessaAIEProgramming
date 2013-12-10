@@ -90,25 +90,12 @@ Matrix3 Matrix3::CreateRotationMatrix_Y(float a_Degrees_Y)
 	return RotY;
 } 
 
-
-Matrix3 Matrix3::CreateRotationMatrix_Z(float a_Degrees_Z)
-{
-	Vector3 Rads = (ConvertDegreesToRadians(0, 0, a_Degrees_Z));
-	Matrix3 RotZ;
-
-	RotZ.m_A1 = acos(Rads.m_Z); RotZ.m_B1 = -(asin(Rads.m_Z)); RotZ.m_C1 = 0;
-	RotZ.m_A2 = asin(Rads.m_Z); RotZ.m_B2 = acos(Rads.m_Z); RotZ.m_C2= 0;
-	RotZ.m_A3 = 0; RotZ.m_B3 = 0; RotZ.m_C3 = 1;
-
-	return RotZ;
-} 
-
 Matrix3 Matrix3::CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y)
 {
-	Matrix3 RotXYZ;
-	RotXYZ = ((CreateRotationMatrix_X(a_Degrees_X)) * (CreateRotationMatrix_Y(a_Degrees_Y)));
+	Matrix3 RotXY;
+	RotXY = ((CreateRotationMatrix_X(a_Degrees_X)) * (CreateRotationMatrix_Y(a_Degrees_Y)));
 	
-	return RotXYZ;
+	return RotXY;
 
 }
 
@@ -116,55 +103,48 @@ Matrix3 Matrix3::CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y)
 
 
 
+//
+//float* Matrix3::GetRotation_3D() //Returns a float pointer that points to all three arrays because a function is not allowed to return an array.
+//{
+//	Pointer = RotateX, RotateY, RotateZ;
+//	return Pointer;
+//}
 
-float* Matrix3::GetRotation_3D() //Returns a float pointer that points to all three arrays because a function is not allowed to return an array.
-{
-	Pointer = RotateX, RotateY, RotateZ;
-	return Pointer;
-}
+//float*  Matrix3::GetRotation_X()
+//{
+//	Pointer = RotateX;
+//	return Pointer;
+//}
 
-float*  Matrix3::GetRotation_X()
-{
-	Pointer = RotateX;
-	return Pointer;
-}
+//float*  Matrix3::GetRotation_Y()
+//{
+//	Pointer = RotateY;
+//	return Pointer;
+//}
 
-float*  Matrix3::GetRotation_Y()
-{
-	Pointer = RotateY;
-	return Pointer;
-}
-
-float*  Matrix3::GetRotation_Z()
-{
-	Pointer = RotateZ;
-	return Pointer;
-}
+//float*  Matrix3::GetRotation_Z()
+//{
+//	Pointer = RotateZ;
+//	return Pointer;
+//}
 
 
-void Matrix3::SetRotation()
-{
-
-}
+//void Matrix3::SetRotation()
+//{
+//
+//}
 
 Matrix3 Matrix3::CreateScaleMatrix(float a_Scale_X, float a_Scale_Y)
 {
-	ScaleMatrix[3][3]
-	 = {{a_ScaleX, 0,0}
-	{0,a_ScaleY, 0}
-	{0,0,0}};
+	Matrix3 ScaleMatrix;
+
+	ScaleMatrix.m_A1 = a_Scale_X, m_B1=0; m_C1=0;
+	m_A2=0; ScaleMatrix.m_B2= a_Scale_Y; m_C2=0;
+	m_A3=0; m_B3=0; m_C3=0;
 
 	return ScaleMatrix;
 }
-//void Matrix3::ScaleMatrix(float a_ScaleX, float a_ScaleY)
-//{
-//	Scale[3][3]
-//	{{a_ScaleX, 0,0}
-//	 {0,a_ScaleY, 0}
-//	 {0,0,0}};
-//
-//	 this -> *= Scale;
-//}
+
 
 void Matrix3::operator *=(Matrix& OtherMatrix)
 {
