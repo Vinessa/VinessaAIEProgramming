@@ -67,7 +67,7 @@ Matrix4 Matrix4::CreateRotationMatrix_Y(float a_Degrees_Y)
 
 	RotY.m_A1=acos(Rads.m_Y); RotY.m_B1=0; RotY.m_C1=asin(Rads.m_Y);
 	RotY.m_A2= 0; RotY.m_B2= 1; RotY.m_C2= 0;
-	RotY.m_A3=-(asin(Rads.m_Y); RotY.m_B3= 0; RotY.m_C3=acos(Rads.m_Y);
+	RotY.m_A3=-(asin(Rads.m_Y)); RotY.m_B3= 0; RotY.m_C3=acos(Rads.m_Y);
 	
 	return RotY;
 } 
@@ -105,7 +105,7 @@ Matrix4 Matrix4::CreateScaleMatrix(float a_Scale_X, float a_Scale_Y, float a_Sca
 	return ScaleMatrix;
 }
 
-	Matrix4 Matrix4::operator * (Matrix4& OtherMatrix4)
+Matrix4 Matrix4::operator * (Matrix4& OtherMatrix4)
 {
 	//  A   B  C
 	//1[A1][B1][C1]
@@ -137,3 +137,46 @@ Result.m_D4 = (m_D1 * OtherMatrix4.m_A4)+(m_D2 * OtherMatrix4.m_B4)+(m_D3 * Othe
 
 
 return Result;
+}
+
+Matrix4 Matrix4::operator * (float Scaler)
+{
+	//  A   B    C  D
+	//1[A1][B1][C1][D1]
+	//2[A2][B2][C2][D2]
+	//3[A3][B3][C3][D3]
+	//4[A4][B4][C4][D4]
+
+
+Matrix4 Result;
+
+Result.m_A1 = (m_A1 * Scaler)+(m_A2 * Scaler)+(m_A3 * Scaler)+(m_A4 * Scaler);
+Result.m_A2 = (m_A1 * Scaler)+(m_A2 * Scaler)+(m_A3 * Scaler)+(m_A4 * Scaler);
+Result.m_A3 = (m_A1 * Scaler)+(m_A2 * Scaler)+(m_A3 * Scaler)+(m_A4 * Scaler);
+Result.m_A4 = (m_A1 * Scaler)+(m_A2 * Scaler)+(m_A3 * Scaler)+(m_C4 * Scaler);
+
+Result.m_B1 = (m_B1 * Scaler)+(m_B2 * Scaler)+(m_B3 * Scaler)+(m_B4 * Scaler);
+Result.m_B2 = (m_B1 * Scaler)+(m_B2 * Scaler)+(m_B3 * Scaler)+(m_B4 * Scaler);
+Result.m_B3 = (m_B1 * Scaler)+(m_B2 * Scaler)+(m_B3 * Scaler)+(m_B4 * Scaler);
+Result.m_B4 = (m_B1 * Scaler)+(m_B2 * Scaler)+(m_B3 * Scaler)+(m_B4 * Scaler);
+
+Result.m_C1 = (m_C1 * Scaler)+(m_C2 * Scaler)+(m_C3 * Scaler)+(m_C4 * Scaler);
+Result.m_C2 = (m_C1 * Scaler)+(m_C2 * Scaler)+(m_C3 * Scaler)+(m_C4 * Scaler);
+Result.m_C3 = (m_C1 * Scaler)+(m_C2 * Scaler)+(m_C3 * Scaler)+(m_C4 * Scaler);
+Result.m_C4 = (m_C1 * Scaler)+(m_C2 * Scaler)+(m_C3 * Scaler)+(m_C4 * Scaler);
+
+Result.m_D1 = (m_D1 * Scaler)+(m_D2 * Scaler)+(m_D3 * Scaler)+(m_D4 * Scaler);
+Result.m_D3 = (m_D1 * Scaler)+(m_D2 * Scaler)+(m_D3 * Scaler)+(m_D4 * Scaler);
+Result.m_D2 = (m_D1 * Scaler)+(m_D2 * Scaler)+(m_D3 * Scaler)+(m_D4 * Scaler);
+Result.m_D4 = (m_D1 * Scaler)+(m_D2 * Scaler)+(m_D3 * Scaler)+(m_D4 * Scaler);
+
+
+return Result;
+}
+
+void Matrix4::TransformVector(float X, float Y, float Z)
+{
+	m_C1 = X;
+	m_C2 = Y;
+	m_C3 = Z;
+}

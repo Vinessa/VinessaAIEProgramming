@@ -17,9 +17,10 @@ public:
 	Matrix3 CreateRotationMatrix_Y(float a_Degrees_Y);
 	Matrix3 CreateRotationMatrix_Z(float a_Degrees_Z);
 	Matrix3 CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y);
-	Matrix3 CreateScaleMatrix(float a_Scale_X, float a_Scale_Y);
+	Matrix3 CreateScaleMatrix( float a_XScaler, float a_YScaler);
 
 	Matrix3 operator * (Matrix3& OtherMatrix3);
+	Matrix3 operator * (float Scaler);
 
 
 
@@ -34,12 +35,12 @@ public:
 	void SetTranslation(float X, float Y);
 	void SetRotation();
 
-	void TransformVector();
-	void TransformPoint();
 
-	Vector3 ConvertDegreesToRadians(float Degrees_X, float Degrees_Y);
+	void TransformVector(float X, float Y);
 
-	Matrix3 CreateScaleMatrix( float a_XScaler, float a_YScaler);
+	Vector2 ConvertDegreesToRadians(float Degrees_X, float Degrees_Y);
+
+	
 
 	//variables
 
