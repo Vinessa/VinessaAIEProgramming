@@ -198,8 +198,29 @@ Result.m_C3 = (m_C1 * Scaler)+(m_C2 * Scaler)+(m_C3 * Scaler);
 return Result;
 }
 
-void Matrix3::TransformVector(float X, float Y)
+Matrix3 Matrix3::CreateTransformMatrix(float X, float Y) 
 {
-	m_C1 = X;
-	m_C2 = Y;
+	Matrix3 Trans;
+	Trans.m_A1=1; Trans.m_B1=1; Trans.m_C1= X; //aside from x and y all other values in the matrix are 1 so that when multiplied they don't alter the data of the other Matrix
+	Trans.m_A2=1; Trans.m_B2=1; Trans.m_C2= Y;
+	Trans.m_A3=1; Trans.m_B3=1; Trans.m_C3= 1;
+	return Trans;
 }
+
+void Matrix3::TransformPoint(float X, float Y)
+{
+	this = (this* (CreateTransformMatrix(X, Y)));
+}
+
+void Matrix3::TransformVector(Vector3 Start, Vector3 Destination)
+{
+	Matrix3 Temp = ((CreateTransformMatrix(Destination.m_X, Destination.m_Y)));
+	Destination.SetX((((Start.GetX())* Temp.m_A1)) + (((Start.GetY())* Temp.m_B1)) + (((Start.GetZ()) * Temp.m_C1)));
+	Destination.SetY((((Start.GetX())* Temp.m_A2)) + (((Start.GetY())* Temp.m_B2)) + (((Start.GetZ()) * Temp.m_C2)));
+	Destination.SetZ((((Start.GetZ())* Temp.m_A3)) + (((Start.GetY())* Temp.m_B3)) + (((Start.GetY()) * Temp.m_C3)));
+
+	
+}
+
+
+

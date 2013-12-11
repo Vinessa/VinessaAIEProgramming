@@ -35,8 +35,10 @@ public:
 	void SetTranslation(float X, float Y);
 	void SetRotation();
 
+	Matrix3 CreateTransformMatrix(float X, float Y); 
 
-	void TransformVector(float X, float Y);
+	void TransformVector(Vector3 Start, Vector3 Destination);
+	void TransformPoint(float X, float Y);
 
 	Vector2 ConvertDegreesToRadians(float Degrees_X, float Degrees_Y);
 
