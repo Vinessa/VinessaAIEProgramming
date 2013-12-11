@@ -148,6 +148,16 @@ Vector3 Vector3::LinearInterpolation(Vector3 v3_Destination, float dt) // Linear
 	return ((v3_Destination - *this) * dt) +*this;
 }
 
+Vector3 Vector3::LinearInterpolationScaler(float Scaler, float dt)
+{
+	Vector3 Temp;
+
+	Temp.m_X = ((Scaler - m_X) * dt) + m_X;
+	Temp.m_Y = ((Scaler - m_Y) * dt) + m_Y;
+	Temp.m_Z = ((Scaler - m_Z) * dt) + m_Y;
+
+	return Temp;
+}
 
 
 

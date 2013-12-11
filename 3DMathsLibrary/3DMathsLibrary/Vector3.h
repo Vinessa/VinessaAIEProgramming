@@ -25,6 +25,7 @@ public:
 	float EulerAngle(Vector3 &a_Vector3);
 	Vector3 CrossProduct(Vector3 &a_OtherVector3);
 	Vector3 LinearInterpolation(Vector3 v3_Destination, float dt);
+	Vector3 LinearInterpolationScaler(float Scaler, float dt);
 
 	Vector3 operator - (float a_S);
 	Vector3 operator + (float a_S);
