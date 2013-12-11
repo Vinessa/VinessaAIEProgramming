@@ -43,12 +43,12 @@ Matrix3 Matrix3::CreateIdentityMatrix()
 	return Identity;
 }
 
-Matrix3 Matrix3::CreateTranslationMatrix(float X, float Y)
+Matrix3 Matrix3::CreateTranslationMatrix(Vector3 XYZ)
 {
-	Matrix3 Translation;
-	Translation.m_A1=1; Translation.m_B1=0; Translation.m_C1=0;
-	Translation.m_A2=0; Translation.m_B2=1; Translation.m_C2=0;
-	Translation.m_A3=0; Translation.m_B3=0; Translation.m_C3=1;
+	Matrix3 Translation = CreateIdentityMatrix();
+	Translation.m_C1 = (XYZ.GetX());
+	Translation.m_C2 = (XYZ.GetY());
+	
 	return Translation;
 
 }
@@ -98,41 +98,6 @@ Matrix3 Matrix3::CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y)
 	return RotXY;
 
 }
-
- 
-
-
-
-//
-//float* Matrix3::GetRotation_3D() //Returns a float pointer that points to all three arrays because a function is not allowed to return an array.
-//{
-//	Pointer = RotateX, RotateY, RotateZ;
-//	return Pointer;
-//}
-
-//float*  Matrix3::GetRotation_X()
-//{
-//	Pointer = RotateX;
-//	return Pointer;
-//}
-
-//float*  Matrix3::GetRotation_Y()
-//{
-//	Pointer = RotateY;
-//	return Pointer;
-//}
-
-//float*  Matrix3::GetRotation_Z()
-//{
-//	Pointer = RotateZ;
-//	return Pointer;
-//}
-
-
-//void Matrix3::SetRotation()
-//{
-//
-//}
 
 Matrix3 Matrix3::CreateScaleMatrix(float a_ScalerX, float a_YScaler)
 {
@@ -198,23 +163,36 @@ Result.m_C3 = (m_C1 * Scaler)+(m_C2 * Scaler)+(m_C3 * Scaler);
 return Result;
 }
 
-Matrix3 Matrix3::CreateTransformMatrix(float X, float Y) 
+Matrix3 Matrix3::CreateTransformMatrix(Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler) 
 {
-	Matrix3 Trans;
-	Trans.m_A1=1; Trans.m_B1=1; Trans.m_C1= X; //aside from x and y all other values in the matrix are 1 so that when multiplied they don't alter the data of the other Matrix
-	Trans.m_A2=1; Trans.m_B2=1; Trans.m_C2= Y;
-	Trans.m_A3=1; Trans.m_B3=1; Trans.m_C3= 1;
-	return Trans;
+	Matrix3 TransformMatrix;
+	Matrix3 T = (CreateTranslationMatrix(XYZ));
+	Matrix3 R = (CreateRotationMatrix_2D(a_Degrees_X, a_Degrees_Y));
+	Matrix3 S = (CreateScaleMatrix(a_XScaler,a_YScaler));
+
+	TransformMatrix = T*R*S;
+
+	return TransformMatrix;
 }
 
-void Matrix3::TransformPoint(float X, float Y)
+void Matrix3::TransformPoint(Vector3 &Start, Vector3 &Destination, Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler)
 {
-	this = (this* (CreateTransformMatrix(X, Y)));
+	Matrix3 Temp = (CreateTransformMatrix(XYZ, a_Degrees_X, a_Degrees_Y, a_XScaler, a_YScaler));
+	Destination.SetX((((Start.GetX())* Temp.m_A1)) + (((Start.GetY())* Temp.m_B1)) + (((Start.GetZ()) * Temp.m_C1)));
+	Destination.SetY((((Start.GetX())* Temp.m_A2)) + (((Start.GetY())* Temp.m_B2)) + (((Start.GetZ()) * Temp.m_C2)));
+	Destination.SetZ((((Start.GetZ())* Temp.m_A3)) + (((Start.GetY())* Temp.m_B3)) + (((Start.GetY()) * Temp.m_C3)));
+	float W = (((Start.GetZ())* Temp.m_A3)) + (((Start.GetY())* Temp.m_B3)) + (((Start.GetY()) * Temp.m_C3));
+		if(W != 1 && W !=0)
+		{
+			Destination.SetX((Destination.GetX())/W);
+			Destination.SetY((Destination.GetY())/W);
+		}
 }
 
-void Matrix3::TransformVector(Vector3 Start, Vector3 Destination)
+void Matrix3::TransformVector(Vector3 &Start, Vector3 &Destination, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler)
 {
-	Matrix3 Temp = ((CreateTransformMatrix(Destination.m_X, Destination.m_Y)));
+	Vector3 TempVec(1,1,1);
+	Matrix3 Temp = ((CreateTransformMatrix(TempVec, a_Degrees_X, a_Degrees_Y, a_XScaler, a_YScaler)));
 	Destination.SetX((((Start.GetX())* Temp.m_A1)) + (((Start.GetY())* Temp.m_B1)) + (((Start.GetZ()) * Temp.m_C1)));
 	Destination.SetY((((Start.GetX())* Temp.m_A2)) + (((Start.GetY())* Temp.m_B2)) + (((Start.GetZ()) * Temp.m_C2)));
 	Destination.SetZ((((Start.GetZ())* Temp.m_A3)) + (((Start.GetY())* Temp.m_B3)) + (((Start.GetY()) * Temp.m_C3)));
