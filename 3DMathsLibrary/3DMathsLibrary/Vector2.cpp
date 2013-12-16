@@ -168,17 +168,17 @@ float Vector2::GetY() // Returns Y
 	return m_Y;
 }
 
-void Vector2::SetX(float a_X)
+void Vector2::SetX(float a_X) //Sets X
 {
 	m_X = a_X;
 }
 
-void Vector2::SetY(float a_Y)
+void Vector2::SetY(float a_Y) //Sets Y
 {
 	m_Y = a_Y;
 }
 
-Vector2 Vector2::GetNormal() //Get Normal of a Vector3
+Vector2 Vector2::GetNormal() //Get Normal of a Vector2
 {
 	Vector2 TemporaryVector2 = Vector2((m_X / GetMagnitude2D()), (m_Y / GetMagnitude2D()));
 	return TemporaryVector2;

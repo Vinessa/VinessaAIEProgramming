@@ -41,24 +41,24 @@ public:
 	void operator -= (Vector2& a_OtherVector); // Allows the use of -=
 
 	bool Equals(Vector2& a_OtherVector); // Tests to see if Vectors are equal
-	float GetMagnitude2D();
-	void Normalize();
-	float EulerAngle(Vector2 &a_Vector2);
+	float GetMagnitude2D(); // Returns the magnitude of this Vector2
+	void Normalize(); //Normalizes this Vector2
+	float EulerAngle(Vector2 &a_Vector2);  // Returns the Euler Angle of this Vector2
 
 
 
-	float GetX(); // Returns X
-	void SetX(float a_X); // Sets X
+	float GetX(); // Returns X of this Vector2
+	void SetX(float a_X); // Sets X of this Vector2
 
-	float GetY(); // Returns Y
-	void SetY(float a_Y); // Sets Y
+	float GetY(); // Returns Y of this Vector2
+	void SetY(float a_Y); // Sets Y of this Vector2
 
-	Vector2 GetNormal();
-	float GetDotProduct2D(Vector2 &a_Vector2);
+	Vector2 GetNormal(); // Returns the Normal of this Vector2 as a Vector2
+	float GetDotProduct2D(Vector2 &a_Vector2); //returns The Dot product between this Vector2 and another Vector2
 
-	float CrossProduct(Vector2 & v2_A, Vector2 & v2_B);
+	float CrossProduct(Vector2 & v2_A, Vector2 & v2_B); //Returns the Cross Product of this Vector2 and two other Vector 2s
 
-	Vector2 LinearInterpolation(Vector2 v2_A, float dt);
+	Vector2 LinearInterpolation(Vector2 v2_A, float dt); // Returns the new position of this Vector 2 between the second vector (destination * time)
 	
 	
 
@@ -67,8 +67,9 @@ public:
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 	
 private:
-	float m_X;
-	float m_Y;
+	float m_X; // X!
+	float m_Y; // Y!
+	// NO Z BECAUSE IT'S A VECTOR 2!!
 };
 
 #endif /*_VECTOR2_H_*/
