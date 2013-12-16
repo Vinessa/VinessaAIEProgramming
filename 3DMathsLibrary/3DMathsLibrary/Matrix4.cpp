@@ -239,7 +239,7 @@ return Result;
 }
 
 
-Matrix4 Matrix4::CreateTranslationMatrix(Vector3 XYZ) //returns a translation matrix3 that will translate in the X and the Y
+Matrix4 Matrix4::CreateTranslationMatrix(Vector3 XYZ) //returns a translation matrix4 that will translate in the X, Y and or Z
 {
 	Matrix4 Translation = CreateIdentityMatrix();
 	Translation.m_C1 = (XYZ.GetX());

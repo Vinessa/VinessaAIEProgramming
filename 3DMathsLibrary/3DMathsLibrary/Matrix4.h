@@ -41,7 +41,7 @@ public:
 	Matrix4 CreateXZOrthoProjectionMatrix(); // Creates an Orthographic Projection Matrix for the XZ plane
 	Matrix4 CreateYZOrthoProjectionMatrix(); // Creates an Orthographic Projection Matrix for the YZ plane
 	Matrix4 CreateOrthographicProjection (Plane3 WHICHPLANE); // Switch statement that will call one of the above 3. Arguments are either XY, XZ or YZ.
-    Matrix4 CreateTranslationMatrix(Vector3 XYZ);
+    Matrix4 CreateTranslationMatrix(Vector3 XYZ); //returns a translation matrix4 that will translate in the X, Y and or Z
 
 
 	Matrix4 operator * (Matrix4& OtherMatrix4); //Multiplies this matrix by another matrix4
