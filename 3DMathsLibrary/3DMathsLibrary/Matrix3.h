@@ -30,8 +30,8 @@ public:
 
 	Matrix3 CreateIdentityMatrix(); // Returns an identity matrix3
 	Matrix3 CreateTranslationMatrix(Vector3 XYZ);//returns a translation matrix3 that will translate in the X and the Y
-	Matrix3 CreateRotationMatrix_X(float a_Degrees_X); // Creates and returns a matrix that will rotate in the x. converts degres to rads for you.
-	Matrix3 CreateRotationMatrix_Y(float a_Degrees_Y); // Creates and returns a matrix that will rotate in the Y. converts degres to rads for you.
+	Matrix3 CreateRotationMatrix_X(float a_Degrees_X); // Creates and returns a matrix that will rotate in the x. converts degrees to rads for you.
+	Matrix3 CreateRotationMatrix_Y(float a_Degrees_Y); // Creates and returns a matrix that will rotate in the Y. converts degrees to rads for you.
 	/*Matrix3 CreateRotationMatrix_Z(float a_Degrees_Z); */
 	Matrix3 CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y); // Creates and returns a matrix that will rotate in both the X and the Y. Converts degres to rads for you.
 	Matrix3 CreateScaleMatrix( float a_XScaler, float a_YScaler); //Returns a Matrix that will scale in the X and Y

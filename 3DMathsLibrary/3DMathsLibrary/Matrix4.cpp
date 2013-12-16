@@ -36,6 +36,15 @@ Matrix4::~Matrix4(void)
 }
 
 
+Matrix4 Matrix4::CreateIdentityMatrix() // Returns an identity matrix4
+{
+	Matrix4 Identity;
+	Identity.m_A1=1; Identity.m_B1=0; Identity.m_C1=0; Identity.m_D1=0;
+	Identity.m_A2=0; Identity.m_B2=1; Identity.m_C2=0; Identity.m_D2=0;
+	Identity.m_A3=0; Identity.m_B3=0; Identity.m_C3=1; Identity.m_D3=0;
+	Identity.m_A4=0; Identity.m_B4=0; Identity.m_C4=0; Identity.m_D4=0;
+	return Identity;
+}
 
 Vector3 Matrix4::ConvertDegreesToRadians(float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z)
 {
@@ -142,7 +151,7 @@ Matrix4 Matrix4::CreateOrthographicProjection (Plane3 WHICHPLANE)
 {
 	switch(WHICHPLANE)
 	{
-	case XY: //Projetcts to the X and Y but removes the Z (Front/Back
+	case XY: //Projetcts to the X and Y but removes the Z (Front/Back)
 		  
 		 return (CreateXYOrthoProjectionMatrix());
 		break;
@@ -229,9 +238,37 @@ Result.m_D4 = (m_D1 * Scaler)+(m_D2 * Scaler)+(m_D3 * Scaler)+(m_D4 * Scaler);
 return Result;
 }
 
-void Matrix4::TransformVector(float X, float Y, float Z)
+
+Matrix4 Matrix4::CreateTranslationMatrix(Vector3 XYZ) //returns a translation matrix3 that will translate in the X and the Y
 {
-	m_C1 = X;
-	m_C2 = Y;
-	m_C3 = Z;
+	Matrix4 Translation = CreateIdentityMatrix();
+	Translation.m_C1 = (XYZ.GetX());
+	Translation.m_C2 = (XYZ.GetY());
+	
+	return Translation;
+
+}
+
+
+Matrix4 Matrix4::CreateTransformMatrix(Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z, float a_XScaler, float a_YScaler, float a_ZScaler) //Creates a Transformation Matrix that will Translate, rotate and scale at once
+{
+	Matrix4 TransformMatrix;
+	Matrix4 T = (CreateTranslationMatrix(XYZ));
+	Matrix4 R = (CreateRotationMatrix_3D(a_Degrees_X, a_Degrees_Y, a_Degrees_Z));
+	Matrix4 S = (CreateScaleMatrix(a_XScaler,a_YScaler, a_ZScaler));
+
+	TransformMatrix = T*R*S;
+
+	return TransformMatrix;
+}
+
+void Matrix4::TransformVector(Vector3 &Start, Vector3 &Destination, float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z, float a_XScaler, float a_YScaler, float a_ZScaler) // Transforms a Vector
+{
+	Vector3 TempVec(1,1,1);
+	Matrix4 Temp = ((CreateTransformMatrix(TempVec, a_Degrees_X, a_Degrees_Y, a_Degrees_Z, a_XScaler, a_YScaler, a_ZScaler)));
+	Destination.SetX((((Start.GetX())* Temp.m_A1)) + (((Start.GetY())* Temp.m_B1)) + (((Start.GetZ()) * Temp.m_C1)));
+	Destination.SetY((((Start.GetX())* Temp.m_A2)) + (((Start.GetY())* Temp.m_B2)) + (((Start.GetZ()) * Temp.m_C2)));
+	Destination.SetZ((((Start.GetZ())* Temp.m_A3)) + (((Start.GetY())* Temp.m_B3)) + (((Start.GetY()) * Temp.m_C3)));
+
+	
 }
