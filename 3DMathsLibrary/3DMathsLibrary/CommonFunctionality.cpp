@@ -27,3 +27,7 @@ float ConvertDegreesToRadians(float a_Degrees)
 	return Rads;
 }
 
+float LinearInterpolationScaler(float a_Start, float a_Destination, float T) // Linear Interpolation using a scaler//
+{ 
+	 return((a_Destination - a_Start * T) + a_Start);
+}
