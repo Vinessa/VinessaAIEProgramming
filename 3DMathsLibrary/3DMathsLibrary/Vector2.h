@@ -58,7 +58,7 @@ public:
 
 	float CrossProduct(Vector2 & v2_A, Vector2 & v2_B); //Returns the Cross Product of this Vector2 and two other Vector 2s
 
-	Vector2 LinearInterpolation(Vector2 v2_A, float dt); // Returns the new position of this Vector 2 between the second vector (destination * time)
+	Vector2 LinearInterpolation(Vector2 v2_A, float dt); // Returns the new position of this Vector2 between the second Vector2 (destination * time)
 	
 	
 

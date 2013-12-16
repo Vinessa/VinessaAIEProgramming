@@ -143,12 +143,12 @@ Vector3 Vector3::CrossProduct(Vector3 &a_OtherVector3) // Cross Product //
 }
 
 ///LINEAR INTERPOLATION///
-Vector3 Vector3::LinearInterpolation(Vector3 v3_Destination, float dt) // Linear Interpolation //
+Vector3 Vector3::LinearInterpolation(Vector3 v3_Destination, float dt) // Linear Interpolation by Vector3 //
 { 
 	return ((v3_Destination - *this) * dt) +*this;
 }
 
-Vector3 Vector3::LinearInterpolationScaler(float Scaler, float dt)
+Vector3 Vector3::LinearInterpolationScaler(float Scaler, float dt) // by Scaler
 {
 	Vector3 Temp;
 

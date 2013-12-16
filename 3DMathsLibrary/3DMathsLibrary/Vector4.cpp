@@ -62,7 +62,7 @@ void Vector4::Normalize()
 	}
 }
 
-unsigned long Vector4::ConvertRGBToHexidecimal()
+unsigned long Vector4::ConvertRGBToHexidecimal() // returns the Hexadecimal version of this RGBA.
 {
 	return((m_Red & 0xff) << 24) + ((m_Green & 0xff) << 16) + ((m_Blue & 0xff) << 8) + (m_Alpha & 0xff);
 }
