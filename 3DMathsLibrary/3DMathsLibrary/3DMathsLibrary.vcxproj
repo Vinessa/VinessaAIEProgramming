@@ -87,7 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DMathsLibrary.cpp" />
-    <ClCompile Include="CommonFunctionality.cpp" />
     <ClCompile Include="Matrix3.cpp" />
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="stdafx.cpp">

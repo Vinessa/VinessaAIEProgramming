@@ -105,6 +105,61 @@ Matrix4 Matrix4::CreateScaleMatrix(float a_Scale_X, float a_Scale_Y, float a_Sca
 	return ScaleMatrix;
 }
 
+Matrix4 Matrix4::CreateXYOrthoProjectionMatrix()
+{
+	Matrix4 XYOrthoProj(1,0,0,0,
+					    0,1,0,0,
+					    0,0,0,0,
+					    0,0,0,1);
+
+	return XYOrthoProj;
+
+}
+
+Matrix4 Matrix4:: CreateXZOrthoProjectionMatrix()
+{
+	  Matrix4 XZOrthoProj(1,0,0,0,
+						  0,0,0,0,
+						  0,0,1,0,
+						  0,0,0,1);
+
+	  return XZOrthoProj;
+}
+
+Matrix4 Matrix4:: CreateYZOrthoProjectionMatrix()
+{
+	 Matrix4 YZOrthoProj(0,0,0,0, 
+			                 0,1,0,0,
+							 0,0,1,0,
+							 0,0,0,1);
+
+	return YZOrthoProj;
+
+}
+
+
+Matrix4 Matrix4::CreateOrthographicProjection (Plane3 WHICHPLANE)
+{
+	switch(WHICHPLANE)
+	{
+	case XY: //Projetcts to the X and Y but removes the Z (Front/Back
+		  
+		 return (CreateXYOrthoProjectionMatrix());
+		break;
+
+	case XZ: //Projects to the X and Z but removes the Y (TopDown / BottomUp)
+
+		 return (CreateXZOrthoProjectionMatrix());
+		break;
+
+	case YZ://Projects to the Y and the Z but removes the X (Left/Right SideView)
+		 
+		   return (CreateYZOrthoProjectionMatrix());
+		break;
+
+	};
+}
+
 Matrix4 Matrix4::operator * (Matrix4& OtherMatrix4)
 {
 	//  A   B  C

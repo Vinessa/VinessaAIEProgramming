@@ -3,6 +3,7 @@
 #include "Vector2.h"
 #include "Vector3.h"
 #include "math.h"
+#include "CommonFunctionality.h"
 
 class Matrix4
 {
@@ -18,6 +19,11 @@ public:
 	Matrix4 CreateRotationMatrix_Z(float a_Degrees_Z);
 	Matrix4 CreateRotationMatrix_3D(float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z);
 	Matrix4 CreateScaleMatrix(float a_Scale_X, float a_Scale_Y, float a_Scale_Z);
+	Matrix4 CreateXYOrthoProjectionMatrix();
+	Matrix4 CreateXZOrthoProjectionMatrix();
+	Matrix4 CreateYZOrthoProjectionMatrix();
+	Matrix4 CreateOrthographicProjection (Plane3 WHICHPLANE);
+
 
 	Matrix4 operator * (Matrix4& OtherMatrix4);
 	Matrix4 operator * (float Scaler);
