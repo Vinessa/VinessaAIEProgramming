@@ -5,13 +5,7 @@
 #include "Vector3.h"
 #include "math.h"
 
-enum Plane3
-{
-XY, 
-XZ, 
-YZ
-} PLANE3;
-
+void TestPower2(int a_number);
 
 
 #endif /*_COMMONFUNCTIONALITY_H_*/
