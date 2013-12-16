@@ -1,8 +1,17 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// File:			Vector2.h
+// Author:			Vinessa Mayer
+// Date Created:	December 2013
+// Brief:			Matrix3 Class .CPP, part of 3DMathsLibrary
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "StdAfx.h"
 #include "Matrix3.h"
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+///// CONSTRUCTORS AND DESTRUCTOR //////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 Matrix3::Matrix3(void)
 {
@@ -34,7 +43,11 @@ Matrix3::~Matrix3(void)
 }
 
 
-Matrix3 Matrix3::CreateIdentityMatrix()
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+///// MEMBER FUNCTIONS /////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+Matrix3 Matrix3::CreateIdentityMatrix() // Returns an identity matrix3
 {
 	Matrix3 Identity;
 	Identity.m_A1=1; Identity.m_B1=0; Identity.m_C1=0;
@@ -43,7 +56,7 @@ Matrix3 Matrix3::CreateIdentityMatrix()
 	return Identity;
 }
 
-Matrix3 Matrix3::CreateTranslationMatrix(Vector3 XYZ)
+Matrix3 Matrix3::CreateTranslationMatrix(Vector3 XYZ) //returns a translation matrix3 that will translate in the X and the Y
 {
 	Matrix3 Translation = CreateIdentityMatrix();
 	Translation.m_C1 = (XYZ.GetX());
@@ -55,7 +68,7 @@ Matrix3 Matrix3::CreateTranslationMatrix(Vector3 XYZ)
 
 
 
-Vector2 Matrix3::ConvertDegreesToRadians(float a_Degrees_X, float a_Degrees_Y)
+Vector2 Matrix3::ConvertDegreesToRadians(float a_Degrees_X, float a_Degrees_Y)  // Converts degrees to radians and returns them as a Vector2
 {
 	float XRads = (a_Degrees_X * 3.14) / 180;
 	float YRads = (a_Degrees_Y * 3.14) / 180;
@@ -66,7 +79,7 @@ Vector2 Matrix3::ConvertDegreesToRadians(float a_Degrees_X, float a_Degrees_Y)
 	return a_Rads;
 }
 
-Matrix3 Matrix3::CreateRotationMatrix_X(float a_Degrees_X)
+Matrix3 Matrix3::CreateRotationMatrix_X(float a_Degrees_X) // Creates and returns a matrix that will rotate in the x. converts degres to rads for you.
 {
 	Vector2 Rads = (ConvertDegreesToRadians(a_Degrees_X, 0));
 	Matrix3 RotX;
@@ -78,7 +91,7 @@ Matrix3 Matrix3::CreateRotationMatrix_X(float a_Degrees_X)
 	return RotX;
 }
 
-Matrix3 Matrix3::CreateRotationMatrix_Y(float a_Degrees_Y)
+Matrix3 Matrix3::CreateRotationMatrix_Y(float a_Degrees_Y) // Creates and returns a matrix that will rotate in the Y. converts degres to rads for you.
 {
 	Vector2 Rads = (ConvertDegreesToRadians(0, a_Degrees_Y));
 	Matrix3 RotY;
@@ -90,7 +103,7 @@ Matrix3 Matrix3::CreateRotationMatrix_Y(float a_Degrees_Y)
 	return RotY;
 } 
 
-Matrix3 Matrix3::CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y)
+Matrix3 Matrix3::CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y) // Creates and returns a matrix that will rotate in both the X and the Y. Converts degres to rads for you.
 {
 	Matrix3 RotXY;
 	RotXY = ((CreateRotationMatrix_X(a_Degrees_X)) * (CreateRotationMatrix_Y(a_Degrees_Y)));
@@ -99,7 +112,7 @@ Matrix3 Matrix3::CreateRotationMatrix_2D(float a_Degrees_X, float a_Degrees_Y)
 
 }
 
-Matrix3 Matrix3::CreateScaleMatrix(float a_ScalerX, float a_YScaler)
+Matrix3 Matrix3::CreateScaleMatrix(float a_ScalerX, float a_YScaler) //Returns a Matrix that will scale in the X and Y
 {
 	Matrix3 ScaleMatrix;
 
@@ -111,7 +124,9 @@ Matrix3 Matrix3::CreateScaleMatrix(float a_ScalerX, float a_YScaler)
 }
 
 
-Matrix3 Matrix3::operator * (Matrix3& OtherMatrix3)
+// Operator Overloading
+
+Matrix3 Matrix3::operator * (Matrix3& OtherMatrix3) // Multiplies this Matrix3 by another Matrix3
 {
 	//  A   B  C
 	//1[A1][B1][C1]
@@ -138,7 +153,7 @@ return Result;
 
 }
 
-Matrix3 Matrix3::operator * (float Scaler)
+Matrix3 Matrix3::operator * (float Scaler) // Multiplies this Matrix3 by a Scaler
 {
 	//  A   B  C
 	//1[A1][B1][C1]
@@ -163,7 +178,7 @@ Result.m_C3 = (m_C1 * Scaler)+(m_C2 * Scaler)+(m_C3 * Scaler);
 return Result;
 }
 
-Matrix3 Matrix3::CreateTransformMatrix(Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler) 
+Matrix3 Matrix3::CreateTransformMatrix(Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler) //Creates a Transformation Matrix that will Translate, rotate and scale at once
 {
 	Matrix3 TransformMatrix;
 	Matrix3 T = (CreateTranslationMatrix(XYZ));
@@ -175,7 +190,7 @@ Matrix3 Matrix3::CreateTransformMatrix(Vector3 XYZ, float a_Degrees_X, float a_D
 	return TransformMatrix;
 }
 
-void Matrix3::TransformPoint(Vector3 &Start, Vector3 &Destination, Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler)
+void Matrix3::TransformPoint(Vector3 &Start, Vector3 &Destination, Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler) // Transforms a point
 {
 	Matrix3 Temp = (CreateTransformMatrix(XYZ, a_Degrees_X, a_Degrees_Y, a_XScaler, a_YScaler));
 	Destination.SetX((((Start.GetX())* Temp.m_A1)) + (((Start.GetY())* Temp.m_B1)) + (((Start.GetZ()) * Temp.m_C1)));
@@ -189,7 +204,7 @@ void Matrix3::TransformPoint(Vector3 &Start, Vector3 &Destination, Vector3 XYZ, 
 		}
 }
 
-void Matrix3::TransformVector(Vector3 &Start, Vector3 &Destination, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler)
+void Matrix3::TransformVector(Vector3 &Start, Vector3 &Destination, float a_Degrees_X, float a_Degrees_Y,float a_XScaler, float a_YScaler) // Transforms a Vector
 {
 	Vector3 TempVec(1,1,1);
 	Matrix3 Temp = ((CreateTransformMatrix(TempVec, a_Degrees_X, a_Degrees_Y, a_XScaler, a_YScaler)));

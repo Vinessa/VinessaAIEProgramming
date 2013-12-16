@@ -16,15 +16,20 @@
 class Vector4
 {
 public:
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+///// CONSTRUCTORS AND DESTRUCTOR //////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 	Vector4(void);
 	Vector4(float a_X, float a_Y, float a_Z, float a_A);
 	Vector4(int a_Red, int a_Green, int a_Blue, int a_Alpha);
 	~Vector4(void);
 
-	float GetMagnitude4D();
-	void Normalize();
-	unsigned long ConvertRGBToHexidecimal();
-	Vector4 ConvertHexidecimaltoRGB(int a_HexValue, int a_AlphaValue);
+	float GetMagnitude4D(); // Returns the magnitude of this Vector4
+	void Normalize(); //Normalizes this Vector4
+	unsigned long ConvertRGBToHexidecimal(); //Converts this vector 4 as an RGBA into an unsigned Long Hexidecimal for graphics
+	Vector4 ConvertHexidecimaltoRGB(int a_HexValue, int a_AlphaValue); // Take a Hexidecimal value
 
 
 	float m_X;
