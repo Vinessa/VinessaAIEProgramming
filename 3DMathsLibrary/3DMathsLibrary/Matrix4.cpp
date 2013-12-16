@@ -272,3 +272,17 @@ void Matrix4::TransformVector(Vector3 &Start, Vector3 &Destination, float a_Degr
 
 	
 }
+
+void Matrix4::TransformPoint(Vector3 &Start, Vector3 &Destination, Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z,float a_XScaler, float a_YScaler, float a_ZScaler) // Transforms a point
+{
+	Matrix4 Temp = (CreateTransformMatrix(XYZ, a_Degrees_X, a_Degrees_Y, a_Degrees_Z, a_XScaler, a_YScaler, a_ZScaler));
+	Destination.SetX((((Start.GetX())* Temp.m_A1)) + (((Start.GetY())* Temp.m_B1)) + (((Start.GetZ()) * Temp.m_C1)));
+	Destination.SetY((((Start.GetX())* Temp.m_A2)) + (((Start.GetY())* Temp.m_B2)) + (((Start.GetZ()) * Temp.m_C2)));
+	Destination.SetZ((((Start.GetZ())* Temp.m_A3)) + (((Start.GetY())* Temp.m_B3)) + (((Start.GetY()) * Temp.m_C3)));
+	float W = (((Start.GetZ())* Temp.m_A3)) + (((Start.GetY())* Temp.m_B3)) + (((Start.GetY()) * Temp.m_C3));
+		if(W != 1 && W !=0)
+		{
+			Destination.SetX((Destination.GetX())/W);
+			Destination.SetY((Destination.GetY())/W);
+		}
+}

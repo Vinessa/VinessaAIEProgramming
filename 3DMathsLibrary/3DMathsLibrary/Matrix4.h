@@ -44,10 +44,12 @@ public:
     Matrix4 CreateTranslationMatrix(Vector3 XYZ); //returns a translation matrix4 that will translate in the X, Y and or Z
 
 
+
 	Matrix4 operator * (Matrix4& OtherMatrix4); //Multiplies this matrix by another matrix4
 	Matrix4 operator * (float Scaler); // //Multiplies this matrix by the second
 
-	void TransformVector(Vector3 &Start, Vector3 &Destination, float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z, float a_XScaler, float a_YScaler, float a_ZScaler);
+	void TransformVector(Vector3 &Start, Vector3 &Destination, float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z, float a_XScaler, float a_YScaler, float a_ZScaler); // Transforms a Vector
+	void TransformPoint(Vector3 &Start, Vector3 &Destination, Vector3 XYZ, float a_Degrees_X, float a_Degrees_Y, float a_Degrees_Z,float a_XScaler, float a_YScaler, float a_ZScaler); // Transforms a point
 
 	float m_A1, m_B1, m_C1, m_D1;
 	float m_A2, m_B2, m_C2, m_D2;
