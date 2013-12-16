@@ -6,6 +6,7 @@
 #include "math.h"
 
 void TestPower2(int a_number);
+float ConvertDegreesToRadians(float a_Degrees);
 
 
 #endif /*_COMMONFUNCTIONALITY_H_*/

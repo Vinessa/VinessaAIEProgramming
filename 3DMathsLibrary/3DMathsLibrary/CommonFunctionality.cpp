@@ -20,3 +20,10 @@ void TestPower2(int a_Number)
 	}
 
 }
+
+float ConvertDegreesToRadians(float a_Degrees)
+{
+	float Rads = ((a_Degrees * 3.14) / 180);
+	return Rads;
+}
+
