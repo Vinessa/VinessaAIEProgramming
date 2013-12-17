@@ -17,6 +17,7 @@ public:
 
 
 	void SetData (float FirstVecX, float FirstVecY, float SecondVecX, float SecondVecY, float ExpResultVecX, float ExpResultVecY);
+	virtual bool DoTest();
 };
 
 

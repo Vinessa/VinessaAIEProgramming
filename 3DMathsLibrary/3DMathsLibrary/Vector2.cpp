@@ -87,17 +87,28 @@ Vector2 Vector2::operator / (float a_S) // Divide by scaler
 }
 
 // Comparisons //
-//void Vector2::operator += (Vector2& a_OtherVector) //allows the use of  +=
-//{
-//	m_X += a_OtherVector.m_X;
-//	m_Y += a_OtherVector.m_Y;
-//}
-//
-//void Vector2::operator -= (Vector2& a_OtherVector) // Allows the use of -=
-//{
-//	m_X -= a_OtherVector.m_X;
-//	m_Y -= a_OtherVector.m_Y;
-//}
+void Vector2::operator += (Vector2& a_OtherVector) //allows the use of  +=
+{
+	m_X += a_OtherVector.m_X;
+	m_Y += a_OtherVector.m_Y;
+}
+
+void Vector2::operator -= (Vector2& a_OtherVector) // Allows the use of -=
+{
+	m_X -= a_OtherVector.m_X;
+	m_Y -= a_OtherVector.m_Y;
+}
+
+bool Vector2::operator == (Vector2& a_OtherVector)
+{
+	Threshold = .0005;
+	if (((m_X - a_OtherVector.GetX()) < Threshold) && ((m_Y - a_OtherVector.GetY()) < Threshold))
+		return true;
+	else
+		return false;
+	
+
+}
 
 bool Vector2::Equals( Vector2& a_OtherVector) // Tests to see if Vectors are equal
 {

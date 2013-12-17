@@ -11,6 +11,7 @@
 #define _VECTOR2_H_
 #include <string> 
 #include <iostream>
+#include <math.h>
 
 
 class Vector2
@@ -39,6 +40,8 @@ public:
 
 	void operator += (Vector2& a_OtherVector); //allows the use of  +=
 	void operator -= (Vector2& a_OtherVector); // Allows the use of -=
+	bool operator == (Vector2& a_OtherVector); // Allows the use of ==
+
 
 	bool Equals(Vector2& a_OtherVector); // Tests to see if Vectors are equal
 	float GetMagnitude2D(); // Returns the magnitude of this Vector2
@@ -69,6 +72,7 @@ public:
 private:
 	float m_X; // X!
 	float m_Y; // Y!
+	float Threshold;
 	// NO Z BECAUSE IT'S A VECTOR 2!!
 };
 

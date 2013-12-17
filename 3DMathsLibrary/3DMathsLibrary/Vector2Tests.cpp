@@ -28,3 +28,11 @@ void Vector2Tests::SetData (float FirstVecX, float FirstVecY, float SecondVecX, 
 
 
 }
+
+bool Vector2Tests::DoTest()
+{
+	Vector2 Result;
+	Result = (T1 + T2);
+	return (ExpResult == Result);
+	
+}
