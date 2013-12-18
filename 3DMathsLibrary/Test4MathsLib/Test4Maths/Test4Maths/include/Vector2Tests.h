@@ -27,12 +27,21 @@ public:
 	Vector2Tests(void);
 	~Vector2Tests(void);
 
+//CONSTANT VECTORS AND VARIABLES//
+	//(INGREDIENTS)
+
 	float dt;
 
 	Vector2 T1;
 	Vector2 T2;
 	Vector2 T3;
+
+	//TEMPS////////
+	Vector2 Result;
+	float Resultf;
 	Vector2 ExpResult;
+
+//EXPECTED RESULTS///////////////
 
 	Vector2 XResAddS;
 	Vector2 XResAddV;
@@ -45,12 +54,24 @@ public:
 	Vector2 XResGetNorm;
 	float XResEuler;
 	float XResGetDotProd;
-	
+
+
+//ACTUAL RESULTS/////////////////
+	Vector2 ResAddS;
+	Vector2 ResAddV;
+	Vector2 ResSubS;
+	Vector2 ResSubV;
+	Vector2 ResMultS;
+	Vector2 ResDivS;
+	float ResGetMAG;
+	Vector2 ResNorm;
+	Vector2 ResGetNorm;
+	float ResEuler;
+	float ResGetDotProd;
 	Vector2 XResLinInt;
 
-	Vector2 Result;
-	float Resultf;
 
+//PASS OR FAILS////////////////////
 	bool PassFailAddS;
 	bool PassFailAddV;
 	bool PassFailSubS;
@@ -59,7 +80,7 @@ public:
 	bool PassFailDivS;
 	bool PassFailGetMAG;
 	bool PassFailNorm;
-	bool PassFailGetNorm;
+	bool PassFailGetNorm; //only tested this instead of normalize because get normal has normalize in it and will test both
 	bool PassFailEuler;
 	bool PassFailGetDotProd;
 	bool PassFailXProd;
@@ -68,18 +89,39 @@ public:
 	float TScaler;
 
 
-
-	void SetData (float FirstVecX, float FirstVecY, float SecondVecX, float SecondVecY, float ExpResultVecX, float ExpResultVecY);
+//FUNCTIONS////////////////////////
+	void SetData ();
 	bool DoTestAddVector();
 	bool DoTestAddScaler();
 	bool DoTestMultScaler();
 	bool DoTestDivScaler();
 
 	bool DoTestGetMag();
+	bool DoTestNormalize();
+	bool DoTestEuler();
 
-	bool Vector2Tests::DoTestSubVector();
+	bool DoTestSubVector();
+	bool DoTestGetDotProd();
 	bool DoTestSubScaler();
-	void ReportTestResult(char a_WhichTest);
+	bool DoTestLinInt();
+	void ReportTestResultFloat(bool a_WhichBool, float a_WhichResultf, float a_WhichExpectedf, char* a_Test);
+	void ReportTestResultVec(bool a_WhichBool, Vector2 a_WhichResult, Vector2 a_WhichExpected, char* a_Test);
+	void AssignTestResults();
+	void RunTestAll();
+
+	//LABELS///
+
+	char* AddVec;
+	char* AddScaler;
+	char* SubtractVec;
+	char* SubtractScaler;
+	char* MultScaler;
+	char* DivScaler;
+	char* GetMagnitude;
+	char* Normalize;
+	char* EulerAngle;
+	char* GetDotProduct;
+	char* LinearInterpolation;
 	
 };
 

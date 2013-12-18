@@ -17,8 +17,8 @@ int main( int argc, char* argv[] )
 {	
 	Vector2Tests Addition;
 
-	Addition.SetData(1,2,1,2,2,4);
-	Addition.TestResult();
+	Addition.SetData();
+	Addition.RunTestAll();
 
  cin >> theend;
 
