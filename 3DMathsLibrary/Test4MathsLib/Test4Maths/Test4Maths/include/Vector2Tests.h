@@ -54,6 +54,7 @@ public:
 	Vector2 XResGetNorm;
 	float XResEuler;
 	float XResGetDotProd;
+	Vector2 XResLinInt;
 
 
 //ACTUAL RESULTS/////////////////
@@ -68,7 +69,7 @@ public:
 	Vector2 ResGetNorm;
 	float ResEuler;
 	float ResGetDotProd;
-	Vector2 XResLinInt;
+	Vector2 ResLinInt;
 
 
 //PASS OR FAILS////////////////////
@@ -117,7 +118,7 @@ public:
 	char* SubtractScaler;
 	char* MultScaler;
 	char* DivScaler;
-	char* GetMagnitude;
+	char* GetMAG;
 	char* Normalize;
 	char* EulerAngle;
 	char* GetDotProduct;

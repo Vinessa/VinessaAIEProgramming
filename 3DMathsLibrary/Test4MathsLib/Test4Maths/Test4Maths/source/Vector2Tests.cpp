@@ -45,7 +45,7 @@ void Vector2Tests::SetData ()
 	XResDivS.SetX(0.11);
 	XResDivS.SetY(0.22);
 
-	XResGetMAG = 2.24;
+	XResGetMAG = 2.236;
 
 
 	XResGetNorm.SetX(0.45);
@@ -64,7 +64,7 @@ void Vector2Tests::SetData ()
 	SubtractScaler = "SubtractbyScaler";
 	MultScaler = "MultiplybyScaler";
 	DivScaler = "DividebyScaler";
-	GetMagnitude = "GetMagnitude";
+	GetMAG = "GetMagnitude";
 	Normalize = "Normalize";
 	EulerAngle = "EulerAngle";
 	GetDotProduct = "GetDotProduct";
@@ -205,58 +205,32 @@ void Vector2Tests::ReportTestResultVec(bool a_WhichBool, Vector2 a_WhichResult, 
 
 }
 
+void Vector2Tests::ReportTestResultFloat(bool a_WhichBool, float a_WhichResultf, float a_WhichExpectedf, char* a_Test)
+{
+	
+	cout << "\n\n Results for: \n " << "--- "<<a_Test <<" ---\n\n";
+	if (a_WhichBool != true)
+		
+		cout << ">>>>>>>>> - FAILED - <<<<<<<<< \n \n Expected: " << a_WhichExpectedf << "\n Got: " << a_WhichResultf << "\n\n\n";
+	else
+		if (a_WhichBool == true)
+			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpectedf << "\n Got: " << a_WhichResultf << "\n\n\n";
+
+}
 
 void Vector2Tests:: RunTestAll()
 {
 	AssignTestResults();
 	ReportTestResultVec(PassFailAddS, ResAddS, XResAddS, AddScaler);
 	ReportTestResultVec(PassFailAddV, ResAddV, XResAddV, AddVec);
+	ReportTestResultVec(PassFailSubV, ResSubV, XResSubV, SubtractVec);
+	ReportTestResultVec(PassFailSubS, ResSubS, XResSubS, SubtractScaler);
+	ReportTestResultVec(PassFailMultS, ResMultS, XResMultS, MultScaler);
+	ReportTestResultVec(PassFailDivS, ResDivS, XResDivS, DivScaler);
+	ReportTestResultFloat(PassFailGetMAG, ResGetMAG, XResGetMAG, GetMAG);
+	ReportTestResultVec(PassFailGetNorm, ResGetNorm, XResGetNorm, Normalize);
+	ReportTestResultFloat(PassFailEuler, ResEuler, XResEuler, EulerAngle);
+	ReportTestResultFloat(PassFailGetDotProd, ResGetDotProd, XResGetDotProd, GetDotProduct);
+	ReportTestResultVec(PassFailLinInt, ResLinInt, XResLinInt, LinearInterpolation);
 }
 
-//void Vector2Tests::TestAll(ALG)
-//{
-//	switch(ALG)
-//	{
-//	case ADDS:
-//		DoTestAddVector();
-//		TestResult(DoTestAddVector);
-//		break;
-//
-//	case ADDV:
-//
-//		break;
-//	case SUBS:
-//
-//		break;
-//	case SUBV:
-//
-//		break;
-//	case MULTS:
-//
-//		break;
-//	case DIVS:
-//
-//		break;
-//	case GETMAG:
-//
-//		break;
-//	case NORM:
-//
-//		break;
-//	case GETNORM:
-//
-//		break;
-//	case EULER:
-//
-//		break;
-//	case GETDOTPROD:
-//
-//		break;
-//	case XPROD:
-//
-//		break;
-//	case LININT:
-//
-//		break;
-//
-//	}
