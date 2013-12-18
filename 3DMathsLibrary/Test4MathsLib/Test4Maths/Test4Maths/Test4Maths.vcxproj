@@ -105,6 +105,7 @@
   <ItemGroup>
     <ClCompile Include="source\Vector2Tests.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="Vector3Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AIE.h" />
@@ -117,6 +118,7 @@
     <ClInclude Include="include\Vector2Tests.h" />
     <ClInclude Include="include\Vector3.h" />
     <ClInclude Include="include\Vector4.h" />
+    <ClInclude Include="Vector3Tests.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\3DMathsLibrary.lib" />

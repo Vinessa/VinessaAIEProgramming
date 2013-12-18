@@ -35,8 +35,9 @@ public:
 	Vector3 operator + (const Vector3& a_V1); // Adds one Vector to another Vector
 
 
-	void operator += (const Vector3& a_V1); //allows the use of  +=
-	void operator -= (const Vector3& a_V1); // Allows the use of -=
+	void operator += (Vector3& a_V1); //allows the use of  +=
+	void operator -= (Vector3& a_V1); // Allows the use of -=
+	bool operator == (Vector3& a_V1); // Allows the use of ==
 	
 	float GetMagnitude3D();// Returns the magnitude of this Vector3
 	void Normalize(); //Normalizes this Vector3
@@ -62,6 +63,7 @@ public:
 	float m_X; // X!
 	float m_Y; // Y!
 	float m_Z; // Z!
+	float Threshold;
 
 };
 

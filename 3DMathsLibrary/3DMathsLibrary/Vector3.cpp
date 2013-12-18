@@ -18,6 +18,7 @@ Vector3::Vector3(void)
 	m_X = 0.0;
 	m_Y = 0.0;
 	m_Z = 0.0;
+	Threshold = .0005;
 }
 
 Vector3::Vector3(float a_X, float a_Y, float a_Z)
@@ -93,6 +94,32 @@ Vector3 Vector3::operator + (const Vector3& a_V1) //Add by Vector3
 	return TemporaryVector3;
 }
 
+// Comparisons //
+void Vector3::operator += (Vector3& a_V1) //allows the use of  +=
+{
+	m_X += a_V1.m_X;
+	m_Y += a_V1.m_Y;
+	m_Z += a_V1.m_Z;
+}
+
+void Vector3::operator -= (Vector3& a_V1) // Allows the use of -=
+{
+	m_X -= a_V1.m_X;
+	m_Y -= a_V1.m_Y;
+	m_Z -= a_V1.m_Z;
+}
+
+bool Vector3::operator == (Vector3& a_V1)
+{
+	Threshold = .0005;
+	if (((m_X - a_V1.GetX()) < Threshold) && ((m_Y - a_V1.GetY()) < Threshold) && ((m_Z -a_V1.GetZ()) < Threshold))
+		return true;
+	else
+		return false;
+	
+
+}
+
 ///MAGNITUDE///
 float Vector3::GetMagnitude3D() //Returns a Scaler that is the Magnitude of this Vector3
 {
@@ -145,6 +172,7 @@ Vector3 Vector3::CrossProduct(Vector3 &a_OtherVector3) // Cross Product //
 ///LINEAR INTERPOLATION///
 Vector3 Vector3::LinearInterpolation(Vector3 v3_Destination, float dt) // Linear Interpolation by Vector3 //
 { 
+
 	return ((v3_Destination - *this) * dt) +*this;
 }
 
