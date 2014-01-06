@@ -33,6 +33,13 @@ void Vector4Tests::SetData ()
 	TA.m_ZBlue = 2;
 	TA.m_AAlpha = 1;
 
+	XResHEX2RGB.m_XRed = 255;
+	XResHEX2RGB.m_YGreen = 0;
+	XResHEX2RGB.m_ZBlue = 0;
+	XResHEX2RGB.m_AAlpha = 1;
+
+
+
 	TScaler = 9;
 	dt = .5;
 
@@ -63,6 +70,9 @@ void Vector4Tests::SetData ()
 	XResEuler = 0.18;
 
 	XResGetDotProd = 11;
+	m_HexValue = "ff0000";
+
+	
 
 	/*XResLinInt.SetX(2);
 	XResLinInt.SetX(3.5);*/
@@ -95,6 +105,14 @@ cout << "Testing Normalization ... \n";
 	return (XResGetNorm == ResGetNorm);
 	
 }
+
+//bool Vector4Tests::DoTestHEX2RGB() 
+//{
+//cout << "Testing HEX2RGB ... \n";
+//ResHEX2RGB = (T1.ConvertHexidecimaltoRGB(m_HexValue,1));
+//	return (XResHEX2RGB == ResHEX2RGB);
+//	
+//}
 
 void Vector4Tests::ReportTestResultVec(bool a_WhichBool, Vector4 a_WhichResult, Vector4 a_WhichExpected, char* a_Test )
 {

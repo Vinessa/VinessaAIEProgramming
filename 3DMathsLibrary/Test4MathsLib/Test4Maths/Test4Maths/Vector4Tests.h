@@ -30,6 +30,7 @@ public:
 	Vector4 Result;
 	float Resultf;
 	Vector4 ExpResult;
+	char* m_HexValue;
 
 //EXPECTED RESULTS///////////////
 
@@ -47,6 +48,7 @@ public:
 	float XResGetDotProd;
 	Vector4 XResLinInt;
 	Vector4 XResLinIntVec;
+	Vector4 XResHEX2RGB;
 
 
 //ACTUAL RESULTS/////////////////
@@ -63,6 +65,7 @@ public:
 	Vector4 ResCrossProduct;
 	float ResGetDotProd;
 	Vector4 ResLinInt;
+	Vector4 ResHEX2RGB;
 
 
 //PASS OR FAILS////////////////////
@@ -102,6 +105,7 @@ public:
 	bool DoTestXProd();
 	bool DoTestGetDotProd();
 	bool DoTestLinInt();
+	bool DoTestHEX2RGB();
 
 	void ReportTestResultFloat(bool a_WhichBool, float a_WhichResultf, float a_WhichExpectedf, char* a_Test);
 	void ReportTestResultVec(bool a_WhichBool, Vector4 a_WhichResult, Vector4 a_WhichExpected, char* a_Test);
