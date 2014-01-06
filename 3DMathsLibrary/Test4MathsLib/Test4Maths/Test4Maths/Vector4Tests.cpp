@@ -13,25 +13,25 @@ Vector4Tests::~Vector4Tests(void)
 void Vector4Tests::SetData ()
 
 {
-	T1.m_X = 1;
-	T1.m_Y = 2;
-	T1.m_Z = 3;
-	T1.m_A = 1;
+	T1.m_XRed = 1;
+	T1.m_YGreen = 2;
+	T1.m_ZBlue = 3;
+	T1.m_AAlpha = 1;
 
-	T2.m_X = 4;
-	T2.m_Y = 5;
-	T2.m_Z = 6;
-	T2.m_A = 1;
+	T2.m_XRed = 4;
+	T2.m_YGreen = 5;
+	T2.m_ZBlue = 6;
+	T2.m_AAlpha = 1;
 
-	T3.m_X = 7;
-	T3.m_Y = 8;
-	T3.m_Z = 9;
-	T3.m_A = 1;
+	T3.m_XRed = 7;
+	T3.m_YGreen = 8;
+	T3.m_ZBlue = 9;
+	T3.m_AAlpha = 1;
 
-	TA.m_Red = 1;
-	TA.m_Green = 2;
-	TA.m_Blue = 2;
-	TA.m_Alpha = 1;
+	TA.m_XRed = 1;
+	TA.m_YGreen = 2;
+	TA.m_ZBlue = 2;
+	TA.m_AAlpha = 1;
 
 	TScaler = 9;
 	dt = .5;
@@ -78,4 +78,81 @@ void Vector4Tests::SetData ()
 	EulerAngle = "EulerAngle";
 	GetDotProduct = "GetDotProduct";
 	LinearInterpolation = "LinearInterpolation";
+}
+
+bool Vector4Tests::DoTestGetMag()
+{
+cout << "Testing GetMagnitude ... \n";
+	ResGetMAG = (T1.GetMagnitude4D());
+	return (XResGetMAG == ResGetMAG);
+	
+}
+
+bool Vector4Tests::DoTestNormalize() //only tested this instead of normalize because getnormal has normalize in it and will test both
+{
+cout << "Testing Normalization ... \n";
+	ResGetNorm = (T1.GetNormal());
+	return (XResGetNorm == ResGetNorm);
+	
+}
+
+void Vector4Tests::ReportTestResultVec(bool a_WhichBool, Vector4 a_WhichResult, Vector4 a_WhichExpected, char* a_Test )
+{
+	
+	cout << "\n\n Results for: \n " << "--- "<<a_Test <<" ---\n\n";
+	if (a_WhichBool != true)
+		
+		cout << ">>>>>>>>> - FAILED - <<<<<<<<< \n \n Expected: " << a_WhichExpected.GetXRed() << ","<< a_WhichExpected.GetYGreen() << "\n Got: " << a_WhichResult.GetXRed() << "," <<a_WhichResult.GetYGreen() << "\n\n\n";
+	else
+		if (a_WhichBool == true)
+			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpected.GetXRed() << ","<< a_WhichExpected.GetYGreen() << "\n Got: " << a_WhichResult.GetXRed() << "," <<a_WhichResult.GetYGreen() << "\n \n \n";
+
+}
+
+void Vector4Tests::ReportTestResultFloat(bool a_WhichBool, float a_WhichResultf, float a_WhichExpectedf, char* a_Test)
+{
+	
+	cout << "\n\n Results for: \n " << "--- "<<a_Test <<" ---\n\n";
+	if (a_WhichBool != true)
+		
+		cout << ">>>>>>>>> - FAILED - <<<<<<<<< \n \n Expected: " << a_WhichExpectedf << "\n Got: " << a_WhichResultf << "\n\n\n";
+	else
+		if (a_WhichBool == true)
+			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpectedf << "\n Got: " << a_WhichResultf << "\n\n\n";
+
+}
+
+
+void Vector4Tests:: AssignTestResults()
+{
+
+
+	 /*PassFailAddS = (DoTestAddScaler());
+	 PassFailAddV = (DoTestAddVector());
+	 PassFailSubS = (DoTestSubScaler());
+	 PassFailSubV = (DoTestSubVector());
+	 PassFailMultS = (DoTestMultScaler());
+	 PassFailDivS = (DoTestDivScaler());*/
+	 PassFailGetMAG = (DoTestGetMag());
+	 PassFailGetNorm = (DoTestNormalize()); 
+	/* PassFailEuler = (DoTestEuler());
+	 PassFailGetDotProd = (DoTestGetDotProd());
+	 PassFailLinInt = (DoTestLinInt());*/
+
+}
+
+void Vector4Tests:: RunTestAll()
+{
+	AssignTestResults();
+	/*ReportTestResultVec(PassFailAddS, ResAddS, XResAddS, AddScaler);
+	ReportTestResultVec(PassFailAddV, ResAddV, XResAddV, AddVec);
+	ReportTestResultVec(PassFailSubV, ResSubV, XResSubV, SubtractVec);
+	ReportTestResultVec(PassFailSubS, ResSubS, XResSubS, SubtractScaler);
+	ReportTestResultVec(PassFailMultS, ResMultS, XResMultS, MultScaler);
+	ReportTestResultVec(PassFailDivS, ResDivS, XResDivS, DivScaler);*/
+	ReportTestResultFloat(PassFailGetMAG, ResGetMAG, XResGetMAG, GetMAG);
+	ReportTestResultVec(PassFailGetNorm, ResGetNorm, XResGetNorm, Normalize);
+	/*ReportTestResultFloat(PassFailEuler, ResEuler, XResEuler, EulerAngle);
+	ReportTestResultFloat(PassFailGetDotProd, ResGetDotProd, XResGetDotProd, GetDotProduct);
+	ReportTestResultVec(PassFailLinInt, ResLinInt, XResLinInt, LinearInterpolation);*/
 }
