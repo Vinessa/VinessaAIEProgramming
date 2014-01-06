@@ -103,6 +103,7 @@
     <None Include="resources\shaders\StaticFW_Vertex.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Matrix3Tests.cpp" />
     <ClCompile Include="source\Vector2Tests.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="Vector3Tests.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="include\Vector2Tests.h" />
     <ClInclude Include="include\Vector3.h" />
     <ClInclude Include="include\Vector4.h" />
+    <ClInclude Include="Matrix3Tests.h" />
     <ClInclude Include="Vector3Tests.h" />
     <ClInclude Include="Vector4Tests.h" />
   </ItemGroup>

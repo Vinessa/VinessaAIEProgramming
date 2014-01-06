@@ -43,39 +43,19 @@ void Vector4Tests::SetData ()
 	TScaler = 9;
 	dt = .5;
 
-	/*XResAddS.SetX(10);
-	XResAddS.SetY(11);
-
-	XResAddV.SetX(4);
-	XResAddV.SetY(6);
-
-	XResSubS.SetX(-8);
-	XResSubS.SetY(-7);
-
-	XResSubV.SetX(-2);
-	XResSubV.SetY(-2);
-
-	XResMultS.SetX(9);
-	XResMultS.SetY(18);*/
-	
-	/*XResDivS.SetX(0.11);
-	XResDivS.SetY(0.22);*/
 
 	XResGetMAG = 2.236;
 
 
-	//XResGetNorm.SetX(0.45);
-	//XResGetNorm.SetY(0.89);
 	
 	XResEuler = 0.18;
 
 	XResGetDotProd = 11;
-	m_HexValue = "ff0000";
+	m_HexValue = 0xff0000;
 
 	
 
-	/*XResLinInt.SetX(2);
-	XResLinInt.SetX(3.5);*/
+	
 
 	AddVec = "AddVector";
 	AddScaler = "AddbyScaler";
@@ -106,13 +86,13 @@ cout << "Testing Normalization ... \n";
 	
 }
 
-//bool Vector4Tests::DoTestHEX2RGB() 
-//{
-//cout << "Testing HEX2RGB ... \n";
-//ResHEX2RGB = (T1.ConvertHexidecimaltoRGB(m_HexValue,1));
-//	return (XResHEX2RGB == ResHEX2RGB);
-//	
-//}
+bool Vector4Tests::DoTestHEX2RGB() 
+{
+cout << "Testing HEX2RGB ... \n";
+ResHEX2RGB = (T1.ConvertHexidecimaltoRGB(m_HexValue));
+	return (XResHEX2RGB == ResHEX2RGB);
+	
+}
 
 void Vector4Tests::ReportTestResultVec(bool a_WhichBool, Vector4 a_WhichResult, Vector4 a_WhichExpected, char* a_Test )
 {
@@ -145,18 +125,10 @@ void Vector4Tests:: AssignTestResults()
 {
 
 
-	 /*PassFailAddS = (DoTestAddScaler());
-	 PassFailAddV = (DoTestAddVector());
-	 PassFailSubS = (DoTestSubScaler());
-	 PassFailSubV = (DoTestSubVector());
-	 PassFailMultS = (DoTestMultScaler());
-	 PassFailDivS = (DoTestDivScaler());*/
+	
 	 PassFailGetMAG = (DoTestGetMag());
 	 PassFailGetNorm = (DoTestNormalize()); 
-	/* PassFailEuler = (DoTestEuler());
-	 PassFailGetDotProd = (DoTestGetDotProd());
-	 PassFailLinInt = (DoTestLinInt());*/
-
+	PassFailHex2RGB = (DoTestHEX2RGB());
 }
 
 void Vector4Tests:: RunTestAll()
@@ -170,6 +142,7 @@ void Vector4Tests:: RunTestAll()
 	ReportTestResultVec(PassFailDivS, ResDivS, XResDivS, DivScaler);*/
 	ReportTestResultFloat(PassFailGetMAG, ResGetMAG, XResGetMAG, GetMAG);
 	ReportTestResultVec(PassFailGetNorm, ResGetNorm, XResGetNorm, Normalize);
+	ReportTestResultVec(PassFailHEX2RGB, ResHEX2RGB, XResHEX2RGB, HEX2RGB);
 	/*ReportTestResultFloat(PassFailEuler, ResEuler, XResEuler, EulerAngle);
 	ReportTestResultFloat(PassFailGetDotProd, ResGetDotProd, XResGetDotProd, GetDotProduct);
 	ReportTestResultVec(PassFailLinInt, ResLinInt, XResLinInt, LinearInterpolation);*/

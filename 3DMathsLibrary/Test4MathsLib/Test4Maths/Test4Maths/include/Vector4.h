@@ -12,6 +12,8 @@
 
 #include "math.h"
 #include "AIE.h"
+#include <iostream>
+using namespace std;
 
 class Vector4
 {
@@ -42,7 +44,7 @@ public:
 	void Normalize(); //Normalizes this Vector4
 	Vector4 GetNormal(); // returns a normalized version of this vector but does not change the current vector
 	unsigned long ConvertRGBToHexidecimal(); //Converts this vector 4 as an RGBA into an unsigned Long Hexidecimal for graphics
-	Vector4 ConvertHexidecimaltoRGB(int a_HexValue, int a_AlphaValue); // Take a Hexidecimal value
+	Vector4 ConvertHexidecimaltoRGB(unsigned int a_HexValue); // Take a Hexidecimal value
 
 	// Getters and Setters - technically not nessisary because of public status.. but planning for the future //
 	float GetXRed();	//Returns X/Red

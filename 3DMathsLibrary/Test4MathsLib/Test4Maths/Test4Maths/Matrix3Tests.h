@@ -1,63 +1,65 @@
-
-
-
 #pragma once
-#include "Vector4.h"
-#include <iostream>
-using namespace std;
-
-
-
-class Vector4Tests
+class Matrix3Tests
 {
 public:
-	Vector4Tests(void);
-	~Vector4Tests(void);
+	Matrix3Tests(void);
+	~Matrix3Tests(void);
+};
+
+class Vector3Tests
+{
+public:
+	Vector3Tests(void);
+	~Vector3Tests(void);
 
 //CONSTANT VECTORS AND VARIABLES//
 	//(INGREDIENTS)
 
 	float dt;
 
-	Vector4 T1;
-	Vector4 T2;
-	Vector4 T3;
-	Vector4 TA;
+	Vector3 T1;
+	Vector3 T2;
+	Vector3 T3;
 
 	float TScaler;
 
 	//TEMPS////////
-	Vector4 Result;
+	Vector3 Result;
 	float Resultf;
-	Vector4 ExpResult;
-	unsigned int m_HexValue;
+	Vector3 ExpResult;
 
 //EXPECTED RESULTS///////////////
 
-	
+	Vector3 XResAddS;
+	Vector3 XResAddV;
+	Vector3 XResSubS;
+	Vector3 XResSubV;
+	Vector3 XResMultS;
+	Vector3 XResDivS;
 	float XResGetMAG;
-	Vector4 XResNorm;
-	Vector4 XResGetNorm;
-	Vector4 XResLinInt;
-	Vector4 XResLinIntVec;
-	Vector4 XResHEX2RGB;
+	Vector3 XResNorm;
+	Vector3 XResGetNorm;
+	float XResEuler;
+	Vector3 XResCrossProduct;
+	float XResGetDotProd;
+	Vector3 XResLinInt;
+	Vector3 XResLinIntVec;
 
 
 //ACTUAL RESULTS/////////////////
-	Vector4 ResAddS;
-	Vector4 ResAddV;
-	Vector4 ResSubS;
-	Vector4 ResSubV;
-	Vector4 ResMultS;
-	Vector4 ResDivS;
+	Vector3 ResAddS;
+	Vector3 ResAddV;
+	Vector3 ResSubS;
+	Vector3 ResSubV;
+	Vector3 ResMultS;
+	Vector3 ResDivS;
 	float ResGetMAG;
-	Vector4 ResNorm;
-	Vector4 ResGetNorm;
+	Vector3 ResNorm;
+	Vector3 ResGetNorm;
 	float ResEuler;
-	Vector4 ResCrossProduct;
+	Vector3 ResCrossProduct;
 	float ResGetDotProd;
-	Vector4 ResLinInt;
-	Vector4 ResHEX2RGB;
+	Vector3 ResLinInt;
 
 
 //PASS OR FAILS////////////////////
@@ -97,10 +99,9 @@ public:
 	bool DoTestXProd();
 	bool DoTestGetDotProd();
 	bool DoTestLinInt();
-	bool DoTestHEX2RGB();
 
 	void ReportTestResultFloat(bool a_WhichBool, float a_WhichResultf, float a_WhichExpectedf, char* a_Test);
-	void ReportTestResultVec(bool a_WhichBool, Vector4 a_WhichResult, Vector4 a_WhichExpected, char* a_Test);
+	void ReportTestResultVec(bool a_WhichBool, Matrix3 a_WhichResult, Matrix3 a_WhichExpected, char* a_Test);
 	void AssignTestResults();
 	void RunTestAll();
 
@@ -123,6 +124,3 @@ public:
 	char* LinearInterpolation;
 	
 };
-
-
-

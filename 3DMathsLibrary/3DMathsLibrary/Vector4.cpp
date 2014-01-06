@@ -60,13 +60,14 @@ Vector4 Vector4::GetNormal() //Return the normalized Vector of this Vector4
 //	return((m_XRed & 0xff) << 24) + ((m_YGreen & 0xff) << 16) + ((m_ZBlue & 0xff) << 8) + (m_AAlpha & 0xff);
 //}
 
-Vector4 Vector4:: ConvertHexidecimaltoRGB(int a_HexValue, int a_AlphaValue) //takes in a hexidecimal and an Alpha value between 0 and 1. 0 = transparent, 1 = opaque. Returns a Vector4 with the R,G,B and Alpha value of the converted color.
+Vector4 Vector4:: ConvertHexidecimaltoRGB(unsigned int a_HexValue) //takes in a hexidecimal and an Alpha value between 0 and 1. 0 = transparent, 1 = opaque. Returns a Vector4 with the R,G,B and Alpha value of the converted color.
 {
+
 Vector4 RGBAColor;
-RGBAColor.m_XRed = ((a_HexValue >>16) & 0xFF) / 255.0;
-RGBAColor.m_YGreen = ((a_HexValue >>8) & 0xFF) / 255.0;
-RGBAColor.m_ZBlue = ((a_HexValue & 0xFF) / 255.0);
-RGBAColor.m_AAlpha = a_AlphaValue;
+RGBAColor.m_XRed = ((a_HexValue <<24) & 0xFF) / 255.0;
+RGBAColor.m_YGreen = ((a_HexValue >>16) & 0xFF) / 255.0;
+RGBAColor.m_ZBlue = ((a_HexValue >>8) & 0xFF) / 255.0;
+RGBAColor.m_AAlpha = ((a_HexValue & 0xFF) / 255.0);
 
 return RGBAColor;
 }
