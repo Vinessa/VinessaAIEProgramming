@@ -78,3 +78,4 @@ void Vector4Tests::SetData ()
 	EulerAngle = "EulerAngle";
 	GetDotProduct = "GetDotProduct";
 	LinearInterpolation = "LinearInterpolation";
+}

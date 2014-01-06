@@ -1,10 +1,5 @@
-#pragma once
-class Vector4Tests
-{
-public:
-	Vector4Tests(void);
-	~Vector4Tests(void);
-};
+
+
 
 #pragma once
 #include "Vector4.h"
