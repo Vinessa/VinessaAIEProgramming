@@ -39,6 +39,7 @@ public:
 
 	Matrix3 operator * (Matrix3& OtherMatrix3); // Multiplies this Matrix3 by another Matrix3
 	Matrix3 operator * (float Scaler); // Multiplies this Matrix3 by a Scaler
+	bool operator == (Matrix3& a_Mat1);
 
 
 
@@ -67,6 +68,7 @@ public:
 	float m_A1, m_B1, m_C1;
 	float m_A2, m_B2, m_C2;
 	float m_A3, m_B3, m_C3;
+	float Threshold;
 	
 	
 };

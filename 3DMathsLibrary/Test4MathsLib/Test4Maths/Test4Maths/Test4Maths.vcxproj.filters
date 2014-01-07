@@ -23,13 +23,13 @@
     <ClCompile Include="source\Vector2Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3Tests.cpp">
+    <ClCompile Include="source\Matrix3Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector4Tests.cpp">
+    <ClCompile Include="source\Vector3Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix3Tests.cpp">
+    <ClCompile Include="source\Vector4Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -64,13 +64,13 @@
     <ClInclude Include="include\Vector2Tests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3Tests.h">
+    <ClInclude Include="include\Matrix3Tests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector4Tests.h">
+    <ClInclude Include="include\Vector3Tests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix3Tests.h">
+    <ClInclude Include="include\Vector4Tests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
