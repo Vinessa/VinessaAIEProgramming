@@ -48,9 +48,9 @@ void Vector4Tests::SetData ()
 
 
 	
-	XResEuler = 0.18;
+	/*XResEuler = 0.18;
 
-	XResGetDotProd = 11;
+	XResGetDotProd = 11;*/
 	m_HexValue = 0xff0000;
 
 	
@@ -68,6 +68,7 @@ void Vector4Tests::SetData ()
 	EulerAngle = "EulerAngle";
 	GetDotProduct = "GetDotProduct";
 	LinearInterpolation = "LinearInterpolation";
+	HEX2RGB = "ConvertHexidecimaltoRGB";
 }
 
 bool Vector4Tests::DoTestGetMag()
@@ -128,7 +129,7 @@ void Vector4Tests:: AssignTestResults()
 	
 	 PassFailGetMAG = (DoTestGetMag());
 	 PassFailGetNorm = (DoTestNormalize()); 
-	PassFailHex2RGB = (DoTestHEX2RGB());
+	 PassFailHEX2RGB = (DoTestHEX2RGB());
 }
 
 void Vector4Tests:: RunTestAll()

@@ -77,6 +77,7 @@ public:
 	bool PassFailXProd;
 	bool PassFailGetDotProd;
 	bool PassFailLinInt;
+	bool PassFailHEX2RGB;
 
 
 //FUNCTIONS////////////////////////
@@ -121,6 +122,7 @@ public:
 	char* CrossProd;
 	char* GetDotProduct;
 	char* LinearInterpolation;
+	char* HEX2RGB;
 	
 };
 
