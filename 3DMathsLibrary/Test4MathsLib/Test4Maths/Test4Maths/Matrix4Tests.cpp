@@ -1,28 +1,28 @@
-#include "Matrix3Tests.h"
+#include "Matrix4Tests.h"
 
 
-Matrix3Tests::Matrix3Tests(void)
+Matrix4Tests::Matrix4Tests(void)
 {
 }
 
 
-Matrix3Tests::~Matrix3Tests(void)
+Matrix4Tests::~Matrix4Tests(void)
 {
 }
 
 
-void Matrix3Tests::SetData()
+void Matrix4Tests::SetData()
 
 {
-	Matrix3 Temp(1,0,0,0,1,0,0,0,1);
-	Matrix3 Temp2(1,2,3,4,1,2,3,4,1);
-	Matrix3 Temp3(1,4,3,2,1,4,3,2,1);
-	Matrix3 TempOrthoProject();
-	Matrix3 XTempScale(5,0,0,0,4,0,0,0,0);
-	Matrix3 XTempRotation();
-	Matrix3 XTempTransformPoint();
-	Matrix3 XTempTransformVector();
-	Matrix3 XTempMatrixMultiplication(14,12,14,12,21,18,14,18,26);
+	Matrix4 Temp(1,0,0,0,1,0,0,0,1);
+	Matrix4 Temp2(1,2,3,4,1,2,3,4,1);
+	Matrix4 Temp3(1,4,3,2,1,4,3,2,1);
+	Matrix4 TempOrthoProject();
+	Matrix4 XTempScale(5,0,0,0,4,0,0,0,0);
+	Matrix4 XTempRotation();
+	Matrix4 XTempTransformPoint();
+	Matrix4 XTempTransformVector();
+	Matrix4 XTempMatrixMultiplication(14,12,14,12,21,18,14,18,26);
 
 	/*XResOrthographicProj = TempOrthoProject;*/
 	XResScale = XTempScale;
@@ -44,15 +44,15 @@ void Matrix3Tests::SetData()
 
 	Mat3 = "MATRIX 3";
 	/*OrthoProj = "Orthographic Projection";*/
-	Scale = "Scale Matrix3";
-	Rotation = "Rotate Matrix3";
+	Scale = "Scale Matrix4";
+	Rotation = "Rotate Matrix4";
 	TransformPoint = "Transform Point";
 	TransformVector = "Transform Vector";
 	MatrixMultiplication = "Matrix Multiplication";
 	
 }
 
-bool Matrix3Tests::DoTestScale()
+bool Matrix4Tests::DoTestScale()
 {
 	cout << "Testing CREATE SCALE MATRIX ... \n";
 	ResScale = (T1.CreateScaleMatrix(TScalerX,TScalerY));
@@ -60,27 +60,27 @@ bool Matrix3Tests::DoTestScale()
 }
 
 
-bool Matrix3Tests::DoTestMatrixMultiplication()
+bool Matrix4Tests::DoTestMatrixMultiplication()
 {
 	cout << "Testing MatrixMultiplication ... \n";
 	ResMatrixMultiplication = (T2*T3);
 	return (XResMatrixMultiplication == ResMatrixMultiplication);
 }
 
-void Matrix3Tests:: AssignTestResults()
+void Matrix4Tests:: AssignTestResults()
 {
 
 
 	 //PassFailOrthographicProj = (DoTestOrthographicProjection()); //NOT IN TEST YET
 	 PassFailScale = (DoTestScale());
-	  //PassFailRotation = (DoTestRotation()); //NOT YET IN TEST
-	  //PassFailTransformPoint = (DoTestTransformPoint()); // NOT YET IN TEST
+	  // PassFailRotation = (DoTestRotation()); //NOT YET IN TEST
+	 //PassFailTransformPoint = (DoTestTransformPoint()); // NOT YET IN TEST
 	// PassFailTransformVector = (DoTestTransformVector()); //NOT YET IN TEST
 	 PassFailMatrixMultiplication = (DoTestMatrixMultiplication());
 	
 }
 
-void Matrix3Tests::ReportTestResult(bool a_WhichBool, Matrix3 a_WhichResultMat3, Matrix3 a_WhichExpectedMat3, char* a_Test)
+void Matrix4Tests::ReportTestResult(bool a_WhichBool, Matrix4 a_WhichResultMat3, Matrix4 a_WhichExpectedMat3, char* a_Test)
 {
 	
 	cout << "\n\n Results for: \n " << "--- "<<a_Test <<" ---\n\n";
@@ -93,27 +93,9 @@ void Matrix3Tests::ReportTestResult(bool a_WhichBool, Matrix3 a_WhichResultMat3,
 
 }
 
-void Matrix3Tests::ReportTestResultOrtho()
+void Matrix4Tests::ReportTestResultOrtho()
 {
 	cout << "\n\n Results for: \n " << "--- ORTHOGRAPHIC PROJECTION ---\n\n";
-	cout << ">^._.^< PASSED! >^._.^<\n\n\n";
-}
-
-void Matrix3Tests::ReportTestResultRotation()
-{
-	cout << "\n\n Results for: \n " << "--- ROTATION ---\n\n";
-	cout << ">^._.^< PASSED! >^._.^<\n\n\n";
-}
-
-void Matrix3Tests::ReportTestResulttransformpoint()
-{
-	cout << "\n\n Results for: \n " << "--- TRANSFORMPOINT ---\n\n";
-	cout << ">^._.^< PASSED! >^._.^<\n\n\n";
-}
-
-void Matrix3Tests::ReportTestResulttransformvector()
-{
-	cout << "\n\n Results for: \n " << "--- TRANSFORMVECTOR ---\n\n";
 	cout << ">^._.^< PASSED! >^._.^<\n\n\n";
 }
 

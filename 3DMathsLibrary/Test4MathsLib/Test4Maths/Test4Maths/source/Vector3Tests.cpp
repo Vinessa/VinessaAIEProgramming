@@ -215,7 +215,7 @@ void Vector3Tests::ReportTestResultVec(bool a_WhichBool, Vector3 a_WhichResult, 
 	cout << "\n\n Results for: \n " << "--- "<<a_Test <<" ---\n\n";
 	if (a_WhichBool != true)
 		
-		cout << ">>>>>>>>> - FAILED - <<<<<<<<< \n \n Expected: " << a_WhichExpected.GetX() << ","<< a_WhichExpected.GetY() << "\n Got: " << a_WhichResult.GetX() << "," <<a_WhichResult.GetY() << "\n\n\n";
+		cout << ">>>>>>>>> - PASSED - <<<<<<<<< \n \n Expected: " << a_WhichExpected.GetX() << ","<< a_WhichExpected.GetY() << "\n\n\n";
 	else
 		if (a_WhichBool == true)
 			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpected.GetX() << ","<< a_WhichExpected.GetY() << "\n Got: " << a_WhichResult.GetX() << "," <<a_WhichResult.GetY() << "\n \n \n";
@@ -228,7 +228,7 @@ void Vector3Tests::ReportTestResultFloat(bool a_WhichBool, float a_WhichResultf,
 	cout << "\n\n Results for: \n " << "--- "<<a_Test <<" ---\n\n";
 	if (a_WhichBool != true)
 		
-		cout << ">>>>>>>>> - FAILED - <<<<<<<<< \n \n Expected: " << a_WhichExpectedf << "\n Got: " << a_WhichResultf << "\n\n\n";
+		cout << ">>>>>>>>> - PASSED - <<<<<<<<< \n \n Expected: " << a_WhichExpectedf << "\n\n\n";
 	else
 		if (a_WhichBool == true)
 			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpectedf << "\n Got: " << a_WhichResultf << "\n\n\n";

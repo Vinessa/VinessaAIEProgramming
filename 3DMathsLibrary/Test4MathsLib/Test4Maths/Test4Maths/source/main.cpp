@@ -8,7 +8,7 @@
 #include "Vector2Tests.h"
 #include "Vector3Tests.h"
 #include "Vector4Tests.h"
-
+#include "Matrix3Tests.h"
 
 
 
@@ -20,6 +20,7 @@ int main( int argc, char* argv[] )
 	Vector2Tests V2s;
 	Vector3Tests V3s;
 	Vector4Tests V4s;
+	Matrix3Tests M3s;
 
 	V2s.SetData();
 	V2s.RunTestAll();
@@ -29,6 +30,9 @@ int main( int argc, char* argv[] )
 
 	V4s.SetData();
 	V4s.RunTestAll();
+
+	M3s.SetData();
+	M3s.RunTestAll();
 
  cin >> theend;
 

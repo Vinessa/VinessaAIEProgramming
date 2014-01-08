@@ -1,24 +1,18 @@
 #pragma once
-#include "Matrix3.h"
-#include <iostream>
-using namespace std;
-
-class Matrix3Tests
+#include "Matrix4.h"
+class Matrix4Tests
 {
 public:
-	Matrix3Tests(void);
-	~Matrix3Tests(void);
-
-
-
-//CONSTANT VECTORS AND VARIABLES//
+	Matrix4Tests(void);
+	~Matrix4Tests(void);
+	//CONSTANT VECTORS AND VARIABLES//
 	//(INGREDIENTS)
 
 	float dt;
 
-	Matrix3 T1;
-	Matrix3 T2;
-	Matrix3 T3;
+	Matrix4 T1;
+	Matrix4 T2;
+	Matrix4 T3;
 
 	float TScaler;
 	float TScalerX;
@@ -27,21 +21,21 @@ public:
 //EXPECTED RESULTS///////////////
 
 
-	//Matrix3 XResOrthographicProj;
-	Matrix3 XResScale;
-	Matrix3 XResRotation;
-	Matrix3 XResTransformPoint;
-	Matrix3 XResTransformVector;
-	Matrix3 XResMatrixMultiplication;
+	//Matrix4 XResOrthographicProj;
+	Matrix4 XResScale;
+	Matrix4 XResRotation;
+	Matrix4 XResTransformPoint;
+	Matrix4 XResTransformVector;
+	Matrix4 XResMatrixMultiplication;
 
 
 //ACTUAL RESULTS/////////////////
-	//Matrix3 ResOrthographicProj;
-	Matrix3 ResScale;
-	Matrix3 ResRotation;
-	Matrix3 ResTransformPoint;
-	Matrix3 ResTransformVector;
-	Matrix3 ResMatrixMultiplication;
+	//Matrix4 ResOrthographicProj;
+	Matrix4 ResScale;
+	Matrix4 ResRotation;
+	Matrix4 ResTransformPoint;
+	Matrix4 ResTransformVector;
+	Matrix4 ResMatrixMultiplication;
 
 
 //PASS OR FAILS////////////////////
@@ -69,11 +63,8 @@ public:
 	bool DoTestMatrixMultiplication();
 
 
-	void ReportTestResult(bool a_WhichBool, Matrix3 a_WhichResultMat3, Matrix3 a_WhichExpectedMat3, char* a_Test);
+	void ReportTestResult(bool a_WhichBool, Matrix4 a_WhichResultMat3, Matrix4 a_WhichExpectedMat3, char* a_Test);
 	void ReportTestResultOrtho();
-	void ReportTestResultRotation();
-	void ReportTestResulttransformpoint();
-	void ReportTestResulttransformvector();
 	void AssignTestResults();
 	void RunTestAll();
 
@@ -91,3 +82,4 @@ public:
 
 	
 };
+

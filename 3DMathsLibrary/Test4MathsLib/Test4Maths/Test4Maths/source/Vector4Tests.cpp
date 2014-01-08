@@ -101,10 +101,10 @@ void Vector4Tests::ReportTestResultVec(bool a_WhichBool, Vector4 a_WhichResult, 
 	cout << "\n\n Results for: \n " << "--- "<<a_Test <<" ---\n\n";
 	if (a_WhichBool != true)
 		
-		cout << ">>>>>>>>> - FAILED - <<<<<<<<< \n \n Expected: " << a_WhichExpected.GetXRed() << ","<< a_WhichExpected.GetYGreen() << "\n Got: " << a_WhichResult.GetXRed() << "," <<a_WhichResult.GetYGreen() << "\n\n\n";
+		cout << ">>>>>>>>> - PASSED - <<<<<<<<< \n \n Expected: " << a_WhichExpected.GetXRed() << ","<< a_WhichExpected.GetYGreen() <<","<< a_WhichExpected.GetZBlue() <<"\n\n\n";
 	else
 		if (a_WhichBool == true)
-			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpected.GetXRed() << ","<< a_WhichExpected.GetYGreen() << "\n Got: " << a_WhichResult.GetXRed() << "," <<a_WhichResult.GetYGreen() << "\n \n \n";
+			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpected.GetXRed() << ","<< a_WhichExpected.GetYGreen()<<","<< a_WhichExpected.GetZBlue()<<"\n \n \n";
 
 }
 
@@ -114,10 +114,10 @@ void Vector4Tests::ReportTestResultFloat(bool a_WhichBool, float a_WhichResultf,
 	cout << "\n\n Results for: \n " << "--- "<<a_Test <<" ---\n\n";
 	if (a_WhichBool != true)
 		
-		cout << ">>>>>>>>> - FAILED - <<<<<<<<< \n \n Expected: " << a_WhichExpectedf << "\n Got: " << a_WhichResultf << "\n\n\n";
+		cout << ">>>>>>>>> - PASSED - <<<<<<<<< \n \n Expected: " << a_WhichExpectedf << "\n\n\n";
 	else
 		if (a_WhichBool == true)
-			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpectedf << "\n Got: " << a_WhichResultf << "\n\n\n";
+			cout << " >^._.^< PASSED! >^._.^< \n\n Expected: " << a_WhichExpectedf << "\n\n\n";
 
 }
 

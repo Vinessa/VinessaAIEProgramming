@@ -121,12 +121,105 @@ int main(int argc, char* argv[] )
  // OpenGL didn't start-up! shutdown GLFW and return an error code 
  glfwTerminate(); 
  return -1; 
-} 
+}  //Set the clear colour for OpenGL 
+ glClearColor( 0.f, 0.4f, 0.65f, 1.f); 
+ glColor4f( 0.f, 0.f, 0.f, 1.f ); 
+ //As we're going to draw in 2D set up an orthographic projection. 
+ //This type of projection has no perspective. This projection is set up so 
+ //that one pixel on the screen is one unit in 
+ //world co-ordinates 
+ glMatrixMode(GL_PROJECTION); 
+ glLoadIdentity(); 
+ //Older versions of OpenGL allow you to set up a view matrix with the following 
+ //call. 
+ //this function is no longer supported in more recent versions of OpenGL 
+ glOrtho( 0.f, 1024, 768, 0.f, 0.f, 100.f ); 
+ //Enable some Blending. 
+ glEnable(GL_BLEND); 
+ glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA ); 
+ 
+ glEnable(GL_DEPTH); 
+ glDepthFunc(GL_LEQUAL); 
  
  while ( glfwGetWindowParam( GLFW_OPENED ) != 0 && !g_bWindowClosed ) 
  { 
- /* Render here */ 
  
+ /* Render here */ 
+ //=========================================================================== 
+ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); 
+ //=========================================================================== 
+ //Draw a Square 
+ //\ This Utilises what is called Immediate Mode - Immediate Mode is redundant 
+ // in more recent versions of OpenGL. 
+ //=========================================================================== 
+
+
+//create VBO from buffer with glBufferData()
+ glBegin(GL_QUADS); 
+ 
+ glColor3f(1,0,6); 
+ glVertex2i(256, 128); 
+ 
+
+ glColor3f(0,1,0); 
+ glVertex2i(768, 128); 
+ 
+ glColor3f(0,0,1); 
+ glVertex2i(768, 640); 
+ 
+ glColor3f(1,1,1); 
+ glVertex2i(256, 740); 
+ 
+ glEnd(); 
+ glBegin(GL_TRIANGLE_FAN); glColor3f(0,1,0); 
+ glVertex2i(868, 228); 
+  glColor3f(1,0,6); 
+ glVertex2i(356, 228);  glColor3f(0,0,1); 
+ glVertex2i(868, 640);   glColor3f(1,1,1); 
+ glVertex2i(356, 840);   glEnd();
+   glBegin(GL_POLYGON);
+
+    glColor3f(1,1,1); 
+ glVertex2i(156, 640); 
+
+  glColor3f(0,0,1); 
+ glVertex2i(668, 440); 
+
+ glColor3f(1,0,6); 
+ glVertex2i(256, 28);
+
+  glColor3f(0,1,0); 
+ glVertex2i(668, 28); 
+
+  glColor3f(0,1,0); 
+ glVertex2i(678, 78);
+
+glEnd();
+
+////filled circle
+//float x1,y1,x2,y2;
+//float angle;
+//double radius=1.1;
+//x1 = 0.5;
+//y1 =0.6;
+//glColor3f(1.0,1.0,0.6);
+// 
+//glBegin(GL_TRIANGLE_FAN);
+//glVertex2f(x1,y1);
+// 
+//for (angle=1.0f;angle<361.0f;angle+=0.2)
+//{
+//    x2 = x1+sin(angle)*radius;
+//    y2 = y1+cos(angle)*radius;
+//    glVertex2f(x2,y2);
+//}
+// 
+//glEnd();
+ 
+ /*glBegin(GL_POINT_SMOOTH);
+glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+glPointSize(100);
+glVertex2f(100, 100);*/
  /* Swap front and back buffers and process events */ 
  glfwSwapBuffers(); 
  } 
