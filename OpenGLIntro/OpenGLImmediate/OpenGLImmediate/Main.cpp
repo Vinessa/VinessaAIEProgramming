@@ -1,7 +1,7 @@
 //#include "libs\glfw\include\GL\glfw.h"
 #include <GL/glew.h> 
 #include <GL/wglew.h>
-#include <GL/glfw.h>
+#include <GL/glfw3.h>
 #include <FreeImage.h>
 #include <iostream>
 
@@ -73,6 +73,11 @@ nullptr */, unsigned int* a_uiBPP /* = nullptr*/)
  FreeImage_GetWidth(pBitmap), 
 FreeImage_GetHeight(pBitmap), 0, 
 a_uiFormat, eType, pData); 
+
+ //CREATING A GL BUFFER
+ GLuint VBO;
+ glGenBuffers(1, &VBO);
+ glBindBuffer( GL_Array_Buffer, VBO);
  
  // specify default filtering and wrapping 
  glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); 
@@ -84,6 +89,8 @@ a_uiFormat, eType, pData);
  
  // delete data 
  FreeImage_Unload(pBitmap); 
+ //DELETING THE GL BUFFER MADE ABOVE
+ glDeleteBuffers(1, &VBO);
  
  return textureID; 
 }
