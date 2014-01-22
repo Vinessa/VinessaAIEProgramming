@@ -23,5 +23,8 @@
     <ClInclude Include="gl_log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TextFileReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

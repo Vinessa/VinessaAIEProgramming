@@ -66,7 +66,6 @@ int main()
 	GLFWwindow* window = glfwCreateWindow (vmode ->width, vmode->height, "Extended GL Init", NULL /*mon*/,NULL
 		);
 	glfwSetWindowSize(window,640, 480);
-	glfwMakeContextCurrent(window);
 	/*GLFWwindow * window = glfwCreateWindow (640,480, "Hello Triangle", NULL, NULL);*/
 	if (!window) 
 	{
@@ -117,17 +116,17 @@ glVertexAttribPointer (0,3,GL_FLOAT, GL_FALSE, 0, (GLubyte*) NULL);
 //MAKING A SHADER!!!!!!!!!!
 
 const char* vertex_shader = 
-	"#version 400\n"
+	"#version 330\n"
 	"in vec3 vp;"
 	"void main() {"
 	" gl_Position = vec4 (vp, 1.0);"
 	"}";
 
 const char* fragment_shader = 
-	"#version 400\n"
+	"#version 330\n"
 	"out vec4 frag_colour;"
 	"void main () {"
-	" frag_colour = vec4 (0.0, 0.0, 0.0, 1.0);"
+	" frag_colour = vec4 (0.0, 2.0, 0.0, 1.0);"
 	"}";
 
 // Create a Shader
@@ -172,14 +171,14 @@ glVertexAttribPointer (0,3,GL_FLOAT, GL_FALSE, 0, (GLubyte*) NULL);
 
 
 const char* vertex_shader2 = 
-	"#version 400\n"
+	"#version 330\n"
 	"in vec3 vp;"
 	"void main() {"
 	" gl_Position = vec4 (vp, 1.0);"
 	"}";
 
 const char* fragment_shader2 = 
-	"#version 400\n"
+	"#version 330\n"
 	"out vec4 frag_colour;"
 	"void main () {"
 	" frag_colour = vec4 (0.5, 0.0, 1.0, 1.0);"
@@ -266,12 +265,12 @@ const char* fragment_shader2 =
 	while (!glfwWindowShouldClose (window))
 	{
 		_update_fps_counter (window);
-		glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glViewport (0,0, g_gl_width, g_gl_height);
-		glViewport (0,0, g_gl_width, g_gl_height);
+			
+		
 
 		//wipe the drawing surface clear
 		glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glViewport (0,0, g_gl_width, g_gl_height);
 		glUseProgram (shaderProgram);
 		glBindVertexArray( VAO);
 		glDrawArrays (GL_TRIANGLES, 0 ,3);
@@ -295,13 +294,10 @@ const char* fragment_shader2 =
 		{
 			glfwSetWindowShouldClose (window,1);
 	}
+	}
 // Close GL context and any other GLFW resources
 
 glfwTerminate();
-
-char* pause = "Paused"; 
-
-	std::cin>> pause;
 	return 0;
 }
-	}
+	
