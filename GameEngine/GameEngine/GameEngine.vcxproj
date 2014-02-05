@@ -37,10 +37,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)libs\glfw\include;$(ProjectDir)libs\glew\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)libs\glfw\include;$(ProjectDir)libs\glew\include;$(ProjectDir)libs\TerrehByteMath\include;$(ProjectDir)libs\SOIL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(ProjectDir)\libs\glew\lib;$(ProjectDir)\libs\glfw\lib-msvc110;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)libs\TerrehByteMath\lib;$(ProjectDir)\libs\glew\lib;$(ProjectDir)\libs\glfw\lib-msvc110;$(ProjectDir)\libs\SOIL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -49,7 +49,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;SOIL.lib;MathLibTerrehbyte.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
     <PreBuildEvent>
@@ -82,13 +82,20 @@
     <ClCompile Include="gl_log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextFileReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_log.h" />
+    <ClInclude Include="libs\SOIL\include\SOIL.h" />
+    <ClInclude Include="libs\TerrehByteMath\include\TerrehByteMath.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextFileReader.h" />
+    <ClInclude Include="VertexStruct.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\megamanx.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

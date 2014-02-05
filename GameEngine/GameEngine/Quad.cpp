@@ -18,7 +18,6 @@ Quad::Quad(void) //Defaut Constructor contains default shaders
 	const char * FragmentShader = //FragmentShaders deal with pixel data
 		"#version 330\n"
 		"in vec4 vColor;"
-		//"in vec2 texcoord;"
 		"out vec4 outColor;"
 		"void main () {"
 		"	outColor = vColor;"
