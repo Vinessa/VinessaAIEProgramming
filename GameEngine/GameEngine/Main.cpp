@@ -16,7 +16,7 @@ int main()
 			return 1;
 	}
 
-	GLFWwindow * window = glfwCreateWindow(640,480,"Hello Triangle", NULL, NULL);
+	GLFWwindow * window = glfwCreateWindow( g_gl_width, g_gl_height,"Hello Triangle", NULL, NULL);
 	if (!window)
 	{
 		fprintf (stderr, "Error: could not open window with GLFW3\n");
@@ -43,6 +43,8 @@ int main()
 	//Quad *tester = new Quad();
 	//Sprite *testsprite = new Sprite("./Resources/OmnikittenLogo3.png", 240, 272, color, window); 
 	GameEntity *Logo = new GameEntity("./Resources/OmnikittenLogo3.png", 240, 272, color, window);
+	Ortho = new tbyte::Matrix4();
+	Orthographic(0,g_gl_width, g_gl_height, 0,0, 1, Ortho);
 
 ///////////////////////////RENDER LOOP BEGIN/////////////////////////////////////
 
@@ -50,7 +52,7 @@ int main()
 
   // wipe the drawing surface clear
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glClearColor(1,1,1,1);
+  glClearColor(.5,0,1,1);
 
   //tester ->Draw();
   Logo -> Input();

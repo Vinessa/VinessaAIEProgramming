@@ -80,6 +80,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameEntity.cpp" />
+    <ClCompile Include="GlobalUtilities.cpp" />
     <ClCompile Include="gl_log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Quad.cpp" />
@@ -87,6 +88,7 @@
     <ClCompile Include="TextFileReader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GlobalUtilities.h" />
     <ClInclude Include="gl_log.h" />
     <ClInclude Include="Include\GameEntity.h" />
     <ClInclude Include="libs\SOIL\include\SOIL.h" />
@@ -94,9 +96,10 @@
     <ClInclude Include="Quad.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextFileReader.h" />
-    <ClInclude Include="VertexStruct.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\LoadFragmentShader.glsl" />
+    <None Include="Resources\LoadVertexShader.glsl" />
     <None Include="Resources\megamanx.png" />
     <None Include="Resources\OmnikittenLogo2.png" />
     <None Include="Resources\OmnikittenLogo3.png" />

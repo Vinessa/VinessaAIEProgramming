@@ -30,5 +30,9 @@ public:
 
 	//Function to draw
 	void Draw();
+
+	void LoadFragmentShader(const char* filePath);
+	void LoadVertexShader(const char* filePath);
+	void LinkShaders();
 };
 #endif //_QUAD_H_

@@ -56,55 +56,22 @@ Sprite::~Sprite(void)
 Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vector4 a_v4Color,GLFWwindow* window)
 {
 	GameWindow = window;
-	
-		const char* VertexShader =
-	"#version 330 core\n"
-		"in vec3 position;"
-		"in vec4 color;"
-		"in vec2 texcoord;"
-		"out vec2 UV;"
-		"out vec4 vColor;"
-		"uniform mat4 matrix;" 
-		"void main()"
-		"{"
-		"	UV = texcoord;"
-		"	gl_Position = matrix * vec4 (position, 1.0);"
-		"	vColor = color;"
-		"}";
-	const char* FragmentShader = // Fragment Shaders deal with pixel data... inbetween vertexes?
-		"#version 330 core\n"
-		"in vec4 vColor;"
-		"in vec2 UV;"
-		"out vec4 outColour;"
-		"uniform sampler2D diffuseTexture;"
-		"void main () {"
-		"	outColour = texture(diffuseTexture, UV).rgba * vColor;"
-		"}";
-		
-	//Compile Vertex Shader
-	m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(m_VertexShader, 1, &VertexShader, NULL);
-	glCompileShader(m_VertexShader);
-	printShaderInfoLog(m_VertexShader);
 
-	//Compile Fragment Shader
+	m_v2Scale = tbyte::Vector2(a_iWidth, a_iHeight);
+	m_v3Position = tbyte::Vector3(m_v2Scale.m_fX,m_v2Scale.m_fY,.5);
 
-	m_FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(m_FragmentShader, 1, &FragmentShader, NULL);
-	glCompileShader(m_FragmentShader);
-	printShaderInfoLog(m_FragmentShader);
+	modelMatrix = new tbyte::Matrix4();
+	*modelMatrix = modelMatrix->MakeIdentityMatrix();
+		modelMatrix->m_afArray[12] = m_v3Position.m_fX;
+		modelMatrix->m_afArray[13] = m_v3Position.m_fY;
+		modelMatrix->m_afArray[14] = m_v3Position.m_fZ;
 
 
-	//Link Shaders into the Shader program
+	//proj_location = glGetUniformLocation(m_ShaderProgram, "projection");
 
-	m_ShaderProgram = glCreateProgram();
-
-	glAttachShader(m_ShaderProgram, m_FragmentShader);
-	glAttachShader(m_ShaderProgram, m_VertexShader);
-
-	glLinkProgram(m_ShaderProgram);
-	printProgramInfoLog(m_ShaderProgram);
-	glUseProgram(m_ShaderProgram);
+	LoadVertexShader("./Resources/LoadVertexShader.glsl");
+	LoadFragmentShader("./Resources/LoadFragmentShader.glsl");
+	LinkShaders();
 
 //////////////////////////
 
@@ -162,16 +129,7 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 	glVertexAttribPointer(uvAttrib,2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(7 * sizeof(float)));
 	glBindVertexArray(0);
 
-	m_v3Position = tbyte::Vector3(0,0,0);
-	modelMatrix = new float [16];
-	float temp[]=
-	{
-		1,0,0,0,
-		0,1,0,0,
-		0,0,1,0,
-		0,0,0,1};
 
-		memcpy(modelMatrix, temp, 16*sizeof(float));
 
 		matrix_location = glGetUniformLocation (m_ShaderProgram, "matrix");
 
@@ -199,6 +157,7 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 		tex_loc = glGetUniformLocation (m_ShaderProgram, "diffuseTexture");
 		glUseProgram (m_ShaderProgram);
 		glUniform1i (tex_loc, 0); //use active texture 0
+		MVP = MVP.MakeIdentityMatrix();
 }
 
 void Sprite::Draw()
@@ -208,13 +167,21 @@ void Sprite::Draw()
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture (GL_TEXTURE_2D, m_uiTexture);
 	glUniform1i (tex_loc, 0);
-    modelMatrix[12] = m_v3Position.m_fX;
-    modelMatrix[13] = m_v3Position.m_fY;
-    modelMatrix[14] = m_v3Position.m_fZ;
-	glUniformMatrix4fv (matrix_location, 1, GL_FALSE, modelMatrix);
+	modelMatrix->m_afArray[0] = m_v2Scale.m_fX;
+	modelMatrix->m_afArray[5] = m_v2Scale.m_fY;
+	modelMatrix->m_afArray[12] = m_v3Position.m_fX;
+    modelMatrix->m_afArray[13] = m_v3Position.m_fY;
+    modelMatrix->m_afArray[14] = m_v3Position.m_fZ;
+
+	MVP = (*Ortho * *modelMatrix);
+	glUniformMatrix4fv (matrix_location, 1, GL_FALSE, MVP.m_afArray);
+
+
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ElementBuffer);
 	glBindVertexArray(m_VertexAttribute);
 	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
+
+
 }
 
 void Sprite::Input()
@@ -230,6 +197,12 @@ void Sprite::Input()
 
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_D))
 	{m_v3Position += tbyte::Vector3(0.005f, 0.0f, 0.0f);}
+
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//Justin Debug Only!!!!!!!!!!!!!!!!!
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_C))
+		m_v3Position = tbyte::Vector3(m_v2Scale.m_fX+1, m_v2Scale.m_fY+1, 0.0f);
 }
 
 inline void Sprite::SetVertexData(Vertex* a_vertexData)

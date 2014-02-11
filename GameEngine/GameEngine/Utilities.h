@@ -13,5 +13,9 @@ unsigned int LoadTexture(const char* a_szTexture);
 
 void UnloadTexture(GLuint TexID);
 
+extern Matrix4 * Ortho;
+
+void Orthographic(float a_fLeft, float a_fRight, float a_fTop, float a_fBottom, float a_fNear, float a_fFar, tbyte::Matrix4 * mat);
+
  
 #endif

@@ -3,8 +3,7 @@
 #pragma once
 #ifndef _SPRITE_H_
 #define _SPRITE_H_
-#include "VertexStruct.h"
-#include "Utilities.h"
+#include "GlobalUtilities.h"
 #include"Quad.h"
 #include <SOIL.h>
 #include <gl\glew.h>
@@ -25,8 +24,8 @@ public:
 
 private:
 	Vertex m_aoVerts[4];
-	float * modelMatrix;
-
+	tbyte::Matrix4 * modelMatrix;
+	tbyte::Matrix4 MVP; 
 	tbyte::Vector2 m_v2Scale;
 	tbyte::Vector3 m_v3Position;
 	tbyte::Vector4 m_v4SpriteColor;
@@ -38,7 +37,7 @@ private:
 	unsigned int m_uiTexture;
 	GLFWwindow * GameWindow;
 
-	
+
 
 	//this part below will be used later...
 
@@ -46,6 +45,7 @@ private:
 	unsigned int m_uDestinationBlendMode;
 	int tex_loc;
 	int matrix_location;
+
 
 };
 #endif //_SPRITE_H_
