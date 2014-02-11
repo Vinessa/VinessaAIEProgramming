@@ -2,8 +2,9 @@
 #define GLFW_DLL
 #include <GL/glfw3.h>
 #include <stdio.h>
-#include "Quad.h"
-#include "Sprite.h"
+//#include "Quad.h"
+//#include "Sprite.h"
+#include "GameEntity.h"
 
 int main()
 {
@@ -39,8 +40,9 @@ int main()
 
 	
 	tbyte::Vector4 color(1,1,1,1);
-	Quad *tester = new Quad();
-	Sprite *testsprite = new Sprite("../resources/megamanx.png", 240, 272, color, window); 
+	//Quad *tester = new Quad();
+	//Sprite *testsprite = new Sprite("./Resources/OmnikittenLogo3.png", 240, 272, color, window); 
+	GameEntity *Logo = new GameEntity("./Resources/OmnikittenLogo3.png", 240, 272, color, window);
 
 ///////////////////////////RENDER LOOP BEGIN/////////////////////////////////////
 
@@ -48,10 +50,13 @@ int main()
 
   // wipe the drawing surface clear
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glClearColor(1,0,1,1);
+  glClearColor(1,1,1,1);
 
-  tester ->Draw();
-  testsprite->Draw();
+  //tester ->Draw();
+  Logo -> Input();
+  Logo ->Draw();
+
+  //testsprite->Draw();
   // update other events like input handling 
   glfwPollEvents ();
   // put the stuff we've been drawing onto the display

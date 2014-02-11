@@ -130,6 +130,8 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 		0,1,2,3
 	};
 
+	
+
 	//Generate the BUFFARS!
 
 	glGenBuffers(1, &m_VertexBuffer);
@@ -145,6 +147,7 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 	//Putting teh datas into teh buffer
 
 	glBufferData(GL_ARRAY_BUFFER, 4* sizeof(Vertex), m_aoVerts, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
 
 	//enabling attributes
 
@@ -159,7 +162,7 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 	glVertexAttribPointer(uvAttrib,2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(7 * sizeof(float)));
 	glBindVertexArray(0);
 
-	m_v3Position - tbyte::Vector3(0,0,0);
+	m_v3Position = tbyte::Vector3(0,0,0);
 	modelMatrix = new float [16];
 	float temp[]=
 	{
@@ -184,7 +187,7 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 		glActiveTexture (GL_TEXTURE0);
 
 		int width, height;
-		unsigned char* image = SOIL_load_image ("./Resources/megamanx.png", &width, &height, 0, SOIL_LOAD_RGBA);
+		unsigned char* image = SOIL_load_image (a_pTexture, &width, &height, 0, SOIL_LOAD_RGBA);
 		glBindTexture( GL_TEXTURE_2D, m_uiTexture);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 		SOIL_free_image_data(image);
@@ -205,9 +208,9 @@ void Sprite::Draw()
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture (GL_TEXTURE_2D, m_uiTexture);
 	glUniform1i (tex_loc, 0);
-//	modelMatrix[12] = m_v3Position.m_fX;
-//	modelMatrix[13] = m_v3Position.m_fY;
-//	modelMatrix[14] = m_v3Position.m_fZ;
+    modelMatrix[12] = m_v3Position.m_fX;
+    modelMatrix[13] = m_v3Position.m_fY;
+    modelMatrix[14] = m_v3Position.m_fZ;
 	glUniformMatrix4fv (matrix_location, 1, GL_FALSE, modelMatrix);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ElementBuffer);
 	glBindVertexArray(m_VertexAttribute);

@@ -44,8 +44,8 @@ Quad::Quad(void) //Defaut Constructor contains default shaders
 
 	glLinkProgram(m_ShaderProgram);
 	printProgramInfoLog(m_ShaderProgram);
-
 	glUseProgram(m_ShaderProgram);
+
 	// Create Vertex Attribute object
 	glGenVertexArrays(1, &m_VertexAttribute);
 	glBindVertexArray(m_VertexAttribute);

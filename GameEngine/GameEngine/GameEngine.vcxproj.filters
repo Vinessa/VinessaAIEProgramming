@@ -30,6 +30,9 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_log.h">
@@ -53,9 +56,18 @@
     <ClInclude Include="libs\TerrehByteMath\include\TerrehByteMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Include\GameEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\megamanx.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\OmnikittenLogo2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\OmnikittenLogo3.png">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
