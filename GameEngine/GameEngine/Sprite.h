@@ -20,6 +20,8 @@ public:
 	void Input();
 	void SetVertexData(Vertex* a_vertexData);
 	const Vertex* GetVertexData() const;
+	void Animate();
+
 
 
 private:
@@ -45,7 +47,8 @@ private:
 	unsigned int m_uDestinationBlendMode;
 	int tex_loc;
 	int matrix_location;
-
+	int AnimationFrame;
+	float AnimationOffset;
 
 };
 #endif //_SPRITE_H_

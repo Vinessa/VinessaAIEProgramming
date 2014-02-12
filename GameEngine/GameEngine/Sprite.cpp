@@ -22,7 +22,7 @@ Sprite::Sprite(void)
 		"  vColor = color;"
 		"  gl_Position = vec4 (position, 1.0);"
 		"}";
-	
+
 
 	//compiling the vertex shader!
 	m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -47,6 +47,8 @@ Sprite::Sprite(void)
 	printProgramInfoLog(m_ShaderProgram);
 	glUseProgram(m_ShaderProgram);
 
+	AnimationFrame = 0;
+
 }
 
 Sprite::~Sprite(void)
@@ -56,15 +58,17 @@ Sprite::~Sprite(void)
 Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vector4 a_v4Color,GLFWwindow* window)
 {
 	GameWindow = window;
+	AnimationFrame = 0;
+	AnimationOffset = 0.08;
 
 	m_v2Scale = tbyte::Vector2(a_iWidth, a_iHeight);
 	m_v3Position = tbyte::Vector3(m_v2Scale.m_fX,m_v2Scale.m_fY,.5);
 
 	modelMatrix = new tbyte::Matrix4();
 	*modelMatrix = modelMatrix->MakeIdentityMatrix();
-		modelMatrix->m_afArray[12] = m_v3Position.m_fX;
-		modelMatrix->m_afArray[13] = m_v3Position.m_fY;
-		modelMatrix->m_afArray[14] = m_v3Position.m_fZ;
+	modelMatrix->m_afArray[12] = m_v3Position.m_fX;
+	modelMatrix->m_afArray[13] = m_v3Position.m_fY;
+	modelMatrix->m_afArray[14] = m_v3Position.m_fZ;
 
 
 	//proj_location = glGetUniformLocation(m_ShaderProgram, "projection");
@@ -73,7 +77,7 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 	LoadFragmentShader("./Resources/LoadFragmentShader.glsl");
 	LinkShaders();
 
-//////////////////////////
+	//////////////////////////
 
 
 	m_v4SpriteColor = a_v4Color;
@@ -97,7 +101,7 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 		0,1,2,3
 	};
 
-	
+
 
 	//Generate the BUFFARS!
 
@@ -131,33 +135,33 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 
 
 
-		matrix_location = glGetUniformLocation (m_ShaderProgram, "matrix");
+	matrix_location = glGetUniformLocation (m_ShaderProgram, "matrix");
 
-		m_uiTexture = 0;
-		m_minUVCoords = tbyte::Vector2(0.f, 0.f);
-		m_maxUVCoords = tbyte::Vector2(1.f,1.f);
-		m_uvScale = tbyte::Vector2( 1.f, 1.f);
-		m_uvOffset = tbyte::Vector2( 0.f, 0.f);
+	m_uiTexture = 0;
+	m_minUVCoords = tbyte::Vector2(0.f, 0.f);
+	m_maxUVCoords = tbyte::Vector2(1.f,1.f);
+	m_uvScale = tbyte::Vector2( 1.f, 1.f);
+	m_uvOffset = tbyte::Vector2( 0.f, 0.f);
 
-		m_uSourceBlendMode = GL_SRC_ALPHA;
-		m_uDestinationBlendMode = GL_ONE_MINUS_SRC_ALPHA;
-		glGenTextures(1, &m_uiTexture);
-		glActiveTexture (GL_TEXTURE0);
+	m_uSourceBlendMode = GL_SRC_ALPHA;
+	m_uDestinationBlendMode = GL_ONE_MINUS_SRC_ALPHA;
+	glGenTextures(1, &m_uiTexture);
+	glActiveTexture (GL_TEXTURE0);
 
-		int width, height;
-		unsigned char* image = SOIL_load_image (a_pTexture, &width, &height, 0, SOIL_LOAD_RGBA);
-		glBindTexture( GL_TEXTURE_2D, m_uiTexture);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-		SOIL_free_image_data(image);
+	int width, height;
+	unsigned char* image = SOIL_load_image (a_pTexture, &width, &height, 0, SOIL_LOAD_RGBA);
+	glBindTexture( GL_TEXTURE_2D, m_uiTexture);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	SOIL_free_image_data(image);
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		tex_loc = glGetUniformLocation (m_ShaderProgram, "diffuseTexture");
-		glUseProgram (m_ShaderProgram);
-		glUniform1i (tex_loc, 0); //use active texture 0
-		MVP = MVP.MakeIdentityMatrix();
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	tex_loc = glGetUniformLocation (m_ShaderProgram, "diffuseTexture");
+	glUseProgram (m_ShaderProgram);
+	glUniform1i (tex_loc, 0); //use active texture 0
+	MVP = MVP.MakeIdentityMatrix();
 }
 
 void Sprite::Draw()
@@ -170,12 +174,14 @@ void Sprite::Draw()
 	modelMatrix->m_afArray[0] = m_v2Scale.m_fX;
 	modelMatrix->m_afArray[5] = m_v2Scale.m_fY;
 	modelMatrix->m_afArray[12] = m_v3Position.m_fX;
-    modelMatrix->m_afArray[13] = m_v3Position.m_fY;
-    modelMatrix->m_afArray[14] = m_v3Position.m_fZ;
+	modelMatrix->m_afArray[13] = m_v3Position.m_fY;
+	modelMatrix->m_afArray[14] = m_v3Position.m_fZ;
 
 	MVP = (*Ortho * *modelMatrix);
 	glUniformMatrix4fv (matrix_location, 1, GL_FALSE, MVP.m_afArray);
-
+	//justin added for animation
+	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, 4* sizeof(Vertex), m_aoVerts, GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ElementBuffer);
 	glBindVertexArray(m_VertexAttribute);
@@ -187,16 +193,28 @@ void Sprite::Draw()
 void Sprite::Input()
 {
 	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_W))
-	{m_v3Position += tbyte::Vector3(0.0f, 0.005f, 0.0f);}
+	{
+		//m_v3Position += tbyte::Vector3(0.0f, 0.005f, 0.0f);
+		Animate();
+	}
 
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_A))
-	{m_v3Position += tbyte::Vector3(-0.005f, 0.0f, 0.0f);}
+	{
+		//m_v3Position += tbyte::Vector3(-0.005f, 0.0f, 0.0f);
+		Animate();
+	}
 
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_S))
-	{m_v3Position += tbyte::Vector3(0.0f, -0.005f, 0.0f);}
+	{
+		//m_v3Position += tbyte::Vector3(0.0f, -0.005f, 0.0f);
+		Animate();
+	}
 
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_D))
-	{m_v3Position += tbyte::Vector3(0.005f, 0.0f, 0.0f);}
+	{
+		//m_v3Position += tbyte::Vector3(0.005f, 0.0f, 0.0f);
+		Animate();
+	}
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//Justin Debug Only!!!!!!!!!!!!!!!!!
@@ -213,4 +231,35 @@ inline void Sprite::SetVertexData(Vertex* a_vertexData)
 inline const Vertex* Sprite::GetVertexData() const
 {
 	return static_cast<const Vertex*>(m_aoVerts);
+}
+
+void Sprite::Animate()
+{
+	if (AnimationFrame != 11)
+	{
+		AnimationFrame++;
+
+		m_aoVerts[0].U +=  AnimationOffset;
+		m_aoVerts[1].U +=  AnimationOffset;
+		m_aoVerts[2].U +=  AnimationOffset;
+		m_aoVerts[3].U +=  AnimationOffset;
+
+		/*m_aoVerts[0].UV = tbyte::Vector2((m_aoVerts[0].UV.m_fY+ AnimationOffset), m_aoVerts[0].UV.m_fX);
+		m_aoVerts[1].UV = tbyte::Vector2((m_aoVerts[1].UV.m_fY+ AnimationOffset), m_aoVerts[1].UV.m_fX);;
+		m_aoVerts[2].UV = tbyte::Vector2((m_aoVerts[2].UV.m_fY+ AnimationOffset), m_aoVerts[2].UV.m_fX);
+		m_aoVerts[3].UV = tbyte::Vector2((m_aoVerts[3].UV.m_fY+ AnimationOffset), m_aoVerts[3].UV.m_fX);*/
+	}
+
+	else
+	{
+		AnimationFrame = 0;
+
+		m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
+		m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.08f);
+		m_aoVerts[2].UV = tbyte::Vector2(1.0f, 0.0f);
+		m_aoVerts[3].UV = tbyte::Vector2(1.0f, 0.08f);
+	}
+
+
+
 }

@@ -57,7 +57,7 @@ int main()
   //tester ->Draw();
   Logo -> Input();
   Logo ->Draw();
-
+  
   //testsprite->Draw();
   // update other events like input handling 
   glfwPollEvents ();
