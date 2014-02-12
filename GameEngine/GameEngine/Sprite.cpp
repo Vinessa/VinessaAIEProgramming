@@ -88,9 +88,9 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 	m_aoVerts[3].Color = m_v4SpriteColor;
 
 	m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
-	m_aoVerts[1].UV = tbyte::Vector2(0.0f, 1.0f);
+	m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.08f);
 	m_aoVerts[2].UV = tbyte::Vector2(1.0f, 0.0f);
-	m_aoVerts[3].UV = tbyte::Vector2(1.0f, 1.0f);
+	m_aoVerts[3].UV = tbyte::Vector2(1.0f, 0.08f);
 
 	GLuint elements[] =
 	{
