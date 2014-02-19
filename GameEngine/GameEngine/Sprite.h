@@ -8,6 +8,7 @@
 #include <SOIL.h>
 #include <gl\glew.h>
 #include <GL/glfw3.h>
+#include "Vi_Timer.h"
 
 class Sprite: public Quad
 {
@@ -21,6 +22,7 @@ public:
 	void SetVertexData(Vertex* a_vertexData);
 	const Vertex* GetVertexData() const;
 	void Animate();
+	float Framespeed;
 
 
 
@@ -38,6 +40,7 @@ private:
 	tbyte::Vector2 m_uvOffset;
 	unsigned int m_uiTexture;
 	GLFWwindow * GameWindow;
+	
 
 
 
@@ -49,6 +52,7 @@ private:
 	int matrix_location;
 	int AnimationFrame;
 	float AnimationOffset;
-
+	Vi_Timer PlaySpeedTimer;
+	float DT;
 };
 #endif //_SPRITE_H_

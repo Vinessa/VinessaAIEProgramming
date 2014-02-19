@@ -86,6 +86,7 @@
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextFileReader.cpp" />
+    <ClCompile Include="Vi_Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GlobalUtilities.h" />
@@ -96,8 +97,13 @@
     <ClInclude Include="Quad.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextFileReader.h" />
+    <ClInclude Include="Vi_Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\CAT2.tga" />
+    <None Include="Resources\CAT3.png" />
+    <None Include="Resources\CAT3small.png" />
+    <None Include="Resources\CAT4.png" />
     <None Include="Resources\CAT_RunningDARK.png" />
     <None Include="Resources\CAT_Running_GRID.png" />
     <None Include="Resources\LoadFragmentShader.glsl" />

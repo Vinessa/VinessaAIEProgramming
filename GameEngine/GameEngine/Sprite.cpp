@@ -48,6 +48,7 @@ Sprite::Sprite(void)
 	glUseProgram(m_ShaderProgram);
 
 	AnimationFrame = 0;
+	
 
 }
 
@@ -57,9 +58,12 @@ Sprite::~Sprite(void)
 
 Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vector4 a_v4Color,GLFWwindow* window)
 {
+	float Framespeed = 0.00004;
+	 PlaySpeedTimer = Vi_Timer(Framespeed);
+	PlaySpeedTimer.SetStartTime();
 	GameWindow = window;
 	AnimationFrame = 0;
-	AnimationOffset = 0.08;
+	AnimationOffset = 0.0835;
 
 	m_v2Scale = tbyte::Vector2(a_iWidth, a_iHeight);
 	m_v3Position = tbyte::Vector3(m_v2Scale.m_fX,m_v2Scale.m_fY,.5);
@@ -200,19 +204,19 @@ void Sprite::Input()
 
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_A))
 	{
-		//m_v3Position += tbyte::Vector3(-0.005f, 0.0f, 0.0f);
+		m_v3Position += tbyte::Vector3(-0.005f, 0.0f, 0.0f);
 		Animate();
 	}
 
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_S))
 	{
-		//m_v3Position += tbyte::Vector3(0.0f, -0.005f, 0.0f);
+		m_v3Position += tbyte::Vector3(0.0f, -0.005f, 0.0f);
 		Animate();
 	}
 
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_D))
 	{
-		//m_v3Position += tbyte::Vector3(0.005f, 0.0f, 0.0f);
+		m_v3Position += tbyte::Vector3(0.005f, 0.0f, 0.0f);
 		Animate();
 	}
 
@@ -233,32 +237,35 @@ inline const Vertex* Sprite::GetVertexData() const
 	return static_cast<const Vertex*>(m_aoVerts);
 }
 
+
+
 void Sprite::Animate()
-{
-	if (AnimationFrame != 11)
-	{
-		AnimationFrame++;
+{ 
+	if((PlaySpeedTimer.TimeUpCheck()) == true)
+		if(AnimationFrame < 11)
+		{
+			AnimationFrame++;
 
-		m_aoVerts[0].U +=  AnimationOffset;
-		m_aoVerts[1].U +=  AnimationOffset;
-		m_aoVerts[2].U +=  AnimationOffset;
-		m_aoVerts[3].U +=  AnimationOffset;
+			m_aoVerts[0].U +=  AnimationOffset;
+			m_aoVerts[1].U +=  AnimationOffset;
+			m_aoVerts[2].U +=  AnimationOffset;
+			m_aoVerts[3].U +=  AnimationOffset;
+			PlaySpeedTimer.SetStartTime();
 
-		/*m_aoVerts[0].UV = tbyte::Vector2((m_aoVerts[0].UV.m_fY+ AnimationOffset), m_aoVerts[0].UV.m_fX);
-		m_aoVerts[1].UV = tbyte::Vector2((m_aoVerts[1].UV.m_fY+ AnimationOffset), m_aoVerts[1].UV.m_fX);;
-		m_aoVerts[2].UV = tbyte::Vector2((m_aoVerts[2].UV.m_fY+ AnimationOffset), m_aoVerts[2].UV.m_fX);
-		m_aoVerts[3].UV = tbyte::Vector2((m_aoVerts[3].UV.m_fY+ AnimationOffset), m_aoVerts[3].UV.m_fX);*/
-	}
+		
+		}
 
-	else
-	{
-		AnimationFrame = 0;
+		else
+			if(AnimationFrame >= 11)
+		{
+			AnimationFrame = 0;
 
-		m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
-		m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.08f);
-		m_aoVerts[2].UV = tbyte::Vector2(1.0f, 0.0f);
-		m_aoVerts[3].UV = tbyte::Vector2(1.0f, 0.08f);
-	}
+			m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
+			m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.08f);
+			m_aoVerts[2].UV = tbyte::Vector2(1.0f, 0.0f);
+			m_aoVerts[3].UV = tbyte::Vector2(1.0f, 0.08f);
+			PlaySpeedTimer.SetStartTime();
+		}
 
 
 

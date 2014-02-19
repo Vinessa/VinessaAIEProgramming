@@ -36,6 +36,9 @@
     <ClCompile Include="GlobalUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Vi_Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_log.h">
@@ -62,6 +65,9 @@
     <ClInclude Include="GlobalUtilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Vi_Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\megamanx.png">
@@ -86,6 +92,18 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Resources\CAT_Running_GRID.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\CAT2.tga">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\CAT3.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\CAT3small.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\CAT4.png">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
