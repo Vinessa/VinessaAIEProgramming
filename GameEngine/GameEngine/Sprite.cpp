@@ -298,8 +298,17 @@ void Sprite::AnimateRunL()
 	AnimationFrameJump = 0;
 
 	if((PlaySpeedTimer.TimeUpCheck()) == true)
-
-		if(AnimationFrameRun < 11)
+		if (AnimationFrameRun == 0)
+		{
+			AnimationFrameRun++;
+			m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
+			m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.0835f);
+			m_aoVerts[2].UV = tbyte::Vector2(0.25f, 0.0f);
+			m_aoVerts[3].UV = tbyte::Vector2(0.25f, 0.0835f);
+			PlaySpeedTimer.SetStartTime();
+		}
+		else
+			if((AnimationFrameRun < 12)&&(AnimationFrameRun > 0))
 		{
 			AnimationFrameRun++;
 
@@ -313,7 +322,7 @@ void Sprite::AnimateRunL()
 		}
 
 		else
-			if(AnimationFrameRun >= 11)
+			if(AnimationFrameRun >= 12)
 			{
 				AnimationFrameRun = 0;
 
