@@ -39,9 +39,6 @@
     <ClCompile Include="Vi_Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_log.h">
@@ -69,9 +66,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vi_Timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -119,6 +113,7 @@
     <None Include="Resources\RunJumpGapL_R.png">
       <Filter>Resource Files</Filter>
     </None>
+<<<<<<< HEAD
     <None Include="Resources\RunJumpGapL_RAlpha.png">
       <Filter>Resource Files</Filter>
     </None>
@@ -130,5 +125,7 @@
     </None>
 =======
 >>>>>>> parent of 710a952... Working RunningL_RAnimation, mismatched jumping animation UV's
+=======
+>>>>>>> parent of bc9ef34... sucky, don't use.
   </ItemGroup>
 </Project>
