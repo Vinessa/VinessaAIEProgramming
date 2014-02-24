@@ -79,6 +79,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationData.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GlobalUtilities.cpp" />
     <ClCompile Include="gl_log.cpp" />
@@ -89,6 +90,7 @@
     <ClCompile Include="Vi_Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationData.h" />
     <ClInclude Include="GlobalUtilities.h" />
     <ClInclude Include="gl_log.h" />
     <ClInclude Include="Include\GameEntity.h" />
@@ -107,6 +109,8 @@
     <None Include="Resources\CAT7.png" />
     <None Include="Resources\CAT_RunningDARK.png" />
     <None Include="Resources\CAT_Running_GRID.png" />
+    <None Include="Resources\Foggy.jpg" />
+    <None Include="Resources\FoggyBackground.png" />
     <None Include="Resources\LoadFragmentShader.glsl" />
     <None Include="Resources\LoadVertexShader.glsl" />
     <None Include="Resources\megamanx.png" />
@@ -115,12 +119,9 @@
     <None Include="Resources\OmniKittenTinyFB.png" />
 <<<<<<< HEAD
     <None Include="Resources\RunJumpGapL_R.png" />
-<<<<<<< HEAD
     <None Include="Resources\RunJumpGapL_RAlpha.png" />
 =======
 >>>>>>> parent of 710a952... Working RunningL_RAnimation, mismatched jumping animation UV's
-=======
->>>>>>> parent of bc9ef34... sucky, don't use.
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
