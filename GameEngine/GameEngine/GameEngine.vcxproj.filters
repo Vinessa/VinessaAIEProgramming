@@ -109,5 +109,8 @@
     <None Include="Resources\CAT7.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\RunJumpGapL_R.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

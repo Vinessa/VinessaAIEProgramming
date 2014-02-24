@@ -44,7 +44,7 @@ int main()
 	tbyte::Vector4 color(1,1,1,1);
 	//Quad *tester = new Quad();
 	//Sprite *testsprite = new Sprite("./Resources/OmnikittenLogo3.png", 240, 272, color, window); 
-	GameEntity *Gypsy = new GameEntity("./Resources/CAT7.png",100 ,75, color, window);
+	GameEntity *Gypsy = new GameEntity("./Resources/RunJumpGapL_R.png",100 ,75, color, window);
 	Ortho = new tbyte::Matrix4();
 	Orthographic(0,g_gl_width, g_gl_height, 0,0, 1, Ortho);
 //checking timers for debug

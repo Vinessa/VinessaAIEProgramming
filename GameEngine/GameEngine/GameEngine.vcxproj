@@ -113,6 +113,7 @@
     <None Include="Resources\OmnikittenLogo2.png" />
     <None Include="Resources\OmnikittenLogo3.png" />
     <None Include="Resources\OmniKittenTinyFB.png" />
+    <None Include="Resources\RunJumpGapL_R.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
