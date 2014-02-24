@@ -42,12 +42,9 @@ int main()
 
 	
 	tbyte::Vector4 color(1,1,1,1);
-	tbyte::Vector3 UVCoord1(0,0,0);
-	tbyte::Vector3 UVCoord2(0,1,0);
-	tbyte::Vector3 UVCoord3(1,0,0);
-	tbyte::Vector3 UVCoord4(1,1,0);
 	//Quad *tester = new Quad();
 	//Sprite *testsprite = new Sprite("./Resources/OmnikittenLogo3.png", 240, 272, color, window); 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	Sprite *StaticBackground = new Sprite("./Resources/FoggyBackground.png",500, 500, color, window, 0.0835, 0.5, -1,UVCoord1, UVCoord2, UVCoord3,UVCoord4);
 
@@ -55,25 +52,33 @@ int main()
 =======
 	GameEntity *Gypsy = new GameEntity("./Resources/CAT7.png",100 ,75, color, window);
 >>>>>>> parent of 710a952... Working RunningL_RAnimation, mismatched jumping animation UV's
+=======
+	GameEntity *Gypsy = new GameEntity("./Resources/RunJumpGapL_R.png",100 ,75, color, window);
+>>>>>>> parent of bc9ef34... sucky, don't use.
 	Ortho = new tbyte::Matrix4();
 	Orthographic(0,g_gl_width, g_gl_height, 0,0, 1, Ortho);
+//checking timers for debug
+	/*Vi_Timer timecheck;
 
+	timecheck.StartTimer();
+	timecheck.UpdateTimer();
+	printf ("Start Time: %.f", timecheck.f_StartTime);
+	printf ("Current Time: %.f", timecheck.CurrentTime);
+	printf ("Time Passed: %.f", timecheck.TimePassed);*/
+	//end timercheck
 
 ///////////////////////////RENDER LOOP BEGIN/////////////////////////////////////
 
 	 while (!glfwWindowShouldClose (window)) {
-		 glEnable(GL_ALPHA_TEST);
-		 glAlphaFunc(GL_GREATER,0.5);
+
   // wipe the drawing surface clear
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   //glClearColor(.5,0,1,1); //debug purple
   glClearColor(0,0,0,0);
 
   //tester ->Draw();
-  StaticBackground ->Draw();
   Gypsy -> Input();
   Gypsy ->Draw();
-
   
   //testsprite->Draw();
   // update other events like input handling 

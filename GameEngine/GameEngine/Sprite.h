@@ -15,7 +15,7 @@ class Sprite: public Quad
 public:
 	Sprite(void);
 	~Sprite(void);
-	Sprite(const char*, int, int, tbyte::Vector4 a_v4Color,GLFWwindow*,float a_AniOffsetU,float a_AniOffsetV,float Z_Position, tbyte::Vector3 UVCoord1,tbyte::Vector3 UVCoord2,tbyte::Vector3 UVCoord3,tbyte::Vector3 UVCoord4);
+	Sprite(const char*, int, int, tbyte::Vector4 a_v4Color,GLFWwindow*);
 
 	void Draw();
 	void Input();
@@ -43,8 +43,6 @@ private:
 	tbyte::Vector2 m_uvOffset;
 	unsigned int m_uiTexture;
 	GLFWwindow * GameWindow;
-	double m_UCoord;
-	double m_VCoord;
 
 	
 	
