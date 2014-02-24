@@ -48,13 +48,9 @@ int main()
 	tbyte::Vector3 UVCoord4(1,1,0);
 	//Quad *tester = new Quad();
 	//Sprite *testsprite = new Sprite("./Resources/OmnikittenLogo3.png", 240, 272, color, window); 
-<<<<<<< HEAD
 	Sprite *StaticBackground = new Sprite("./Resources/FoggyBackground.png",500, 500, color, window, 0.0835, 0.5, -1,UVCoord1, UVCoord2, UVCoord3,UVCoord4);
 
 	GameEntity *Gypsy = new GameEntity("./Resources/RunJumpGapL_RAlpha.png",100 ,75, color, window, 0.0835, 0.5, 0, UVCoord1, UVCoord2, UVCoord3,UVCoord4);
-=======
-	GameEntity *Gypsy = new GameEntity("./Resources/CAT7.png",100 ,75, color, window);
->>>>>>> parent of 710a952... Working RunningL_RAnimation, mismatched jumping animation UV's
 	Ortho = new tbyte::Matrix4();
 	Orthographic(0,g_gl_width, g_gl_height, 0,0, 1, Ortho);
 
