@@ -56,7 +56,7 @@ Sprite::~Sprite(void)
 {
 }
 
-Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vector4 a_v4Color,GLFWwindow* window, float a_AniOffsetU,float a_AniOffsetV, float Z_Position,tbyte::Vector3 UVCoord1,tbyte::Vector3 UVCoord2,tbyte::Vector3 UVCoord3,tbyte::Vector3 UVCoord4)
+Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vector4 a_v4Color,GLFWwindow* window)
 {
 	float Framespeed = 0.00004;
 	PlaySpeedTimer = Vi_Timer(Framespeed);
@@ -64,8 +64,8 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 	GameWindow = window;
 	AnimationFrameRun = 0;
 	AnimationFrameJump = 0;
-	AnimationOffsetU = a_AniOffsetU;
-	AnimationOffsetV = a_AniOffsetV;
+	AnimationOffsetU = 0.0835;
+	AnimationOffsetV = 0.5;
 
 	m_v2Scale = tbyte::Vector2(a_iWidth, a_iHeight);
 	m_v3Position = tbyte::Vector3(m_v2Scale.m_fX,m_v2Scale.m_fY,.5);
@@ -87,10 +87,10 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 
 
 	m_v4SpriteColor = a_v4Color;
-	m_aoVerts[0].Pos = tbyte::Vector3(-0.5f, 0.5f, Z_Position);
-	m_aoVerts[1].Pos = tbyte::Vector3(0.5f, 0.5f, Z_Position);
-	m_aoVerts[2].Pos = tbyte::Vector3(-0.5f, -0.5f, Z_Position);
-	m_aoVerts[3].Pos = tbyte::Vector3(0.5f, -0.5f, Z_Position);
+	m_aoVerts[0].Pos = tbyte::Vector3(-0.5f, 0.5f, 0.0f);
+	m_aoVerts[1].Pos = tbyte::Vector3(0.5f, 0.5f, 0.0f);
+	m_aoVerts[2].Pos = tbyte::Vector3(-0.5f, -0.5f, 0.0f);
+	m_aoVerts[3].Pos = tbyte::Vector3(0.5f, -0.5f, 0.0f);
 
 	m_aoVerts[0].Color = m_v4SpriteColor;
 	m_aoVerts[1].Color = m_v4SpriteColor;
@@ -344,10 +344,10 @@ void Sprite::AnimateJumpRight()
 		if (AnimationFrameJump == 0)
 		{
 			AnimationFrameJump++;
-			m_aoVerts[0].V = 0.334f;
-			m_aoVerts[1].V = 0.334f;
-			m_aoVerts[2].V = 0.501f;
-			m_aoVerts[3].V = 0.501f;
+			m_aoVerts[0].V = 0.501f;
+			m_aoVerts[1].V = 0.501f;
+			m_aoVerts[2].V = 0.668f;
+			m_aoVerts[3].V = 0.668f;
 
 			m_aoVerts[0].U =  0.0f;
 			m_aoVerts[1].U =  AnimationOffsetU;
@@ -361,10 +361,10 @@ void Sprite::AnimateJumpRight()
 			{
 				AnimationFrameJump++;
 
-				/*m_aoVerts[0].V = 0.501f;
+				m_aoVerts[0].V = 0.501f;
 				m_aoVerts[1].V = 0.501f;
 				m_aoVerts[2].V = 0.668f;
-				m_aoVerts[3].V = 0.668f;*/
+				m_aoVerts[3].V = 0.668f;
 
 				m_aoVerts[0].U +=  AnimationOffsetU;
 				m_aoVerts[1].U +=  AnimationOffsetU;
@@ -380,10 +380,10 @@ void Sprite::AnimateJumpRight()
 				{
 					AnimationFrameJump++;
 
-					m_aoVerts[0].V = 0.501f;
-					m_aoVerts[1].V = 0.501f;
-					m_aoVerts[2].V = 0.668f;
-					m_aoVerts[3].V = 0.668f;
+					m_aoVerts[0].V = 0.668f;
+					m_aoVerts[1].V = 0.668;
+					m_aoVerts[2].V = 0.835f;
+					m_aoVerts[3].V = 0.835f;
 
 					m_aoVerts[0].U -=  AnimationOffsetU;
 					m_aoVerts[1].U -=  AnimationOffsetU;
@@ -420,10 +420,10 @@ void Sprite::AnimateJumpLeft()
 		if (AnimationFrameJump == 0)
 		{
 			AnimationFrameJump++;
-			m_aoVerts[0].V = 0.668f;
-			m_aoVerts[1].V = 0.668f;
-			m_aoVerts[2].V = 0.835f;
-			m_aoVerts[3].V = 0.835f;
+			m_aoVerts[0].V = 0.835f;
+			m_aoVerts[1].V = 0.835f;
+			m_aoVerts[2].V = 0.668f;
+			m_aoVerts[3].V = 0.668f;
 
 			m_aoVerts[0].U =  0.0f;
 			m_aoVerts[1].U =  AnimationOffsetU;
@@ -437,10 +437,10 @@ void Sprite::AnimateJumpLeft()
 			{
 				AnimationFrameJump++;
 
-				/*	m_aoVerts[0].V = 0.501f;
+				m_aoVerts[0].V = 0.501f;
 				m_aoVerts[1].V = 0.501f;
 				m_aoVerts[2].V = 0.668f;
-				m_aoVerts[3].V = 0.668f;*/
+				m_aoVerts[3].V = 0.668f;
 
 				m_aoVerts[0].U +=  AnimationOffsetU;
 				m_aoVerts[1].U +=  AnimationOffsetU;
@@ -456,10 +456,10 @@ void Sprite::AnimateJumpLeft()
 				{
 					AnimationFrameJump++;
 
-					m_aoVerts[0].V = 0.835f;
-					m_aoVerts[1].V = 0.835f;
-					m_aoVerts[2].V = 1.0f;
-					m_aoVerts[3].V = 1.0f;
+					m_aoVerts[0].V = 0.668f;
+					m_aoVerts[1].V = 0.668;
+					m_aoVerts[2].V = 0.835f;
+					m_aoVerts[3].V = 0.835f;
 
 					m_aoVerts[0].U -=  AnimationOffsetU;
 					m_aoVerts[1].U -=  AnimationOffsetU;
@@ -473,10 +473,10 @@ void Sprite::AnimateJumpLeft()
 					{
 						AnimationFrameJump = 0;
 
-						m_aoVerts[0].V = 0.668f;
-						m_aoVerts[1].V = 0.668f;
-						m_aoVerts[2].V = 0.835f;
-						m_aoVerts[3].V = 0.835f;
+						m_aoVerts[0].V = 0.501f;
+						m_aoVerts[1].V = 0.501f;
+						m_aoVerts[2].V = 0.668f;
+						m_aoVerts[3].V = 0.668f;
 
 						m_aoVerts[0].U =  0.0f;
 						m_aoVerts[1].U =  AnimationOffsetU;

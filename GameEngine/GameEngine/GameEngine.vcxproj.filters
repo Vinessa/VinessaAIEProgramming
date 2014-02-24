@@ -39,9 +39,6 @@
     <ClCompile Include="Vi_Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_log.h">
@@ -69,9 +66,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vi_Timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -116,15 +110,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Resources\RunJumpGapL_R.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\RunJumpGapL_RAlpha.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\Foggy.jpg">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\FoggyBackground.png">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
