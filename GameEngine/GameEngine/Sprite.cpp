@@ -344,10 +344,10 @@ void Sprite::AnimateJumpRight()
 		if (AnimationFrameJump == 0)
 		{
 			AnimationFrameJump++;
-			m_aoVerts[0].V = 0.501f;
-			m_aoVerts[1].V = 0.501f;
-			m_aoVerts[2].V = 0.668f;
-			m_aoVerts[3].V = 0.668f;
+			m_aoVerts[0].V = 0.334f;
+			m_aoVerts[1].V = 0.334f;
+			m_aoVerts[2].V = 0.501f;
+			m_aoVerts[3].V = 0.501f;
 
 			m_aoVerts[0].U =  0.0f;
 			m_aoVerts[1].U =  AnimationOffsetU;
@@ -361,10 +361,10 @@ void Sprite::AnimateJumpRight()
 			{
 				AnimationFrameJump++;
 
-				m_aoVerts[0].V = 0.501f;
+				/*m_aoVerts[0].V = 0.501f;
 				m_aoVerts[1].V = 0.501f;
 				m_aoVerts[2].V = 0.668f;
-				m_aoVerts[3].V = 0.668f;
+				m_aoVerts[3].V = 0.668f;*/
 
 				m_aoVerts[0].U +=  AnimationOffsetU;
 				m_aoVerts[1].U +=  AnimationOffsetU;
@@ -380,10 +380,10 @@ void Sprite::AnimateJumpRight()
 				{
 					AnimationFrameJump++;
 
-					m_aoVerts[0].V = 0.668f;
-					m_aoVerts[1].V = 0.668;
-					m_aoVerts[2].V = 0.835f;
-					m_aoVerts[3].V = 0.835f;
+					m_aoVerts[0].V = 0.501f;
+					m_aoVerts[1].V = 0.501f;
+					m_aoVerts[2].V = 0.668f;
+					m_aoVerts[3].V = 0.668f;
 
 					m_aoVerts[0].U -=  AnimationOffsetU;
 					m_aoVerts[1].U -=  AnimationOffsetU;
@@ -420,10 +420,10 @@ void Sprite::AnimateJumpLeft()
 		if (AnimationFrameJump == 0)
 		{
 			AnimationFrameJump++;
-			m_aoVerts[0].V = 0.835f;
-			m_aoVerts[1].V = 0.835f;
-			m_aoVerts[2].V = 0.668f;
-			m_aoVerts[3].V = 0.668f;
+			m_aoVerts[0].V = 0.668f;
+			m_aoVerts[1].V = 0.668f;
+			m_aoVerts[2].V = 0.835f;
+			m_aoVerts[3].V = 0.835f;
 
 			m_aoVerts[0].U =  0.0f;
 			m_aoVerts[1].U =  AnimationOffsetU;
@@ -437,10 +437,10 @@ void Sprite::AnimateJumpLeft()
 			{
 				AnimationFrameJump++;
 
-				m_aoVerts[0].V = 0.501f;
+				/*	m_aoVerts[0].V = 0.501f;
 				m_aoVerts[1].V = 0.501f;
 				m_aoVerts[2].V = 0.668f;
-				m_aoVerts[3].V = 0.668f;
+				m_aoVerts[3].V = 0.668f;*/
 
 				m_aoVerts[0].U +=  AnimationOffsetU;
 				m_aoVerts[1].U +=  AnimationOffsetU;
@@ -456,10 +456,10 @@ void Sprite::AnimateJumpLeft()
 				{
 					AnimationFrameJump++;
 
-					m_aoVerts[0].V = 0.668f;
-					m_aoVerts[1].V = 0.668;
-					m_aoVerts[2].V = 0.835f;
-					m_aoVerts[3].V = 0.835f;
+					m_aoVerts[0].V = 0.835f;
+					m_aoVerts[1].V = 0.835f;
+					m_aoVerts[2].V = 1.0f;
+					m_aoVerts[3].V = 1.0f;
 
 					m_aoVerts[0].U -=  AnimationOffsetU;
 					m_aoVerts[1].U -=  AnimationOffsetU;
@@ -473,10 +473,10 @@ void Sprite::AnimateJumpLeft()
 					{
 						AnimationFrameJump = 0;
 
-						m_aoVerts[0].V = 0.501f;
-						m_aoVerts[1].V = 0.501f;
-						m_aoVerts[2].V = 0.668f;
-						m_aoVerts[3].V = 0.668f;
+						m_aoVerts[0].V = 0.668f;
+						m_aoVerts[1].V = 0.668f;
+						m_aoVerts[2].V = 0.835f;
+						m_aoVerts[3].V = 0.835f;
 
 						m_aoVerts[0].U =  0.0f;
 						m_aoVerts[1].U =  AnimationOffsetU;
