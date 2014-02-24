@@ -21,8 +21,11 @@ public:
 	void Input();
 	void SetVertexData(Vertex* a_vertexData);
 	const Vertex* GetVertexData() const;
-	void Animate();
-	float Framespeed;
+	void AnimateRunR();
+	void AnimateRunL();
+	void AnimateJump();
+	//void Animate();
+
 
 
 
@@ -40,6 +43,9 @@ private:
 	tbyte::Vector2 m_uvOffset;
 	unsigned int m_uiTexture;
 	GLFWwindow * GameWindow;
+
+	
+	
 	
 
 
@@ -50,8 +56,11 @@ private:
 	unsigned int m_uDestinationBlendMode;
 	int tex_loc;
 	int matrix_location;
-	int AnimationFrame;
-	float AnimationOffset;
+	int AnimationFrameRun;
+	int AnimationFrameJump;
+	//int AnimationFrame;
+	float AnimationOffsetU;
+	float AnimationOffsetV;
 	Vi_Timer PlaySpeedTimer;
 	float DT;
 };

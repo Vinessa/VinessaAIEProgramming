@@ -104,6 +104,7 @@
     <None Include="Resources\CAT3.png" />
     <None Include="Resources\CAT3small.png" />
     <None Include="Resources\CAT4.png" />
+    <None Include="Resources\CAT7.png" />
     <None Include="Resources\CAT_RunningDARK.png" />
     <None Include="Resources\CAT_Running_GRID.png" />
     <None Include="Resources\LoadFragmentShader.glsl" />

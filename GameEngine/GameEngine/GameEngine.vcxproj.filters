@@ -106,5 +106,8 @@
     <None Include="Resources\CAT4.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\CAT7.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
