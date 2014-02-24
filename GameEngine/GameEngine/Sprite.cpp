@@ -99,8 +99,8 @@ Sprite::Sprite(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyte::Vecto
 
 	m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
 	m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.0835f);
-	m_aoVerts[2].UV = tbyte::Vector2(0.167f, 0.0f);
-	m_aoVerts[3].UV = tbyte::Vector2(0.167f, 0.0835f);
+	m_aoVerts[2].UV = tbyte::Vector2(0.25f, 0.0f);
+	m_aoVerts[3].UV = tbyte::Vector2(0.25f, 0.0835f);
 
 	GLuint elements[] =
 	{
@@ -227,7 +227,7 @@ void Sprite::Input()
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_SPACE))
 	{
 		//m_v3Position += tbyte::Vector3((0.05f*PlaySpeedTimer.DeltaTime), 0.0f, 0.0f);
-		AnimateJumpRight();
+		AnimateJump();
 	}
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -259,8 +259,8 @@ void Sprite::AnimateRunR()
 			AnimationFrameRun++;
 			m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
 			m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.0835f);
-			m_aoVerts[2].UV = tbyte::Vector2(0.167f, 0.0f);
-			m_aoVerts[3].UV = tbyte::Vector2(0.167f, 0.0835f);
+			m_aoVerts[2].UV = tbyte::Vector2(0.25f, 0.0f);
+			m_aoVerts[3].UV = tbyte::Vector2(0.25f, 0.0835f);
 			PlaySpeedTimer.SetStartTime();
 		}
 
@@ -284,8 +284,8 @@ void Sprite::AnimateRunR()
 
 					m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
 					m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.0835f);
-					m_aoVerts[2].UV = tbyte::Vector2(0.167f, 0.0f);
-					m_aoVerts[3].UV = tbyte::Vector2(0.167f, 0.0835f);
+					m_aoVerts[2].UV = tbyte::Vector2(0.25f, 0.0f);
+					m_aoVerts[3].UV = tbyte::Vector2(0.25f, 0.0835f);
 					PlaySpeedTimer.SetStartTime();
 				}
 
@@ -301,53 +301,53 @@ void Sprite::AnimateRunL()
 		if (AnimationFrameRun == 0)
 		{
 			AnimationFrameRun++;
-			m_aoVerts[0].UV = tbyte::Vector2(0.167f, 0.0f);
-			m_aoVerts[1].UV = tbyte::Vector2(0.167f, 0.0835f);
-			m_aoVerts[2].UV = tbyte::Vector2(0.334f, 0.0f);
-			m_aoVerts[3].UV = tbyte::Vector2(0.334f, 0.0835f);
+			m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
+			m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.0835f);
+			m_aoVerts[2].UV = tbyte::Vector2(0.25f, 0.0f);
+			m_aoVerts[3].UV = tbyte::Vector2(0.25f, 0.0835f);
 			PlaySpeedTimer.SetStartTime();
 		}
 		else
 			if((AnimationFrameRun < 12)&&(AnimationFrameRun > 0))
+		{
+			AnimationFrameRun++;
+
+			m_aoVerts[0].U +=  AnimationOffsetU;
+			m_aoVerts[1].U +=  AnimationOffsetU;
+			m_aoVerts[2].U +=  AnimationOffsetU;
+			m_aoVerts[3].U +=  AnimationOffsetU;
+			PlaySpeedTimer.SetStartTime();
+
+
+		}
+
+		else
+			if(AnimationFrameRun >= 12)
 			{
-				AnimationFrameRun++;
+				AnimationFrameRun = 0;
 
-				m_aoVerts[0].U +=  AnimationOffsetU;
-				m_aoVerts[1].U +=  AnimationOffsetU;
-				m_aoVerts[2].U +=  AnimationOffsetU;
-				m_aoVerts[3].U +=  AnimationOffsetU;
+				m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
+				m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.0835f);
+				m_aoVerts[2].UV = tbyte::Vector2(0.25f, 0.0f);
+				m_aoVerts[3].UV = tbyte::Vector2(0.25f, 0.0835f);
 				PlaySpeedTimer.SetStartTime();
-
-
 			}
-
-			else
-				if(AnimationFrameRun >= 12)
-				{
-					AnimationFrameRun = 0;
-
-					m_aoVerts[0].UV = tbyte::Vector2(0.167f, 0.0f);
-					m_aoVerts[1].UV = tbyte::Vector2(0.167f, 0.0835f);
-					m_aoVerts[2].UV = tbyte::Vector2(0.334f, 0.0f);
-					m_aoVerts[3].UV = tbyte::Vector2(0.334f, 0.0835f);
-					PlaySpeedTimer.SetStartTime();
-				}
 
 
 
 }
 
-void Sprite::AnimateJumpRight()
+void Sprite::AnimateJump()
 { 
 	AnimationFrameRun = 0;
 	if((PlaySpeedTimer.TimeUpCheck()) == true)
 		if (AnimationFrameJump == 0)
 		{
 			AnimationFrameJump++;
-			m_aoVerts[0].V = 0.501f;
-			m_aoVerts[1].V = 0.501f;
-			m_aoVerts[2].V = 0.668f;
-			m_aoVerts[3].V = 0.668f;
+			m_aoVerts[0].V = 0.25f;
+			m_aoVerts[1].V = 0.25f;
+			m_aoVerts[2].V = 0.5f;
+			m_aoVerts[3].V = 0.5f;
 
 			m_aoVerts[0].U =  0.0f;
 			m_aoVerts[1].U =  AnimationOffsetU;
@@ -357,133 +357,57 @@ void Sprite::AnimateJumpRight()
 
 		}
 		else
-			if((AnimationFrameJump < 12)&&(AnimationFrameJump > 0))
-			{
-				AnimationFrameJump++;
-
-				m_aoVerts[0].V = 0.501f;
-				m_aoVerts[1].V = 0.501f;
-				m_aoVerts[2].V = 0.668f;
-				m_aoVerts[3].V = 0.668f;
-
-				m_aoVerts[0].U +=  AnimationOffsetU;
-				m_aoVerts[1].U +=  AnimationOffsetU;
-				m_aoVerts[2].U +=  AnimationOffsetU;
-				m_aoVerts[3].U +=  AnimationOffsetU;
-				PlaySpeedTimer.SetStartTime();
-
-
-			}
-
-			else
-				if((AnimationFrameJump >= 12) && (AnimationFrameJump < 23))
-				{
-					AnimationFrameJump++;
-
-					m_aoVerts[0].V = 0.668f;
-					m_aoVerts[1].V = 0.668;
-					m_aoVerts[2].V = 0.835f;
-					m_aoVerts[3].V = 0.835f;
-
-					m_aoVerts[0].U -=  AnimationOffsetU;
-					m_aoVerts[1].U -=  AnimationOffsetU;
-					m_aoVerts[2].U -=  AnimationOffsetU;
-					m_aoVerts[3].U -=  AnimationOffsetU;
-					PlaySpeedTimer.SetStartTime();
-				}
-
-				else
-					if (AnimationFrameJump >= 23)
-					{
-						AnimationFrameJump = 0;
-
-						m_aoVerts[0].V = 0.501f;
-						m_aoVerts[1].V = 0.501f;
-						m_aoVerts[2].V = 0.668f;
-						m_aoVerts[3].V = 0.668f;
-
-						m_aoVerts[0].U =  0.0f;
-						m_aoVerts[1].U =  AnimationOffsetU;
-						m_aoVerts[2].U =  0.0f;
-						m_aoVerts[3].U =  AnimationOffsetU;
-						PlaySpeedTimer.SetStartTime();
-					}
-
-
-
-}
-
-void Sprite::AnimateJumpLeft()
-{ 
-	AnimationFrameRun = 0;
-	if((PlaySpeedTimer.TimeUpCheck()) == true)
-		if (AnimationFrameJump == 0)
+		if((AnimationFrameJump < 12)&&(AnimationFrameJump > 0))
 		{
 			AnimationFrameJump++;
-			m_aoVerts[0].V = 0.835f;
-			m_aoVerts[1].V = 0.835f;
-			m_aoVerts[2].V = 0.668f;
-			m_aoVerts[3].V = 0.668f;
 
-			m_aoVerts[0].U =  0.0f;
-			m_aoVerts[1].U =  AnimationOffsetU;
-			m_aoVerts[2].U =  0.0f;
-			m_aoVerts[3].U =  AnimationOffsetU;
+			m_aoVerts[0].V = 0.25f;
+			m_aoVerts[1].V = 0.25f;
+			m_aoVerts[2].V = 0.5f;
+			m_aoVerts[3].V = 0.5f;
+
+			m_aoVerts[0].U +=  AnimationOffsetU;
+			m_aoVerts[1].U +=  AnimationOffsetU;
+			m_aoVerts[2].U +=  AnimationOffsetU;
+			m_aoVerts[3].U +=  AnimationOffsetU;
 			PlaySpeedTimer.SetStartTime();
 
+
 		}
+
 		else
-			if((AnimationFrameJump < 12)&&(AnimationFrameJump > 0))
+			if((AnimationFrameJump >= 12) && (AnimationFrameJump < 23))
 			{
 				AnimationFrameJump++;
 
-				m_aoVerts[0].V = 0.501f;
-				m_aoVerts[1].V = 0.501f;
-				m_aoVerts[2].V = 0.668f;
-				m_aoVerts[3].V = 0.668f;
+				m_aoVerts[0].V = 0.5f;
+				m_aoVerts[1].V = 0.5f;
+				m_aoVerts[2].V = 0.75f;
+				m_aoVerts[3].V = 0.75f;
 
-				m_aoVerts[0].U +=  AnimationOffsetU;
-				m_aoVerts[1].U +=  AnimationOffsetU;
-				m_aoVerts[2].U +=  AnimationOffsetU;
-				m_aoVerts[3].U +=  AnimationOffsetU;
+				m_aoVerts[0].U -=  AnimationOffsetU;
+				m_aoVerts[1].U -=  AnimationOffsetU;
+				m_aoVerts[2].U -=  AnimationOffsetU;
+				m_aoVerts[3].U -=  AnimationOffsetU;
 				PlaySpeedTimer.SetStartTime();
-
-
 			}
 
 			else
-				if((AnimationFrameJump >= 12) && (AnimationFrameJump < 23))
+				if (AnimationFrameJump >= 23)
 				{
-					AnimationFrameJump++;
+					AnimationFrameJump = 0;
 
-					m_aoVerts[0].V = 0.668f;
-					m_aoVerts[1].V = 0.668;
-					m_aoVerts[2].V = 0.835f;
-					m_aoVerts[3].V = 0.835f;
+					m_aoVerts[0].V = 0.25f;
+					m_aoVerts[1].V = 0.25f;
+					m_aoVerts[2].V = 0.5f;
+					m_aoVerts[3].V = 0.5f;
 
-					m_aoVerts[0].U -=  AnimationOffsetU;
-					m_aoVerts[1].U -=  AnimationOffsetU;
-					m_aoVerts[2].U -=  AnimationOffsetU;
-					m_aoVerts[3].U -=  AnimationOffsetU;
+					m_aoVerts[0].U =  0.0f;
+					m_aoVerts[1].U =  AnimationOffsetU;
+					m_aoVerts[2].U =  0.0f;
+					m_aoVerts[3].U =  AnimationOffsetU;
 					PlaySpeedTimer.SetStartTime();
 				}
-
-				else
-					if (AnimationFrameJump >= 23)
-					{
-						AnimationFrameJump = 0;
-
-						m_aoVerts[0].V = 0.501f;
-						m_aoVerts[1].V = 0.501f;
-						m_aoVerts[2].V = 0.668f;
-						m_aoVerts[3].V = 0.668f;
-
-						m_aoVerts[0].U =  0.0f;
-						m_aoVerts[1].U =  AnimationOffsetU;
-						m_aoVerts[2].U =  0.0f;
-						m_aoVerts[3].U =  AnimationOffsetU;
-						PlaySpeedTimer.SetStartTime();
-					}
 
 
 

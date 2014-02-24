@@ -23,8 +23,7 @@ public:
 	const Vertex* GetVertexData() const;
 	void AnimateRunR();
 	void AnimateRunL();
-	void AnimateJumpRight();
-	void AnimateJumpLeft();
+	void AnimateJump();
 	//void Animate();
 
 

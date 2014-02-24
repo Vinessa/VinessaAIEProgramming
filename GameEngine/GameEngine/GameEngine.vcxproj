@@ -117,8 +117,11 @@
     <None Include="Resources\OmnikittenLogo2.png" />
     <None Include="Resources\OmnikittenLogo3.png" />
     <None Include="Resources\OmniKittenTinyFB.png" />
+<<<<<<< HEAD
     <None Include="Resources\RunJumpGapL_R.png" />
     <None Include="Resources\RunJumpGapL_RAlpha.png" />
+=======
+>>>>>>> parent of 710a952... Working RunningL_RAnimation, mismatched jumping animation UV's
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
