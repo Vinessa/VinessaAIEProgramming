@@ -115,6 +115,7 @@
     <None Include="Resources\CAT7.png">
       <Filter>Resource Files</Filter>
     </None>
+<<<<<<< HEAD
     <None Include="Resources\RunJumpGapL_R.png">
       <Filter>Resource Files</Filter>
     </None>
@@ -127,5 +128,7 @@
     <None Include="Resources\FoggyBackground.png">
       <Filter>Resource Files</Filter>
     </None>
+=======
+>>>>>>> parent of 710a952... Working RunningL_RAnimation, mismatched jumping animation UV's
   </ItemGroup>
 </Project>
