@@ -1,4 +1,8 @@
+//By Vinessa
+
 #pragma once
+#ifndef _GLOBALUTILITIES_H_
+#define _GLOBALUTILITIES_H_
 #include <TerrehByteMath.h>
 using namespace tbyte;
 
@@ -32,3 +36,4 @@ struct Vertex
 				&& R == rhs.R && G == rhs.G && B == rhs.B && A == rhs.A && U == rhs.U && V == rhs.V);
 		}};
 
+#endif //_GLOBALUTILITIES_H_

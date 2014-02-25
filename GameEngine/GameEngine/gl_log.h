@@ -1,3 +1,5 @@
+// By Vinessa
+
 #define GL_LOG_FILE "gl.log"
 #ifndef __GL_LOG_H_
 #define __GL_LOG_H_

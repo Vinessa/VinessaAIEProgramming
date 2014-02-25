@@ -1,5 +1,12 @@
+// By Vinessa
+
 #pragma once
-#include "sprite.h"
+#ifndef _GAME_ENTITY_H_
+#define _GAME_ENTITY_H_
+#include "Sprite.h"
+#include "Animations.h"
+
+
 class GameEntity :
 	public Sprite
 {
@@ -10,11 +17,20 @@ public:
 	GameEntity(const char* a_TextureName, int a_iEntityWidth, int a_iEntityHeight, tbyte::Vector4 a_v4MaterialColor, GLFWwindow* Window);
 	~GameEntity(void);
 
-	void Move();
+	Animations RunRight;
+	
+
+	void Input();
+	void Animate(Animations &a_AnimationName);
+	Vi_Timer PlaySpeedTimer;
+	
+
+	/*void Move();
 	void Scale();
 	void PlayAnimation();
-	void StopAnimation();
+	void StopAnimation();*/
 
-	tbyte::Vector2 Velocity;
+	
 };
 
+#endif //_GAME_ENTITY_H_

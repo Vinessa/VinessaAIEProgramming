@@ -1,10 +1,11 @@
+//By Vinessa
+
 #include <GL/glew.h>
 #define GLFW_DLL
 #include <GL/glfw3.h>
 #include <stdio.h>
-//#include "Quad.h"
-//#include "Sprite.h"
-#include "GameEntity.h"
+#include <GameEntity.h>
+
 #include "Vi_Timer.h"
 #include <stdio.h>
 

@@ -9,6 +9,7 @@
 #include <gl\glew.h>
 #include <GL/glfw3.h>
 #include "Vi_Timer.h"
+#include "Animations.h"
 
 class Sprite: public Quad
 {
@@ -18,19 +19,19 @@ public:
 	Sprite(const char*, int, int, tbyte::Vector4 a_v4Color,GLFWwindow*);
 
 	void Draw();
-	void Input();
+	//virtual void Input();
 	void SetVertexData(Vertex* a_vertexData);
 	const Vertex* GetVertexData() const;
 	void AnimateRunR();
 	void AnimateRunL();
 	void AnimateJumpRight();
 	void AnimateJumpLeft();
-	//void Animate();
+	//void Animate(Animations a_AnimationName);
 
 
 
-
-private:
+	GLFWwindow * GameWindow;
+//private:
 	Vertex m_aoVerts[4];
 	tbyte::Matrix4 * modelMatrix;
 	tbyte::Matrix4 MVP; 
@@ -43,7 +44,7 @@ private:
 	tbyte::Vector2 m_uvScale;
 	tbyte::Vector2 m_uvOffset;
 	unsigned int m_uiTexture;
-	GLFWwindow * GameWindow;
+	
 
 	
 	
@@ -62,7 +63,7 @@ private:
 	//int AnimationFrame;
 	float AnimationOffsetU;
 	float AnimationOffsetV;
-	Vi_Timer PlaySpeedTimer;
+	
 	float DT;
 };
 #endif //_SPRITE_H_

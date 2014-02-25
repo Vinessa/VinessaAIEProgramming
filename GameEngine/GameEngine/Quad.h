@@ -1,3 +1,5 @@
+// By Vinessa
+
 #pragma once
 #ifndef _QUAD_H_
 #define _QUAD_H_

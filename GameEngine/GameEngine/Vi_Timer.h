@@ -1,5 +1,6 @@
 // A timer for when I need to set timers, by Vinessa Mayer 2/18/2014. Last revised 2/18/2013
-
+#ifndef _VI_TIMER_H_
+#define _VI_TIMER_H_
 #pragma once
 
 #include <time.h>
@@ -51,3 +52,4 @@ public:
 
 };
 
+#endif //_VI_TIMER_H_
