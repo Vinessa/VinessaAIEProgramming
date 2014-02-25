@@ -18,6 +18,11 @@ public:
 	~GameEntity(void);
 
 	Animations RunRight;
+	Animations RunLeft;
+	Animations Jump;
+
+	void AnimateHalfSecond(Animations &a_AnimationName);
+	void AnimateSecond(Animations &a_AnimationName);
 	
 
 	void Input();

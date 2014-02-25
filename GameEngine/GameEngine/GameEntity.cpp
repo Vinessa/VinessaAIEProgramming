@@ -13,8 +13,11 @@ GameEntity::GameEntity(const char* a_pTexture, int a_iWidth, int a_iHeight, tbyt
 	
 	PlaySpeedTimer.SetStartTime();
 	PlaySpeedTimer = Vi_Timer(Framespeed);
-	RunRight = Animations(0.0f, 0.0f, 0.0f, 0.0835f, 0.167f, 0.0f, 0.167f, 0.0835f, 0.0835, 0.5, 12);
-	RunRight.CurrentFrame == 0;
+	RunRight = Animations(0.0f, 0.0f, 0.0f, 0.0835f, 0.167f, 0.0f, 0.167f, 0.0835f, 0.0835f, 0.5, 12);
+	RunLeft = Animations(0.167f, 0.0f, 0.167f, 0.0835f, 0.334f, 0.0f, 0.334f, 0.0835f,0.0835f, 0.5, 12);
+
+	RunRight.CurrentFrame = 0;// see below.
+	RunLeft.CurrentFrame = 0;// may change these two to track the same current frame to aid in animation blending
 }
 
 GameEntity::~GameEntity(void)
@@ -23,10 +26,20 @@ GameEntity::~GameEntity(void)
 }
 
 
+void GameEntity::Animate(Animations& a_AnimationName)
+{
+	if (a_AnimationName.m_LengthInFrames == 12)
+	{
+		AnimateHalfSecond(a_AnimationName);
+	}
+
+	else
+		AnimateSecond(a_AnimationName);
+
+}
 
 
-
-void GameEntity::Animate(Animations &a_AnimationName)
+void GameEntity::AnimateHalfSecond(Animations &a_AnimationName)
 { 
 	//a_AnimationName.CurrentFrame = 0;
 
@@ -70,6 +83,49 @@ void GameEntity::Animate(Animations &a_AnimationName)
 
 }
 
+void GameEntity::AnimateSecond(Animations &a_AnimationName)
+{ 
+	//a_AnimationName.CurrentFrame = 0;
+
+	if((PlaySpeedTimer.TimeUpCheck()) == true)
+		if (a_AnimationName.CurrentFrame == 0)
+		{
+			(a_AnimationName.CurrentFrame)++;
+			m_aoVerts[0].UV = a_AnimationName.StartUV0;
+			m_aoVerts[1].UV = a_AnimationName.StartUV1;
+			m_aoVerts[2].UV = a_AnimationName.StartUV2;
+			m_aoVerts[3].UV = a_AnimationName.StartUV3;
+			PlaySpeedTimer.SetStartTime();
+		}
+
+		else
+			if((a_AnimationName.CurrentFrame < a_AnimationName.m_LengthInFrames)&&(a_AnimationName.CurrentFrame > 0))
+			{
+				(a_AnimationName.CurrentFrame)++;
+				m_aoVerts[0].U +=  a_AnimationName.m_AnimationOffsetU;
+				m_aoVerts[1].U +=  a_AnimationName.m_AnimationOffsetU;
+				m_aoVerts[2].U +=  a_AnimationName.m_AnimationOffsetU;
+				m_aoVerts[3].U +=  a_AnimationName.m_AnimationOffsetU;
+				PlaySpeedTimer.SetStartTime();
+
+
+			}
+
+			else
+				if(a_AnimationName.CurrentFrame >= a_AnimationName.m_LengthInFrames)
+				{
+					a_AnimationName.CurrentFrame = 0;
+
+				/*	m_aoVerts[0].UV = tbyte::Vector2(0.0f, 0.0f);
+					m_aoVerts[1].UV = tbyte::Vector2(0.0f, 0.0835f);
+					m_aoVerts[2].UV = tbyte::Vector2(0.167f, 0.0f);
+					m_aoVerts[3].UV = tbyte::Vector2(0.167f, 0.0835f);*/
+					PlaySpeedTimer.SetStartTime();
+				}
+
+
+
+}
 //void Sprite::AnimateRunL()
 //{	
 //	AnimationFrameJump = 0;
@@ -277,7 +333,7 @@ void GameEntity::Input()
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_A))
 	{
 		//m_v3Position += tbyte::Vector3((-0.05f*PlaySpeedTimer.DeltaTime), 0.0f, 0.0f);
-		//AnimateRunL();
+		Animate(RunLeft);
 	}
 
 	if (GLFW_PRESS == glfwGetKey (GameWindow, GLFW_KEY_S))

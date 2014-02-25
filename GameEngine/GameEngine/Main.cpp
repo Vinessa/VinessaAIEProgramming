@@ -62,6 +62,8 @@ int main()
 
 	 while (!glfwWindowShouldClose (window)) {
 
+		 glEnable(GL_ALPHA_TEST);
+		 glAlphaFunc(GL_GREATER,0.5);
   // wipe the drawing surface clear
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   //glClearColor(.5,0,1,1); //debug purple
