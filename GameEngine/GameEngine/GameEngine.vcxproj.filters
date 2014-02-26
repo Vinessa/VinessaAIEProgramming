@@ -118,5 +118,10 @@
     <None Include="Resources\RunJumpGapL_R.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\Gypsy_sheet.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\GypsyXSheet.xml" />
+    <None Include="Resources\Gypsy_Sheet.xml" />
   </ItemGroup>
 </Project>

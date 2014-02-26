@@ -1,24 +1,22 @@
 // By Vinessa
 
 #define GL_LOG_FILE "gl.log"
-#ifndef __GL_LOG_H_
-#define __GL_LOG_H_
+#ifndef _GL_LOG_H_
+#define _GL_LOG_H_
 #include <time.h>
 #include <fstream>
-#include <gl/glew.h>
-#include <GL/glfw3.h>
-
-bool restart_gl_log ();
+#include <iostream>
+#include <GL/glew.h>
 
 
-bool gl_log (const char* message, const char* filename, int line);
+bool restart_gl_log () ;
+
+bool gl_log (const char* message, const char* filename, int line); 
+bool printShaderInfoLog(GLuint obj);
+
+bool printProgramInfoLog(GLuint obj);
 
 
-void printShaderInfoLog (GLuint obj);
+void log_gl_params ();
 
-
-void printProgramInfoLog (GLuint obj);
-
-
-	
-#endif /*_GL_LOG_H_*/
+#endif //_GL_LOG_H_

@@ -1,69 +1,46 @@
-//By Vinessa
+//BY Vinessa
 
-#pragma once
 #ifndef _SPRITE_H_
 #define _SPRITE_H_
+
 #include "GlobalUtilities.h"
-#include"Quad.h"
+#include "Quad.h"
 #include <SOIL.h>
-#include <gl\glew.h>
-#include <GL/glfw3.h>
-#include "Vi_Timer.h"
-#include "Animations.h"
+
 
 class Sprite: public Quad
 {
 public:
 	Sprite(void);
 	~Sprite(void);
-	Sprite(const char*, int, int, tbyte::Vector4 a_v4Color,GLFWwindow*);
+	Sprite( const char* a_pTexture, int a_iWidth, int a_iHeight, Vector4 a_v4Color,GLFWwindow* );
+	
+	virtual void Draw();
+	void Input();
 
-	void Draw();
-	//virtual void Input();
-	void SetVertexData(Vertex* a_vertexData);
+	void SetPosition(Vector3 a_v3Pos);
+	void SetVertexData( Vertex* a_vertexData );
 	const Vertex* GetVertexData() const;
-	void AnimateRunR();
-	void AnimateRunL();
-	void AnimateJumpRight();
-	void AnimateJumpLeft();
-	//void Animate(Animations a_AnimationName);
 
 
+protected:
 
-	GLFWwindow * GameWindow;
-//private:
-	Vertex m_aoVerts[4];
-	tbyte::Matrix4 * modelMatrix;
-	tbyte::Matrix4 MVP; 
-	tbyte::Vector2 m_v2Scale;
-	tbyte::Vector3 m_v3Position;
-	tbyte::Vector4 m_v4SpriteColor;
-
-	tbyte::Vector2 m_minUVCoords;
-	tbyte::Vector2 m_maxUVCoords;
-	tbyte::Vector2 m_uvScale;
-	tbyte::Vector2 m_uvOffset;
-	unsigned int m_uiTexture;
-	
-
-	
-	
-	
-
-
-
-	//this part below will be used later...
-
-	unsigned int m_uSourceBlendMode;
-	unsigned int m_uDestinationBlendMode;
-	int tex_loc;
-	int matrix_location;
-	int AnimationFrameRun;
-	int AnimationFrameJump;
-	//int AnimationFrame;
-	float AnimationOffsetU;
-	float AnimationOffsetV;
-	
-	float DT;
+	Vector2 m_v2Scale;
+	Vector3 m_v3Position;
+	Vector4 m_v4SpriteColor;
 };
-#endif //_SPRITE_H_
+
+
+
+inline void	Sprite::SetVertexData( Vertex* a_vertexData )
+{
+	memcpy( &m_aoVerts, a_vertexData, sizeof(Vertex) * 4 );
+}
+
+inline const Vertex* Sprite::GetVertexData() const
+{
+	return static_cast<const Vertex*>( m_aoVerts );
+}
+
+
+#endif

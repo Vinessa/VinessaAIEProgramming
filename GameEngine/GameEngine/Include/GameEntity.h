@@ -1,41 +1,71 @@
-// By Vinessa
 
-#pragma once
-#ifndef _GAME_ENTITY_H_
-#define _GAME_ENTITY_H_
+
+#ifndef _GAMEENTITY_H_
+#define _GAMEENTITY_H_
+
 #include "Sprite.h"
-#include "Animations.h"
+#include <string>
+#include <tinyxml2.h>
 
+
+
+
+struct AniSprite
+{
+	union{
+		struct{
+			std::string sName;
+			Vector2 v2Size;
+			Vector4 v4Location;
+		};
+		struct
+		{
+			std::string Name;
+			float width, height;
+			float x0,x1,y0,y1;
+		};
+	};
+};
+
+
+struct Atlas
+{
+	Vector2 v2Size;
+	std::string sSheet;
+	std::string sAnimations;
+};
+
+typedef std::vector<std::string> frame;
 
 class GameEntity :
 	public Sprite
 {
 public:
-
-
 	GameEntity(void);
-	GameEntity(const char* a_TextureName, int a_iEntityWidth, int a_iEntityHeight, tbyte::Vector4 a_v4MaterialColor, GLFWwindow* Window);
 	~GameEntity(void);
-
-	Animations RunRight;
-	Animations RunLeft;
-	Animations Jump;
-
-	void AnimateHalfSecond(Animations &a_AnimationName);
-	void AnimateSecond(Animations &a_AnimationName);
-	
-
-	void Input();
-	void Animate(Animations &a_AnimationName);
-	Vi_Timer PlaySpeedTimer;
-	
-
-	/*void Move();
-	void Scale();
+	GameEntity( const char* a_pSpriteSheet, GLFWwindow * window);
+	virtual void Draw();
+	void Update();
+	void SetAnimation(std::string animation,PlayType type);
+	void SetAnimation(std::string animation,PlayType type, int frame);
 	void PlayAnimation();
-	void StopAnimation();*/
+	void SetSprite();
+	void LoadSprites(const char* a_pSpriteSheet);
+	void LoadAnimations(const char* a_pAnimationSheet);
+	void Input();
+	std::map<std::string,AniSprite> mSprites;
+	std::map<std::string,frame> mAnimations;
+	Atlas atlas;
 
-	
+	std::string currentAnimation, currentSprite;
+	int currentFrame, loopFrame;
+	double m_dFrames;
+	PlayType currentPlayType;
+
+
+double elapsedTime;
+
 };
 
-#endif //_GAME_ENTITY_H_
+
+#endif //_GAMEENTITY_H_
