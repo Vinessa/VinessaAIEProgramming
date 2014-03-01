@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <atlas width = "512" height = "512" sheet ="../resources/GypsyXsheet.png" animations = "../resources/GypsyXsheet.xml">
-//
   <sprite name ="RunRight 0" x0 = "0" x1 ="7" y0 ="0" y1="48"/>
   <sprite name ="RunRight 1" x0 = "12" x1 ="33" y0 ="19" y1="48"/>
   <sprite name ="RunRight 2" x0 = "38" x1 ="67" y0 ="6" y1="48"/>

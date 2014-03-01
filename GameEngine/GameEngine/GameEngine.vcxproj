@@ -40,7 +40,7 @@
     <IncludePath>$(ProjectDir)libs\glfw\include;$(ProjectDir)libs\glew\include;$(ProjectDir)libs\TerrehByteMath\include;$(ProjectDir)libs\SOIL\include;$(ProjectDir)\Include;$(ProjectDir)libs\tinyxml2\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(ProjectDir)libs\TerrehByteMath\lib;$(ProjectDir)\libs\glew\lib;$(ProjectDir)\libs\glfw\lib-msvc110;$(ProjectDir)\libs\SOIL\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)libs\TerrehByteMath\lib;$(ProjectDir)\libs\glew\lib;$(ProjectDir)\libs\glfw\lib-msvc110;$(ProjectDir)\libs\SOIL\lib;$(ProjectDir)\libs\tinyxml2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -51,7 +51,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;SOIL.lib;MathLibTerrehbyte.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;SOIL.lib;MathLibTerrehbyte.lib;tinyxml2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
     <PreBuildEvent>
@@ -111,9 +111,13 @@
     <None Include="Resources\CAT7.png" />
     <None Include="Resources\CAT_RunningDARK.png" />
     <None Include="Resources\CAT_Running_GRID.png" />
-    <None Include="Resources\GypsyXSheet.xml" />
+    <None Include="Resources\GypsyXSheet.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Gypsy_sheet.png" />
-    <None Include="Resources\Gypsy_Sheet.xml" />
+    <None Include="Resources\Gypsy_Sheet.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\LoadFragmentShader.glsl" />
     <None Include="Resources\LoadVertexShader.glsl" />
     <None Include="Resources\megamanx.png" />

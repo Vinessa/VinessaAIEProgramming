@@ -95,9 +95,9 @@ int main()
 //	fntMan->LoadFont("../resources/NESish.xml");
 
 	//Quad q = Quad();
-	GameEntity * tester = new GameEntity("./resources/Gypsy_sheet.png",window);
+	GameEntity * tester = new GameEntity("./resources/Gypsy_sheet.xml",window);
 
-	tester->SetAnimation("teleport",ONCE);
+	//tester->SetAnimation("teleport",ONCE);
 
 	
 
