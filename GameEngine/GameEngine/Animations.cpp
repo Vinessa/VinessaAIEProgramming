@@ -1,3 +1,4 @@
+// by Vinessa
 #include "Animations.h"
 
 

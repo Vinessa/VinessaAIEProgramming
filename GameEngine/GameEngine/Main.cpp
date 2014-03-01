@@ -95,7 +95,8 @@ int main()
 //	fntMan->LoadFont("../resources/NESish.xml");
 
 	//Quad q = Quad();
-	GameEntity * tester = new GameEntity("./resources/Gypsy_sheet.xml",window);
+	GameEntity * Gypsy = new GameEntity("./resources/Gypsy_sheet.xml",window);
+	Gypsy->SetAnimation("RunRight",LOOP);
 
 	//tester->SetAnimation("teleport",ONCE);
 
@@ -114,8 +115,9 @@ int main()
 		//resize window
 		glViewport (0, 0, g_gl_width, g_gl_height);
 
-		tester->Update();
+		Gypsy->Update();
 		//tester->Input();
+		//Gypsy->Draw();
 		//tester->Draw();
 		
 	//	q.Draw();

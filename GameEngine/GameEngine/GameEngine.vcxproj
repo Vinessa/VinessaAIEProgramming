@@ -104,6 +104,9 @@
     <ClInclude Include="Vi_Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Gypsy_Animations.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\CAT2.tga" />
     <None Include="Resources\CAT3.png" />
     <None Include="Resources\CAT3small.png" />

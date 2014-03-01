@@ -22,7 +22,7 @@ GameEntity::GameEntity( const char* a_pSpriteSheet, GLFWwindow * window)
 	glEnableVertexAttribArray(uvAttrib);
 	matrix_location = glGetUniformLocation (m_ShaderProgram, "matrix");
 	LoadSprites(a_pSpriteSheet);
-//	LoadAnimations(atlas.sAnimations.c_str());
+	LoadAnimations(atlas.sAnimations.c_str());
 	LoadTexture(atlas.sSheet.c_str());
 
 

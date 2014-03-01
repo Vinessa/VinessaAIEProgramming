@@ -123,5 +123,6 @@
     </None>
     <None Include="Resources\GypsyXSheet.xml" />
     <None Include="Resources\Gypsy_Sheet.xml" />
+    <None Include="Gypsy_Animations.xml" />
   </ItemGroup>
 </Project>
