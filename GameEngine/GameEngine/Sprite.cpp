@@ -5,8 +5,8 @@
 Sprite::Sprite(void)
 {
 	srand(time(NULL));
-	LoadVertShader("../resources/exampleVert.glsl");
-	LoadFragShader("../resources/exampleFrag.glsl");
+	LoadVertShader("./Resources/LoadVertexShader.glsl");
+	LoadFragShader("./Resources/LoadFragmentShader.glsl");
 	LinkShaders();
 
 	m_v4SpriteColor = Vector4(1,1,1,1);
@@ -40,8 +40,8 @@ Sprite::Sprite( const char* a_pTexture, int a_iWidth, int a_iHeight, Vector4 a_v
 
 	GameWindow = window;
 	
-	LoadVertShader("../resources/exampleVert.glsl");
-	LoadFragShader("../resources/exampleFrag.glsl");
+	LoadVertShader("./Resources/LoadVertexShader.glsl");
+	LoadFragShader("./Resources/LoadFragmentShader.glsl");
 	LinkShaders();
 	GLint uvAttrib = glGetAttribLocation(m_ShaderProgram,"texcoord");
 	glEnableVertexAttribArray(uvAttrib);

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <animation name = "StanceR" fps = "24">
   <frame name ="Stance_01"/>
 </animation>
@@ -22,22 +22,22 @@
 <animation name = "StanceL" fps = "24">
   <frame name ="StanceL_01"/>
 </animation>
-<animation name = "IdleL" fps = "24">
-  <frame name ="Idle_L_01"/>
-  <frame name ="Idle_L_02"/>
-  <frame name ="Idle_L_03"/>
-  <frame name ="Idle_L_04"/>
-  <frame name ="Idle_L_05"/>
-  <frame name ="Idle_L_06"/>
-  <frame name ="Idle_L_07"/>
-  <frame name ="Idle_L_08"/>
-  <frame name ="Idle_L_09"/>
-  <frame name ="Idle_L_10"/>
-  <frame name ="Idle_L_11"/>
-  <frame name ="Idle_L_12"/>
-  <frame name ="Idle_L_13"/>
-  <frame name ="Idle_L_14"/>
-  <frame name ="Idle_L_15"/>
+<animation name = "IdleR" fps = "24">
+  <frame name ="Idle_01"/>
+  <frame name ="Idle_02"/>
+  <frame name ="Idle_03"/>
+  <frame name ="Idle_04"/>
+  <frame name ="Idle_05"/>
+  <frame name ="Idle_06"/>
+  <frame name ="Idle_07"/>
+  <frame name ="Idle_08"/>
+  <frame name ="Idle_09"/>
+  <frame name ="Idle_10"/>
+  <frame name ="Idle_11"/>
+  <frame name ="Idle_12"/>
+  <frame name ="Idle_13"/>
+  <frame name ="Idle_14"/>
+  <frame name ="Idle_15"/>
 </animation>
 <animation name = "IdleL" fps = "24">
   <frame name ="Idle_L_01"/>

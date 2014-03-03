@@ -15,8 +15,8 @@ GameEntity::GameEntity( const char* a_pSpriteSheet, GLFWwindow * window)
 {
 	GameWindow = window;
 	elapsedTime = 0;
-	LoadVertShader("./resources/LoadVertexShader.glsl");
-	LoadFragShader("./resources/LoadFragmentShader.glsl");
+	LoadVertShader("./Resources/LoadVertexShader.glsl");
+	LoadFragShader("./Resources/LoadFragmentShader.glsl");
 	LinkShaders();
 	GLint uvAttrib = glGetAttribLocation(m_ShaderProgram,"texcoord");
 	glEnableVertexAttribArray(uvAttrib);
@@ -27,8 +27,8 @@ GameEntity::GameEntity( const char* a_pSpriteSheet, GLFWwindow * window)
 
 
 	m_dFrames = (1.0/15.0);
-	currentAnimation = "";
-	currentSprite = "IdleR";
+	currentAnimation = "IdleR";
+	currentSprite = "Idle_01";
 	currentFrame = 0;
 	currentPlayType = SINGLE;
 	m_uvScale.m_fX = atlas.v2Size.m_fY;
@@ -44,13 +44,13 @@ void GameEntity::SetSprite()
 {
 	if(currentAnimation == "")
 	{
-	m_minUVCoords.m_fX = mSprites["Idle"].y0;
-	m_minUVCoords.m_fY = mSprites["Idle"].x0;
-	m_maxUVCoords.m_fX = mSprites["Idle"].y1;
-	m_maxUVCoords.m_fY = mSprites["Idle"].x1;
+	m_minUVCoords.m_fX = mSprites["Idle_01"].y0;
+	m_minUVCoords.m_fY = mSprites["Idle_01"].x0;
+	m_maxUVCoords.m_fX = mSprites["Idle_01"].y1;
+	m_maxUVCoords.m_fY = mSprites["Idle_01"].x1;
 
-	m_v2Scale.m_fX =  mSprites["Idle"].width;
-	m_v2Scale.m_fY =  mSprites["Idle"].height;
+	m_v2Scale.m_fX =  mSprites["Idle_01"].width;
+	m_v2Scale.m_fY =  mSprites["Idle_01"].height;
 
 	}else
 	{
@@ -77,12 +77,12 @@ void GameEntity::LoadSprites(const char* a_pSpriteSheet)
 	rootNode = doc.FirstChildElement("atlas");// set the root node
 	currentNode = rootNode;
 
-	currentNode = rootNode->FirstChild(); // set the current node to the root nodes first child
+	//currentNode = rootNode->FirstChild(); // set the current node to the root nodes first child
 	childElement = currentNode->ToElement();
 	atlas.v2Size.m_fX = (float)childElement->IntAttribute("width"); 
 	atlas.v2Size.m_fY = (float)childElement->IntAttribute("height");
 	atlas.sSheet = childElement->Attribute("sheet");
-	atlas.sAnimations = childElement->Attribute("animations");
+	atlas.sAnimations = childElement->Attribute("animation");
 
 
 	for (childElement = currentNode->FirstChildElement(); 
@@ -90,12 +90,14 @@ void GameEntity::LoadSprites(const char* a_pSpriteSheet)
 	{
 		str = childElement->Attribute("name");
 		mSprites[str].Name = str;
-		mSprites[str].x0 = childElement->IntAttribute("x0");
-		mSprites[str].x1 = childElement->IntAttribute("x1");
-		mSprites[str].y0 = childElement->IntAttribute("y0");
-		mSprites[str].y1 = childElement->IntAttribute("y1");
-		mSprites[str].height = mSprites[str].y1 - mSprites[str].y0;
-		mSprites[str].width = mSprites[str].x1 - mSprites[str].x0;
+		mSprites[str].x0 = childElement->IntAttribute("x");
+		mSprites[str].y0 = childElement->IntAttribute("y");
+		mSprites[str].height = childElement->IntAttribute("height") ;
+		mSprites[str].width = childElement->IntAttribute("width");
+		mSprites[str].x1 = mSprites[str].x0 +mSprites[str].width ;
+		mSprites[str].y1 = mSprites[str].y0 +mSprites[str].height ;
+	
+
 	}
 std:printf("done");
 
@@ -261,11 +263,11 @@ void GameEntity::Input()
 	Sprite::Input();
 	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_P))
         {
-			SetAnimation("idle to run",LOOPSECTION,1);
+			SetAnimation("IdleR",LOOPSECTION,1);
 		}
 	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_T))
         {
-			SetAnimation("teleport",ONCE);
+			SetAnimation("RunR",ONCE);
 		}
 
 }

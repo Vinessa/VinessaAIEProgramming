@@ -68,59 +68,21 @@
     <ClInclude Include="Vi_Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Animations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\megamanx.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\OmnikittenLogo2.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\OmnikittenLogo3.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="Resources\LoadFragmentShader.glsl">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Resources\LoadVertexShader.glsl">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Resources\OmniKittenTinyFB.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\CAT_RunningDARK.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\CAT_Running_GRID.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\CAT2.tga">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\CAT3.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\CAT3small.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\CAT4.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\CAT7.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\RunJumpGapL_R.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\Gypsy_sheet.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\Animations.xml" />
-    <None Include="Resources\sheet.xml" />
     <None Include="Resources\sheet.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\Animations.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\sheet.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
