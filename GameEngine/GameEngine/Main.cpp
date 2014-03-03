@@ -95,8 +95,8 @@ int main()
 //	fntMan->LoadFont("../resources/NESish.xml");
 
 	//Quad q = Quad();
-	GameEntity * Gypsy = new GameEntity("./resources/Gypsy_sheet.xml",window);
-	Gypsy->SetAnimation("RunRight",LOOP);
+	GameEntity * Gypsy = new GameEntity("../resources/sheet.xml",window);
+	Gypsy->SetAnimation("IdleR",LOOP);
 
 	//tester->SetAnimation("teleport",ONCE);
 

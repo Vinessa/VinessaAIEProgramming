@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<animation name = "StanceR" fps = "24">
+  <frame name ="Stance_01"/>
+</animation>
+<animation name = "IdleR" fps = "24">
+  <frame name ="Idle_01"/>
+  <frame name ="Idle_02"/>
+  <frame name ="Idle_03"/>
+  <frame name ="Idle_04"/>
+  <frame name ="Idle_05"/>
+  <frame name ="Idle_06"/>
+  <frame name ="Idle_07"/>
+  <frame name ="Idle_08"/>
+  <frame name ="Idle_09"/>
+  <frame name ="Idle_10"/>
+  <frame name ="Idle_11"/>
+  <frame name ="Idle_12"/>
+  <frame name ="Idle_13"/>
+  <frame name ="Idle_14"/>
+  <frame name ="Idle_15"/>
+</animation>
+<animation name = "StanceL" fps = "24">
+  <frame name ="StanceL_01"/>
+</animation>
+<animation name = "IdleL" fps = "24">
+  <frame name ="Idle_L_01"/>
+  <frame name ="Idle_L_02"/>
+  <frame name ="Idle_L_03"/>
+  <frame name ="Idle_L_04"/>
+  <frame name ="Idle_L_05"/>
+  <frame name ="Idle_L_06"/>
+  <frame name ="Idle_L_07"/>
+  <frame name ="Idle_L_08"/>
+  <frame name ="Idle_L_09"/>
+  <frame name ="Idle_L_10"/>
+  <frame name ="Idle_L_11"/>
+  <frame name ="Idle_L_12"/>
+  <frame name ="Idle_L_13"/>
+  <frame name ="Idle_L_14"/>
+  <frame name ="Idle_L_15"/>
+</animation>
+<animation name = "IdleL" fps = "24">
+  <frame name ="Idle_L_01"/>
+  <frame name ="Idle_L_02"/>
+  <frame name ="Idle_L_03"/>
+  <frame name ="Idle_L_04"/>
+  <frame name ="Idle_L_05"/>
+  <frame name ="Idle_L_06"/>
+  <frame name ="Idle_L_07"/>
+  <frame name ="Idle_L_08"/>
+  <frame name ="Idle_L_09"/>
+  <frame name ="Idle_L_10"/>
+  <frame name ="Idle_L_11"/>
+  <frame name ="Idle_L_12"/>
+  <frame name ="Idle_L_13"/>
+  <frame name ="Idle_L_14"/>
+  <frame name ="Idle_L_15"/>
+</animation>
+<animation name = "AirTurnR" fps = "24">
+  <frame name ="Air_Turn_R_01"/>
+  <frame name ="Air_Turn_R_02"/>
+  <frame name ="Air_Turn_R_03"/>
+  <frame name ="Air_Turn_R_04"/>
+  <frame name ="Air_Turn_R_05"/>
+</animation>
+<animation name = "AirTurnL" fps = "24">
+  <frame name ="Air_Turn_L_01"/>
+  <frame name ="Air_Turn_L_02"/>
+  <frame name ="Air_Turn_L_03"/>
+  <frame name ="Air_Turn_L_04"/>
+  <frame name ="Air_Turn_L_05"/>
+</animation>
+<animation name = "Climb_Up_R" fps = "24">
+  <frame name ="ClimbUp_01"/>
+  <frame name ="ClimbUp_02"/>
+  <frame name ="ClimbUp_03"/>
+  <frame name ="ClimbUp_04"/>
+  <frame name ="ClimbUp_05"/>
+  <frame name ="ClimbUp_06"/>
+  <frame name ="ClimbUp_07"/>
+  <frame name ="ClimbUp_08"/>
+</animation>
+<animation name = "Climb_Up_L" fps = "24">
+  <frame name ="Climb_Ledge_L_01"/>
+  <frame name ="Climb_Ledge_L_02"/>
+  <frame name ="Climb_Ledge_L_03"/>
+  <frame name ="Climb_Ledge_L_04"/>
+  <frame name ="Climb_Ledge_L_05"/>
+  <frame name ="Climb_Ledge_L_06"/>
+  <frame name ="Climb_Ledge_L_07"/>
+  <frame name ="Climb_Ledge_L_08"/>
+</animation>
+<animation name = "DeathR" fps = "24">
+  <frame name ="Death_01"/>
+  <frame name ="Death_02"/>
+  <frame name ="Death_03"/>
+  <frame name ="Death_04"/>
+  <frame name ="Death_05"/>
+  <frame name ="Death_06"/>
+  <frame name ="Death_07"/>
+  <frame name ="Death_08"/>
+  <frame name ="Death_09"/>
+  <frame name ="Death_10"/>
+  <frame name ="Death_11"/>
+  <frame name ="Death_12"/>
+</animation>
+<animation name = "DeathL" fps = "24">
+  <frame name ="Death_L_01"/>
+  <frame name ="Death_L_02"/>
+  <frame name ="Death_L_03"/>
+  <frame name ="Death_L_04"/>
+  <frame name ="Death_L_05"/>
+  <frame name ="Death_L_06"/>
+  <frame name ="Death_L_07"/>
+  <frame name ="Death_L_08"/>
+  <frame name ="Death_L_09"/>
+  <frame name ="Death_L_10"/>
+  <frame name ="Death_L_11"/>
+  <frame name ="Death_L_12"/>
+</animation>
+<animation name = "DuckR" fps = "24">
+  <frame name ="Duck_01"/>
+  <frame name ="Duck_02"/>
+  <frame name ="Duck_03"/>
+  <frame name ="Duck_04"/>
+  <frame name ="Duck_05"/>
+</animation>
+<animation name = "DuckL" fps = "24">
+  <frame name ="Duck_L_01"/>
+  <frame name ="Duck_L_02"/>
+  <frame name ="Duck_L_03"/>
+  <frame name ="Duck_L_04"/>
+  <frame name ="Duck_L_05"/>
+</animation>
+<animation name = "DuckAttackR" fps = "24">
+  <frame name ="Duck_Attack_01"/>
+  <frame name ="Duck_Attack_02"/>
+  <frame name ="Duck_Attack_03"/>
+  <frame name ="Duck_Attack_04"/>
+  <frame name ="Duck_Attack_05"/>
+  <frame name ="Duck_Attack_06"/>
+</animation>
+<animation name = "DuckAttackL" fps = "24">
+  <frame name ="Duck_Attack_L_01"/>
+  <frame name ="Duck_Attack_L_02"/>
+  <frame name ="Duck_Attack_L_03"/>
+  <frame name ="Duck_Attack_L_04"/>
+  <frame name ="Duck_Attack_L_05"/>
+  <frame name ="Duck_Attack_L_06"/>
+</animation>
+<animation name = "FallR" fps = "24">
+  <frame name ="Fall_Land_01"/>
+</animation>
+<animation name = "LandR" fps = "24">
+  <frame name ="Fall_Land_01"/>
+  <frame name ="Fall_Land_02"/>
+  <frame name ="Fall_Land_03"/>
+</animation>
+<animation name = "FallR" fps = "24">
+  <frame name ="Fall_Land_L_01"/>
+</animation>
+<animation name = "LandR" fps = "24">
+  <frame name ="Fall_Land_L_01"/>
+  <frame name ="Fall_Land_L_02"/>
+  <frame name ="Fall_Land_L_03"/>
+</animation>
+<animation name = "GrabLedgeR" fps = "24">
+  <frame name ="Grab_Ledge_01"/>
+  <frame name ="Grab_Ledge_02"/>
+  <frame name ="Grab_Ledge_03"/>
+  <frame name ="Grab_Ledge_04"/>
+  <frame name ="Grab_Ledge_05"/>
+  <frame name ="Grab_Ledge_06"/>
+  <frame name ="Grab_Ledge_07"/>
+  <frame name ="Grab_Ledge_08"/>
+  <frame name ="Grab_Ledge_09"/>
+  <frame name ="Grab_Ledge_10"/>
+</animation>
+<animation name = "GrabLedgeL" fps = "24">
+  <frame name ="Grab_Ledge_L_01"/>
+  <frame name ="Grab_Ledge_L_02"/>
+  <frame name ="Grab_Ledge_L_03"/>
+  <frame name ="Grab_Ledge_L_04"/>
+  <frame name ="Grab_Ledge_L_05"/>
+  <frame name ="Grab_Ledge_L_06"/>
+  <frame name ="Grab_Ledge_L_07"/>
+  <frame name ="Grab_Ledge_L_08"/>
+  <frame name ="Grab_Ledge_L_09"/>
+  <frame name ="Grab_Ledge_L_10"/>
+</animation>
+<animation name = "HeavyAttackR" fps = "24">
+  <frame name ="Heavy_Attack_01"/>
+  <frame name ="Heavy_Attack_02"/>
+  <frame name ="Heavy_Attack_03"/>
+  <frame name ="Heavy_Attack_04"/>
+  <frame name ="Heavy_Attack_05"/>
+  <frame name ="Heavy_Attack_06"/>
+  <frame name ="Heavy_Attack_07"/>
+  <frame name ="Heavy_Attack_08"/>
+  <frame name ="Heavy_Attack_09"/>
+  <frame name ="Heavy_Attack_10"/>
+  <frame name ="Heavy_Attack_11"/>
+  <frame name ="Heavy_Attack_12"/>
+  <frame name ="Heavy_Attack_13"/>
+  <frame name ="Heavy_Attack_14"/>
+  <frame name ="Heavy_Attack_15"/>
+</animation>
+<animation name = "HeavyAttackL" fps = "24">
+  <frame name ="Heavy_Attack_L_01"/>
+  <frame name ="Heavy_Attack_L_02"/>
+  <frame name ="Heavy_Attack_L_03"/>
+  <frame name ="Heavy_Attack_L_04"/>
+  <frame name ="Heavy_Attack_L_05"/>
+  <frame name ="Heavy_Attack_L_06"/>
+  <frame name ="Heavy_Attack_L_07"/>
+  <frame name ="Heavy_Attack_L_08"/>
+  <frame name ="Heavy_Attack_L_09"/>
+  <frame name ="Heavy_Attack_L_10"/>
+  <frame name ="Heavy_Attack_L_11"/>
+  <frame name ="Heavy_Attack_L_12"/>
+  <frame name ="Heavy_Attack_L_13"/>
+  <frame name ="Heavy_Attack_L_14"/>
+  <frame name ="Heavy_Attack_L_15"/>
+</animation>
+<animation name = "HorizontalLeapR" fps = "24">
+  <frame name ="Horizontal_Leap_01"/>
+  <frame name ="Horizontal_Leap_02"/>
+  <frame name ="Horizontal_Leap_03"/>
+  <frame name ="Horizontal_Leap_04"/>
+  <frame name ="Horizontal_Leap_05"/>
+  <frame name ="Horizontal_Leap_06"/>
+  <frame name ="Horizontal_Leap_07"/>
+  <frame name ="Horizontal_Leap_08"/>
+  <frame name ="Horizontal_Leap_09"/>
+  <frame name ="Horizontal_Leap_10"/>
+  <frame name ="Horizontal_Leap_11"/>
+  <frame name ="Horizontal_Leap_12"/>
+  <frame name ="Horizontal_Leap_13"/>
+  <frame name ="Horizontal_Leap_14"/>
+  <frame name ="Horizontal_Leap_15"/>
+</animation>
+<animation name = "HorizontalLeapL" fps = "24">
+  <frame name ="Horizontal_Leap_L_01"/>
+  <frame name ="Horizontal_Leap_L_02"/>
+  <frame name ="Horizontal_Leap_L_03"/>
+  <frame name ="Horizontal_Leap_L_04"/>
+  <frame name ="Horizontal_Leap_L_05"/>
+  <frame name ="Horizontal_Leap_L_06"/>
+  <frame name ="Horizontal_Leap_L_07"/>
+  <frame name ="Horizontal_Leap_L_08"/>
+  <frame name ="Horizontal_Leap_L_09"/>
+  <frame name ="Horizontal_Leap_L_10"/>
+  <frame name ="Horizontal_Leap_L_11"/>
+  <frame name ="Horizontal_Leap_L_12"/>
+  <frame name ="Horizontal_Leap_L_13"/>
+  <frame name ="Horizontal_Leap_L_14"/>
+  <frame name ="Horizontal_Leap_L_15"/>
+</animation>
+<animation name = "LightAttackL" fps = "24">
+  <frame name ="LightAttack_L_01"/>
+  <frame name ="LightAttack_L_02"/>
+  <frame name ="LightAttack_L_03"/>
+  <frame name ="LightAttack_L_04"/>
+  <frame name ="LightAttack_L_05"/>
+  <frame name ="LightAttack_L_06"/>
+  <frame name ="LightAttack_L_07"/>
+  <frame name ="LightAttack_L_08"/>
+  <frame name ="LightAttack_L_09"/>
+</animation>
+<animation name = "LightAttackR" fps = "24">
+  <frame name ="LightAttack_01"/>
+  <frame name ="LightAttack_02"/>
+  <frame name ="LightAttack_03"/>
+  <frame name ="LightAttack_04"/>
+  <frame name ="LightAttack_05"/>
+  <frame name ="LightAttack_06"/>
+  <frame name ="LightAttack_07"/>
+  <frame name ="LightAttack_08"/>
+  <frame name ="LightAttack_09"/>
+</animation>
+<animation name = "LookUpL" fps = "24">
+  <frame name ="LookUp_L_01"/>
+  <frame name ="LookUp_L_02"/>
+</animation>
+<animation name = "LookUpR" fps = "24">
+  <frame name ="LookUp_01"/>
+  <frame name ="LookUp_02"/>
+</animation>
+<animation name = "RoarL" fps = "24">
+  <frame name ="Roar_L_01"/>
+  <frame name ="Roar_L_02"/>
+  <frame name ="Roar_L_03"/>
+  <frame name ="Roar_L_04"/>
+  <frame name ="Roar_L_05"/>
+  <frame name ="Roar_L_06"/>
+</animation>
+<animation name = "RoarR" fps = "24">
+  <frame name ="Roar_01"/>
+  <frame name ="Roar_02"/>
+  <frame name ="Roar_03"/>
+  <frame name ="Roar_04"/>
+  <frame name ="Roar_05"/>
+  <frame name ="Roar_06"/>
+</animation>
+<animation name = "RunL" fps = "24">
+  <frame name ="RunL_01"/>
+  <frame name ="RunL_02"/>
+  <frame name ="RunL_03"/>
+  <frame name ="RunL_04"/>
+  <frame name ="RunL_05"/>
+  <frame name ="RunL_06"/>
+  <frame name ="RunL_07"/>
+  <frame name ="RunL_08"/>
+  <frame name ="RunL_09"/>
+  <frame name ="RunL_10"/>
+  <frame name ="RunL_11"/>
+  <frame name ="RunL_12"/>
+  <frame name ="RunL_13"/>
+  <frame name ="RunL_14"/>
+</animation>
+<animation name = "RunR" fps = "24">
+  <frame name ="RunR_01"/>
+  <frame name ="RunR_02"/>
+  <frame name ="RunR_03"/>
+  <frame name ="RunR_04"/>
+  <frame name ="RunR_05"/>
+  <frame name ="RunR_06"/>
+  <frame name ="RunR_07"/>
+  <frame name ="RunR_08"/>
+  <frame name ="RunR_09"/>
+  <frame name ="RunR_10"/>
+  <frame name ="RunR_11"/>
+  <frame name ="RunR_12"/>
+  <frame name ="RunR_13"/>
+  <frame name ="RunR_14"/>
+</animation>
+<animation name = "RunRStart" fps = "24">
+  <frame name ="RunR_Start_01"/>
+</animation>
+<animation name = "RunLStart" fps = "24">
+  <frame name ="RunL_Start_01"/>
+</animation>
+<animation name = "RunL" fps = "24">
+  <frame name ="RunL_01"/>
+  <frame name ="RunL_02"/>
+  <frame name ="RunL_03"/>
+  <frame name ="RunL_04"/>
+  <frame name ="RunL_05"/>
+  <frame name ="RunL_06"/>
+  <frame name ="RunL_07"/>
+  <frame name ="RunL_08"/>
+  <frame name ="RunL_09"/>
+  <frame name ="RunL_10"/>
+  <frame name ="RunL_11"/>
+  <frame name ="RunL_12"/>
+  <frame name ="RunL_13"/>
+  <frame name ="RunL_14"/>
+</animation>
+<animation name = "SwingL" fps = "24">
+  <frame name ="Swing_L_01"/>
+  <frame name ="Swing_L_02"/>
+  <frame name ="Swing_L_03"/>
+  <frame name ="Swing_L_04"/>
+  <frame name ="Swing_L_05"/>
+  <frame name ="Swing_L_06"/>
+  <frame name ="Swing_L_07"/>
+  <frame name ="Swing_L_08"/>
+  <frame name ="Swing_L_09"/>
+  <frame name ="Swing_L_10"/>
+  <frame name ="Swing_L_11"/>
+</animation>
+<animation name = "SwingR" fps = "24">
+  <frame name ="Swing_01"/>
+  <frame name ="Swing_02"/>
+  <frame name ="Swing_03"/>
+  <frame name ="Swing_04"/>
+  <frame name ="Swing_05"/>
+  <frame name ="Swing_06"/>
+  <frame name ="Swing_07"/>
+  <frame name ="Swing_08"/>
+  <frame name ="Swing_09"/>
+  <frame name ="Swing_10"/>
+  <frame name ="Swing_11"/>
+</animation>
+<animation name = "TakeDamageL" fps = "24">
+  <frame name ="Take_Damage_L_01"/>
+  <frame name ="Take_Damage_L_02"/>
+  <frame name ="Take_Damage_L_03"/>
+  <frame name ="Take_Damage_L_04"/>
+  <frame name ="Take_Damage_L_05"/>
+  <frame name ="Take_Damage_L_06"/>
+  <frame name ="Take_Damage_L_07"/>
+  <frame name ="Take_Damage_L_08"/>
+ </animation>
+<animation name = "TakeDamageR" fps = "24">
+  <frame name ="Take_Damage_01"/>
+  <frame name ="Take_Damage_02"/>
+  <frame name ="Take_Damage_03"/>
+  <frame name ="Take_Damage_04"/>
+  <frame name ="Take_Damage_05"/>
+  <frame name ="Take_Damage_06"/>
+  <frame name ="Take_Damage_07"/>
+  <frame name ="Take_Damage_08"/>
+</animation>
+<animation name = "TurnAroundL" fps = "24">
+  <frame name ="Turn_Around_L_01"/>
+  <frame name ="Turn_Around_L_02"/>
+  <frame name ="Turn_Around_L_03"/>
+  <frame name ="Turn_Around_L_04"/>
+</animation>
+<animation name = "TurnAroundR" fps = "24">
+  <frame name ="Turn_Around_01"/>
+  <frame name ="Turn_Around_02"/>
+  <frame name ="Turn_Around_03"/>
+  <frame name ="Turn_Around_04"/>
+</animation>
+<animation name = "VerticalJumpL" fps = "24">
+  <frame name ="Vertical_Jump_L_01"/>
+  <frame name ="Vertical_Jump_L_02"/>
+  <frame name ="Vertical_Jump_L_03"/>
+  <frame name ="Vertical_Jump_L_04"/>
+  <frame name ="Vertical_Jump_L_05"/>
+  <frame name ="Vertical_Jump_L_06"/>
+  <frame name ="Vertical_Jump_L_07"/>
+  <frame name ="Vertical_Jump_L_08"/>
+  <frame name ="Vertical_Jump_L_09"/>
+  <frame name ="Vertical_Jump_L_10"/>
+</animation>
+<animation name = "VerticalJumpR" fps = "24">
+  <frame name ="Vertical_Jump_01"/>
+  <frame name ="Vertical_Jump_02"/>
+  <frame name ="Vertical_Jump_03"/>
+  <frame name ="Vertical_Jump_04"/>
+  <frame name ="Vertical_Jump_05"/>
+  <frame name ="Vertical_Jump_06"/>
+  <frame name ="Vertical_Jump_07"/>
+  <frame name ="Vertical_Jump_08"/>
+  <frame name ="Vertical_Jump_09"/>
+  <frame name ="Vertical_Jump_10"/>
+</animation>
+ 

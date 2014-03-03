@@ -15,8 +15,8 @@ GameEntity::GameEntity( const char* a_pSpriteSheet, GLFWwindow * window)
 {
 	GameWindow = window;
 	elapsedTime = 0;
-	LoadVertShader("../resources/exampleVert.glsl");
-	LoadFragShader("../resources/exampleFrag.glsl");
+	LoadVertShader("./resources/LoadVertexShader.glsl");
+	LoadFragShader("./resources/LoadFragmentShader.glsl");
 	LinkShaders();
 	GLint uvAttrib = glGetAttribLocation(m_ShaderProgram,"texcoord");
 	glEnableVertexAttribArray(uvAttrib);
@@ -28,7 +28,7 @@ GameEntity::GameEntity( const char* a_pSpriteSheet, GLFWwindow * window)
 
 	m_dFrames = (1.0/15.0);
 	currentAnimation = "";
-	currentSprite = "idle";
+	currentSprite = "IdleR";
 	currentFrame = 0;
 	currentPlayType = SINGLE;
 	m_uvScale.m_fX = atlas.v2Size.m_fY;
@@ -44,13 +44,13 @@ void GameEntity::SetSprite()
 {
 	if(currentAnimation == "")
 	{
-	m_minUVCoords.m_fX = mSprites["idle"].y0;
-	m_minUVCoords.m_fY = mSprites["idle"].x0;
-	m_maxUVCoords.m_fX = mSprites["idle"].y1;
-	m_maxUVCoords.m_fY = mSprites["idle"].x1;
+	m_minUVCoords.m_fX = mSprites["Idle"].y0;
+	m_minUVCoords.m_fY = mSprites["Idle"].x0;
+	m_maxUVCoords.m_fX = mSprites["Idle"].y1;
+	m_maxUVCoords.m_fY = mSprites["Idle"].x1;
 
-	m_v2Scale.m_fX =  mSprites["idle"].width;
-	m_v2Scale.m_fY =  mSprites["idle"].height;
+	m_v2Scale.m_fX =  mSprites["Idle"].width;
+	m_v2Scale.m_fY =  mSprites["Idle"].height;
 
 	}else
 	{
@@ -77,7 +77,7 @@ void GameEntity::LoadSprites(const char* a_pSpriteSheet)
 	rootNode = doc.FirstChildElement("atlas");// set the root node
 	currentNode = rootNode;
 
-	//currentNode = rootNode->FirstChild(); // set the current node to the root nodes first child
+	currentNode = rootNode->FirstChild(); // set the current node to the root nodes first child
 	childElement = currentNode->ToElement();
 	atlas.v2Size.m_fX = (float)childElement->IntAttribute("width"); 
 	atlas.v2Size.m_fY = (float)childElement->IntAttribute("height");

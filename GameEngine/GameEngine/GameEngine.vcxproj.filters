@@ -39,9 +39,6 @@
     <ClCompile Include="Vi_Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Animations.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_log.h">
@@ -121,8 +118,10 @@
     <None Include="Resources\Gypsy_sheet.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Resources\GypsyXSheet.xml" />
-    <None Include="Resources\Gypsy_Sheet.xml" />
-    <None Include="Gypsy_Animations.xml" />
+    <None Include="Resources\Animations.xml" />
+    <None Include="Resources\sheet.xml" />
+    <None Include="Resources\sheet.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
