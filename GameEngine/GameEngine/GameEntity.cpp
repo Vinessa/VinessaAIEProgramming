@@ -258,18 +258,61 @@ void GameEntity::Draw()
 	glUniformMatrix4fv (matrix_location, 1, GL_FALSE, MVP->m_afArray);
 	Quad::Draw();
 }
+//void GameEntity::Input()
+//{
+//	Sprite::Input();
+//	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_P))
+//        {
+//			SetAnimation("IdleR",LOOPSECTION,1);
+//		}
+//	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_T))
+//        {
+//			SetAnimation("RunR",LOOP);
+//		}
+//
+//}
+
 void GameEntity::Input()
 {
-	Sprite::Input();
-	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_P))
+	  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_W))
         {
-			SetAnimation("IdleR",LOOPSECTION,1);
-		}
-	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_T))
+			SetAnimation("RoarR",ONCE);
+		//	m_v3Position += Vector3(0.0f, 1.f, 0.0f);
+	  }
+	  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_A))
         {
-			SetAnimation("RunR",ONCE);
-		}
+                m_v3Position += Vector3(1.f, 0.0f, 0.0f);
+        }
 
+        if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_A))
+        {
+                m_v3Position += Vector3(-1.f, 0.0f, 0.0f);
+        }
+        if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_S))
+        {
+			m_v3Position += Vector3(0.0f, -1.f, 0.0f);
+		}
+		 if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_C))
+        {
+                 m_fZoom *= (1 - getDeltaTime());
+        }
+		  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_Z))
+        {
+                 m_fZoom *=( 1 + getDeltaTime());
+
+        }
+
+		 if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_V))
+        {
+			
+               SetColor(
+				   Vector4((rand()%255)/255.f,(rand()%255)/255.f,(rand()%255)/255.f,1.f),
+				   Vector4((rand()%255)/255.f,(rand()%255)/255.f,(rand()%255)/255.f,1.f),
+				   Vector4((rand()%255)/255.f,(rand()%255)/255.f,(rand()%255)/255.f,1.f),
+				   Vector4((rand()%255)/255.f,(rand()%255)/255.f,(rand()%255)/255.f,1.f)
+				   );
+
+        }
 }
 
 void GameEntity::Update()

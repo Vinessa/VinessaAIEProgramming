@@ -16,7 +16,7 @@ public:
 	Sprite( const char* a_pTexture, int a_iWidth, int a_iHeight, Vector4 a_v4Color,GLFWwindow* );
 	
 	virtual void Draw();
-	void Input();
+	/*void Input();*/
 
 	void SetPosition(Vector3 a_v3Pos);
 	void SetVertexData( Vertex* a_vertexData );
