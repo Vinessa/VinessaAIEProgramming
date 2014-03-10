@@ -85,5 +85,8 @@
     <None Include="Resources\sheet.xml">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\FogBG.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

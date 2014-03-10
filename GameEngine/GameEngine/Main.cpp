@@ -96,8 +96,9 @@ int main()
 
 	//Quad q = Quad();
 	GameEntity * Gypsy = new GameEntity("./Resources/sheet.xml",window);
+	Sprite * BG = new Sprite("./Resources/FogBG.jpg",563, 900, Vector4(1,1,1,1), window);
 	Gypsy->SetAnimation("IdleR",LOOP);
-
+	BG->SetPosition(tbyte::Vector3(0,0,-.5));
 	//tester->SetAnimation("teleport",ONCE);
 
 	
@@ -114,8 +115,10 @@ int main()
 		glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		//resize window
 		glViewport (0, 0, g_gl_width, g_gl_height);
-
+		
+		
 		Gypsy->Update();
+		BG ->Draw();
 		//tester->Input();
 		//Gypsy->Draw();
 		//tester->Draw();

@@ -254,8 +254,6 @@ void GameEntity::Draw()
 	*MVP =  (*Ortho * *modelMatrix) ;
 
 
-	
-	glUniformMatrix4fv (matrix_location, 1, GL_FALSE, MVP->m_afArray);
 	Quad::Draw();
 }
 //void GameEntity::Input()

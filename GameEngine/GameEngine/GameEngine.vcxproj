@@ -105,6 +105,7 @@
     <None Include="Resources\Animations.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\FogBG.jpg" />
     <None Include="Resources\LoadFragmentShader.glsl" />
     <None Include="Resources\LoadVertexShader.glsl" />
     <None Include="Resources\sheet.png" />
