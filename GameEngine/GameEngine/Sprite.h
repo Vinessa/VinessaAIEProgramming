@@ -21,7 +21,7 @@ public:
 	void SetPosition(Vector3 a_v3Pos);
 	void SetVertexData( Vertex* a_vertexData );
 	const Vertex* GetVertexData() const;
-
+	
 
 protected:
 

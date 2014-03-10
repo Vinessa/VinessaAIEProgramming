@@ -44,7 +44,7 @@ public:
 	int matrix_location;
 	int proj_location;
 	int view_location;
-
+	char* iFacing;
 
 	void Draw();
 	bool LoadVertShader(const char*);
@@ -55,6 +55,9 @@ public:
 	void SetColor();
 	void SetColor(Vector4 a_v4Color);
 	void SetColor(Vector4 a_v4Color0,Vector4 a_v4Color1,Vector4 a_v4Color2,Vector4 a_v4Color3);
+	void SwapUVs(Facing eFacing);
+	bool FacingCheck(char* facing);
+
 private:
 
 };

@@ -77,6 +77,13 @@ enum PlayType
 	SINGLE
 };
 
+enum Facing // TO FLIP QUAD FOR SPRITE FACING
+{
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN
+};
 
 
 	void ViewLookAt( Vector4& eye,  Vector4& to,  Vector4& up,Matrix4 * mat);

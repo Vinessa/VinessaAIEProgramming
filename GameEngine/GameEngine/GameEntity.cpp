@@ -27,7 +27,7 @@ GameEntity::GameEntity( const char* a_pSpriteSheet, GLFWwindow * window)
 
 
 	m_dFrames = (1.0/15.0);
-	currentAnimation = "IdleR";
+	currentAnimation = "Idle";
 	currentSprite = "Idle_01";
 	currentFrame = 0;
 	currentPlayType = SINGLE;
@@ -35,7 +35,7 @@ GameEntity::GameEntity( const char* a_pSpriteSheet, GLFWwindow * window)
 	m_uvScale.m_fY	= atlas.v2Size.m_fX;
 	SetSprite();
 	SetUVData();
-
+	iFacing = "Right"; //flag for facing
 
 
 }
@@ -256,49 +256,43 @@ void GameEntity::Draw()
 
 	Quad::Draw();
 }
-//void GameEntity::Input()
-//{
-//	Sprite::Input();
-//	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_P))
-//        {
-//			SetAnimation("IdleR",LOOPSECTION,1);
-//		}
-//	if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_T))
-//        {
-//			SetAnimation("RunR",LOOP);
-//		}
-//
-//}
 
 void GameEntity::Input()
-{
+{ 
 	  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_W))
         {
-			SetAnimation("RoarR",ONCE);
-		//	m_v3Position += Vector3(0.0f, 1.f, 0.0f);
+			SetAnimation("LookUp",ONCE);
+			SwapUVs(UP);
+			
 	  }
-	  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_A))
+	  if 
+		  (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_A))
         {
-                m_v3Position += Vector3(1.f, 0.0f, 0.0f);
+			SetAnimation("Run",LOOP);
+			SwapUVs(LEFT);
+                m_v3Position -= Vector3(1.f, 0.0f, 0.0f);
         }
 
-        if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_A))
-        {
-                m_v3Position += Vector3(-1.f, 0.0f, 0.0f);
-        }
         if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_S))
         {
+			SetAnimation("Duck",LOOP);
+			SwapUVs(DOWN);
 			m_v3Position += Vector3(0.0f, -1.f, 0.0f);
 		}
-		 if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_C))
-        {
-                 m_fZoom *= (1 - getDeltaTime());
-        }
-		  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_Z))
-        {
-                 m_fZoom *=( 1 + getDeltaTime());
 
+		if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_D))
+			{
+				if (currentAnimation !="Run")
+				{
+					SetAnimation("Run",LOOP);
+					SwapUVs(RIGHT);
+					 m_v3Position += Vector3(1.f, 0.0f, 0.0f);
+				}
+				else
+					SwapUVs(RIGHT);
+					 m_v3Position += Vector3(1.f, 0.0f, 0.0f);
         }
+	
 
 		 if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_V))
         {

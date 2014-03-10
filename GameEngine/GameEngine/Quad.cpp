@@ -242,3 +242,72 @@ void Quad::SetColor(Vector4 a_v4Color0,Vector4 a_v4Color1,Vector4 a_v4Color2,Vec
 	m_aoVerts[2].Color = a_v4Color2;
 	m_aoVerts[3].Color = a_v4Color3;
 }
+
+void Quad::SwapUVs(Facing eFacing)
+{
+	switch (eFacing){
+	case LEFT:
+		if ((FacingCheck("LEFT") != true))
+		{
+		m_aoVerts[0].UV = m_aoVerts[1].UV;
+		m_aoVerts[1].UV = m_aoVerts[0].UV;
+		m_aoVerts[2].UV = m_aoVerts[3].UV;
+		m_aoVerts[3].UV = m_aoVerts[4].UV;
+		iFacing = "LEFT";
+		}
+		else
+		{
+		}
+		break;
+
+	case RIGHT:
+	if ((FacingCheck("RIGHT") != true))
+		{
+		m_aoVerts[0].UV = m_aoVerts[1].UV;
+		m_aoVerts[1].UV = m_aoVerts[0].UV;
+		m_aoVerts[2].UV = m_aoVerts[3].UV;
+		m_aoVerts[3].UV = m_aoVerts[4].UV;
+		iFacing = "RIGHT";
+		}
+		else
+		{
+		}
+		break;
+
+	case UP:
+		if ((FacingCheck("UP") != true))
+		{
+		//UV STUFF GOES HERE
+		iFacing = "UP";
+		}
+		else
+		{
+		}
+		
+		break;
+
+	case DOWN:
+			if ((FacingCheck("DOWN") != true))
+		{
+		//UV STUFF GOES HERE
+		iFacing = "DOWN";
+		}
+		else
+		{
+		}
+		
+		break;
+
+	default:
+		break;
+	}
+}
+
+bool Quad::FacingCheck(char* facing)
+{ 
+	if (iFacing == facing)
+		return true;
+	else
+		return false;
+
+}

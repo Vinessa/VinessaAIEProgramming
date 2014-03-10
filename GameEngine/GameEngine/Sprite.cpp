@@ -84,48 +84,7 @@ void Sprite::Draw()
 	Quad::Draw();
 }
 
-//void Sprite::Input()
-//{
-//	  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_W))
-//        {
-//			SetAnimation("RunR",LOOP,1);
-//			m_v3Position += Vector3(0.0f, 1.f, 0.0f);
-//	  }
-//	  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_A))
-//        {
-//                m_v3Position += Vector3(1.f, 0.0f, 0.0f);
-//        }
-//
-//        if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_A))
-//        {
-//                m_v3Position += Vector3(-1.f, 0.0f, 0.0f);
-//        }
-//        if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_S))
-//        {
-//			m_v3Position += Vector3(0.0f, -1.f, 0.0f);
-//		}
-//		 if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_C))
-//        {
-//                 m_fZoom *= (1 - getDeltaTime());
-//        }
-//		  if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_Z))
-//        {
-//                 m_fZoom *=( 1 + getDeltaTime());
-//
-//        }
-//
-//		 if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_V))
-//        {
-//			
-//               SetColor(
-//				   Vector4((rand()%255)/255.f,(rand()%255)/255.f,(rand()%255)/255.f,1.f),
-//				   Vector4((rand()%255)/255.f,(rand()%255)/255.f,(rand()%255)/255.f,1.f),
-//				   Vector4((rand()%255)/255.f,(rand()%255)/255.f,(rand()%255)/255.f,1.f),
-//				   Vector4((rand()%255)/255.f,(rand()%255)/255.f,(rand()%255)/255.f,1.f)
-//				   );
-//
-//        }
-//}
+
 void Sprite::SetPosition(Vector3 a_v3Pos)
 {
 	Vector3 m_v3Position = a_v3Pos;

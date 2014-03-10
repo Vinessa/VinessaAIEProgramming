@@ -96,9 +96,11 @@ int main()
 
 	//Quad q = Quad();
 	GameEntity * Gypsy = new GameEntity("./Resources/sheet.xml",window);
+	Sprite * GroundPlane = new Sprite("./Resources/Platform01_01.png", 19, 900, Vector4(1,1,1,1), window);
 	Sprite * BG = new Sprite("./Resources/FogBG.jpg",563, 900, Vector4(1,1,1,1), window);
-	Gypsy->SetAnimation("IdleR",LOOP);
-	BG->SetPosition(tbyte::Vector3(0,0,-.5));
+	Gypsy->SetAnimation("Idle",LOOP);
+	BG->SetPosition(Vector3(0,0,-.5));
+	GroundPlane -> SetPosition(Vector3(10.0f,563.0f,0.0f));
 	//tester->SetAnimation("teleport",ONCE);
 
 	
@@ -118,6 +120,7 @@ int main()
 		
 		
 		Gypsy->Update();
+		GroundPlane ->Draw();
 		BG ->Draw();
 		//tester->Input();
 		//Gypsy->Draw();
