@@ -31,6 +31,7 @@ public:
 
 
 	bool CheckCollision(CollisionObjects aOtherObject);
+	bool CheckGrounded(CollisionObjects aOtherObject);
 	void SetFlag(FlagType eFlagType, bool a_OnOff); //sets the flag on an object to use during collision checks
 };
 

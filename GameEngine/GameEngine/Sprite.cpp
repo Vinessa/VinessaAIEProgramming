@@ -27,7 +27,7 @@ Sprite::Sprite(void)
 
 
 	m_v3Position = Vector3(g_gl_width/2,g_gl_height/2,0);
-
+	Hitbox = CollisionObjects(m_aoVerts[0].Pos.m_fX, m_aoVerts[0].Pos.m_fY, m_aoVerts[4].Pos.m_fX, m_aoVerts[4].Pos.m_fY);
 }
 
 
@@ -37,7 +37,7 @@ Sprite::~Sprite(void)
 }
 Sprite::Sprite( const char* a_pTexture, int a_iWidth, int a_iHeight, Vector4 a_v4Color ,GLFWwindow * window)
 {
-
+	Hitbox = CollisionObjects(m_aoVerts[0].Pos.m_fX, m_aoVerts[0].Pos.m_fY, m_aoVerts[4].Pos.m_fX, m_aoVerts[4].Pos.m_fY);
 	GameWindow = window;
 	
 	LoadVertShader("./Resources/LoadVertexShader.glsl");
@@ -89,6 +89,11 @@ void Sprite::SetPosition(Vector3 a_v3Pos)
 {
 	Vector3 m_v3Position = a_v3Pos;
 
+}
+
+void Sprite::SetHitboxFlag(FlagType eFlagType, bool a_OnOff)
+{
+	Hitbox.SetFlag(eFlagType, a_OnOff);
 }
 
 

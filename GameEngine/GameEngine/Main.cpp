@@ -90,21 +90,23 @@ int main()
 	Ortho =  new Matrix4();
 	Orthographic(0,g_gl_width,g_gl_height,0,0,-1,Ortho);
 
-	//Sprite * tester = new Sprite("../resources/megamanx.png",24,27,Vector4(1,1,1,1),window); 
+	
 //	FontManager * fntMan = new FontManager();
 //	fntMan->LoadFont("../resources/NESish.xml");
 
 	//Quad q = Quad();
-	GameEntity * Gypsy = new GameEntity("./Resources/sheet.xml",window);
+	GameEntity * Lion = new GameEntity("./Resources/sheet.xml",window); //creates Lion
+	Lion->Hitbox.SetFlag(PLAYER,true);
+
 	Sprite * GroundPlane = new Sprite("./Resources/Platform01_01.png", 19, g_gl_width, Vector4(1,1,1,1), window);
-	//Sprite * BG = new Sprite("./Resources/FogBG.jpg",563, 900, Vector4(1,1,1,1), window);
+	GroundPlane->SetHitboxFlag(GROUND,true);
+	Lion->Hitbox.CheckCollision(GroundPlane->Hitbox);
+
 	Sprite * BG = new Sprite("./Resources/FogBG.jpg",g_gl_height, g_gl_width, Vector4(1,1,1,1), window);
-	Gypsy->SetAnimation("Idle",LOOP);
+	Lion->SetAnimation("Idle",LOOP);
 
 	BG->SetPosition(Vector3(0,0,-.5));
-	//GroundPlane->m_v3Position = Vector3(0.0f, 0.0f, 0.0f);
-	//tester->SetAnimation("teleport",ONCE);
-
+	
 	
 
 	while (!glfwWindowShouldClose (window)) {
@@ -121,11 +123,11 @@ int main()
 		glViewport (0, 0, g_gl_width, g_gl_height);
 		
 		
-		Gypsy->Update();
+		Lion->Update();
 		GroundPlane ->Draw();
 		BG ->Draw();
 		//tester->Input();
-		//Gypsy->Draw();
+		//Lion->Draw();
 		//tester->Draw();
 		
 	//	q.Draw();

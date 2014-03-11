@@ -3,10 +3,26 @@
 
 CollisionObjects::CollisionObjects(void)
 {
+	IsGrounded = false;
+	IsGround = false;
+	IsPlatform = false;
+	IsDangerous = false;
+	IsDeadly = false;
+	IsSwing = false;
+	IsClimbable = false;
+	IsLedge = false;
+	IsGoal = false;
+	IsPlayer = false;
+	IsEnemy = false;
+	IsAggressive = false;
+	IsCarried = false;
+	IsSafe = false;
+	
 }
 
 CollisionObjects::CollisionObjects(float minimumX, float minimumY, float maximumX, float maximumY)
 {
+
 	minimumX = Min.m_fX;
 	minimumY = Min.m_fY;
 	Min.m_fZ = 0.0f;
@@ -15,7 +31,20 @@ CollisionObjects::CollisionObjects(float minimumX, float minimumY, float maximum
 	maximumY = Max.m_fY;
 	Max.m_fZ = 0.0f;
 
-
+	IsGrounded = false;
+	IsGround = false;
+	IsPlatform = false;
+	IsDangerous = false;
+	IsDeadly = false;
+	IsSwing = false;
+	IsClimbable = false;
+	IsLedge = false;
+	IsGoal = false;
+	IsPlayer = false;
+	IsEnemy = false;
+	IsAggressive = false;
+	IsCarried = false;
+	IsSafe = false;
 	
 }
 
@@ -29,7 +58,21 @@ bool CollisionObjects::CheckCollision(CollisionObjects aOtherObject)
 		return false; // There has been no collision
 	if (Min.m_fY > aOtherObject.Max.m_fY || aOtherObject.Min.m_fY > Max.m_fY)
 		return false; // There has been no collision
+	CheckGrounded(aOtherObject);
 	return true; // Collision happens if neither of the above have happened.
+}
+
+bool CollisionObjects::CheckGrounded(CollisionObjects aOtherObject)
+{
+	if (aOtherObject.IsGround == true)
+	{
+		IsGrounded = true;
+		printf ("%s\n","Is Grounded");
+	return true;
+	}
+	else
+		printf ("%s\n","Is Not Grounded");
+		return false;
 }
 
 void CollisionObjects::SetFlag(FlagType eFlagType, bool a_OnOff)
