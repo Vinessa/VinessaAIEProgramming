@@ -1,6 +1,7 @@
 //by Vinessa
 
 #include <GL\glew.h>
+#include <GL\glfw3.h>
 #define GLFW_DLL
 //#include <GLFW\glfw3.h>
 
@@ -8,7 +9,7 @@
 #include "Sprite.h"
 
 #include <GameEntity.h>
-//#include <FontManager.h>
+#include "FontEngine.h"
 
 // a call-back function
 void glfw_window_size_callback (GLFWwindow* window, int width, int height) {
@@ -58,7 +59,7 @@ int main()
 	//this lets us the the video mode for the monitor we pass
 	const GLFWvidmode* vmode = glfwGetVideoMode (mon);
 	GLFWwindow* window = glfwCreateWindow (
-		vmode->width, vmode->height, "Extended GL Init",NULL/* mon*/, NULL
+		vmode->width, vmode->height, "",NULL/* mon*/, NULL
 		);
 	glfwSetWindowSize(window, g_gl_width, g_gl_height);
 
@@ -91,10 +92,10 @@ int main()
 	Orthographic(0,g_gl_width,g_gl_height,0,0,-1,Ortho);
 
 	
-//	FontManager * fntMan = new FontManager();
-//	fntMan->LoadFont("../resources/NESish.xml");
 
-	//Quad q = Quad();
+	FontEngine::Instance().LoadFont("./Resources/NESish.xml");
+
+
 	GameEntity * Lion = new GameEntity("./Resources/sheet.xml",window); //creates Lion
 	Lion->Hitbox.SetFlag(PLAYER,true);
 
@@ -106,7 +107,8 @@ int main()
 	Lion->SetAnimation("Idle",LOOP);
 
 	BG->SetPosition(Vector3(0,0,-.5));
-	
+	//making a list of objects to check for collision against --- PUT INTO A GAMESTATE(LEVEL)
+
 	
 
 	while (!glfwWindowShouldClose (window)) {
@@ -122,15 +124,14 @@ int main()
 		//resize window
 		glViewport (0, 0, g_gl_width, g_gl_height);
 		
-		
+		//FontEngine::Instance().DrawString("FONTENGINE -- has failed to load.\n.\n.\n.\n.\n Just kidding....",Vector2(0,g_gl_height/2),1);
+		FontEngine::Instance().DrawString("FUUUUU UUUUUUU",Vector2(0,g_gl_height/2),1);
 		Lion->Update();
 		GroundPlane ->Draw();
 		BG ->Draw();
-		//tester->Input();
-		//Lion->Draw();
-		//tester->Draw();
 		
-	//	q.Draw();
+		
+	
 		glfwPollEvents ();
 		// put the stuff we've been drawing onto the display
 		glfwSwapBuffers (window);

@@ -28,6 +28,7 @@ Sprite::Sprite(void)
 
 	m_v3Position = Vector3(g_gl_width/2,g_gl_height/2,0);
 	Hitbox = CollisionObjects(m_aoVerts[0].Pos.m_fX, m_aoVerts[0].Pos.m_fY, m_aoVerts[4].Pos.m_fX, m_aoVerts[4].Pos.m_fY);
+	
 }
 
 
@@ -64,6 +65,10 @@ Sprite::Sprite( const char* a_pTexture, int a_iWidth, int a_iHeight, Vector4 a_v
 	
 }
 
+Vector3 Sprite::GetPosition()
+{
+	return m_v3Position;
+}
 void Sprite::Draw()
 {
 	
@@ -87,14 +92,40 @@ void Sprite::Draw()
 
 void Sprite::SetPosition(Vector3 a_v3Pos)
 {
-	Vector3 m_v3Position = a_v3Pos;
+	m_v3Position = a_v3Pos; //ADD VECTOR3 IN FRONT OF THIS LINE TO FIX ALIGNMNET ISSUE.
 
 }
+
+void Sprite::SetPosition(float a_fX, float a_fY)
+{
+	m_v3Position.m_fX  = a_fX;
+	m_v3Position.m_fY  = a_fY;
+
+}
+
 
 void Sprite::SetHitboxFlag(FlagType eFlagType, bool a_OnOff)
 {
 	Hitbox.SetFlag(eFlagType, a_OnOff);
 }
 
+void Sprite::SetScale(Vector2 a_v2Scale)
+{
+	m_v2Scale = a_v2Scale;
+}
+void Sprite::SetScale(float a_fScale)
+{
+	m_v2Scale.m_fX = a_fScale;
+	m_v2Scale.m_fY = a_fScale;
+}
 
+void Sprite::SetScale(float a_fScaleX,float a_fScaleY)
+{
+	m_v2Scale.m_fX = a_fScaleX;
+	m_v2Scale.m_fY = a_fScaleY;
+}
+Vector2 Sprite::GetScale()
+{
+	return m_v2Scale;
 
+}

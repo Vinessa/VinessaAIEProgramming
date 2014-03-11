@@ -82,6 +82,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CollisionObjects.cpp" />
+    <ClCompile Include="FontEngine.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GlobalUtilities.cpp" />
     <ClCompile Include="gl_log.cpp" />
@@ -93,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CollisionObjects.h" />
+    <ClInclude Include="FontEngine.h" />
     <ClInclude Include="GlobalUtilities.h" />
     <ClInclude Include="gl_log.h" />
     <ClInclude Include="Include\GameEntity.h" />
@@ -110,6 +112,7 @@
     <None Include="Resources\FogBG.jpg" />
     <None Include="Resources\LoadFragmentShader.glsl" />
     <None Include="Resources\LoadVertexShader.glsl" />
+    <None Include="Resources\NESish.xml" />
     <None Include="Resources\sheet.png" />
     <None Include="Resources\sheet.xml">
       <SubType>Designer</SubType>

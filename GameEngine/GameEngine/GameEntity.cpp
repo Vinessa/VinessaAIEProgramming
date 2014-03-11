@@ -297,6 +297,11 @@ void GameEntity::Input()
 					SwapUVs(RIGHT);
 					 m_v3Position += Vector3(1.f, 0.0f, 0.0f);
         }
+
+		if (GLFW_PRESS	== glfwGetKey(GameWindow, GLFW_KEY_SPACE))
+		{
+			//if(this->Hitbox.CheckGrounded)
+		}
 	
 
 		 if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_V))
