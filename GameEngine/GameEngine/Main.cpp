@@ -106,7 +106,7 @@ int main()
 	Sprite * BG = new Sprite("./Resources/FogBG.jpg",g_gl_height, g_gl_width, Vector4(1,1,1,1), window);
 	Lion->SetAnimation("Idle",LOOP);
 
-	BG->SetPosition(Vector3(0,0,-.5));
+	//BG->SetPosition(Vector3(0,0,0));
 	//making a list of objects to check for collision against --- PUT INTO A GAMESTATE(LEVEL)
 
 	
