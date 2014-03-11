@@ -5,8 +5,9 @@
 
 #include <GL\glew.h>
 #include "gl_log.h"
-#include "GlobalUtilities.h"
+//#include "GlobalUtilities.h" removed this because CollisionObjects.h has access to GlobalUtilities.h 
 #include "TextFileReader.h"
+#include "CollisionObjects.h"
 
 class Quad
 {
@@ -45,6 +46,7 @@ public:
 	int proj_location;
 	int view_location;
 	char* iFacing;
+	
 
 	void Draw();
 	bool LoadVertShader(const char*);
@@ -57,6 +59,7 @@ public:
 	void SetColor(Vector4 a_v4Color0,Vector4 a_v4Color1,Vector4 a_v4Color2,Vector4 a_v4Color3);
 	void SwapUVs(Facing eFacing);
 	bool FacingCheck(char* facing);
+	
 
 private:
 

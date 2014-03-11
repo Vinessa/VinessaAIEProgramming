@@ -81,6 +81,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CollisionObjects.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GlobalUtilities.cpp" />
     <ClCompile Include="gl_log.cpp" />
@@ -91,6 +92,7 @@
     <ClCompile Include="Vi_Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CollisionObjects.h" />
     <ClInclude Include="GlobalUtilities.h" />
     <ClInclude Include="gl_log.h" />
     <ClInclude Include="Include\GameEntity.h" />

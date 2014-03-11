@@ -23,11 +23,12 @@ public:
 	const Vertex* GetVertexData() const;
 	
 
-protected:
+
 
 	Vector2 m_v2Scale;
 	Vector3 m_v3Position;
 	Vector4 m_v4SpriteColor;
+	CollisionObjects Hitbox;
 };
 
 

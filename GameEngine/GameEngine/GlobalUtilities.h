@@ -85,6 +85,25 @@ enum Facing // TO FLIP QUAD FOR SPRITE FACING
 	DOWN
 };
 
+enum FlagType
+{
+	GROUND,
+	PLATFORM,
+	DANGEROUS,
+	DEADLY,
+	SWING,
+	CLIMB,
+	LEDGE,
+	SAFE,
+	GOAL,
+	PLAYER,
+	AGGRESSIVE,
+	CARRY,
+	GROUNDED,
+	ENEMY
+};
+
+typedef bool Flag;
 
 	void ViewLookAt( Vector4& eye,  Vector4& to,  Vector4& up,Matrix4 * mat);
 

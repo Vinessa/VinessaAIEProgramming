@@ -282,12 +282,17 @@ void GameEntity::Input()
 
 		if (GLFW_PRESS == glfwGetKey(GameWindow, GLFW_KEY_D))
 			{
-				if (currentAnimation !="Run")
-				{
-					SetAnimation("Run",LOOP);
-					SwapUVs(RIGHT);
-					 m_v3Position += Vector3(1.f, 0.0f, 0.0f);
-				}
+				if(FacingCheck("RIGHT") != true) // if the sprite isn't already facing right..
+					{
+					SetAnimation("TurnAround", ONCE); //Set the animation to turn around...
+					SwapUVs(RIGHT); //Swap UV's to flip the sprite...
+					iFacing = "Right"; // Sets the facing flag to Right.
+						if (currentAnimation !="Run")
+						{
+							SetAnimation("Run",LOOP);
+							m_v3Position += Vector3(1.f, 0.0f, 0.0f);
+						}
+					}
 				else
 					SwapUVs(RIGHT);
 					 m_v3Position += Vector3(1.f, 0.0f, 0.0f);
