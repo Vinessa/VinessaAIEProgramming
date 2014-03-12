@@ -36,9 +36,9 @@ public:
 	Vector3 m_v3Position;
 	Vector4 m_v4SpriteColor;
 	Vector3 m_v4Velocity; // for jumps and stuff add velocity to position in the update.
-	CollisionObjects Hitbox;
+	CollisionObjects Hitbox; // every sprite gets a collision object to track collistions and flags.
 
-	int remainingJumpSteps; //Tracks the number of time steps that force is applied to a jump.
+	int remainingJumpSteps; //Tracks the number of time steps that  initial force is applied to a jump.
 };
 
 

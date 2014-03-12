@@ -1,3 +1,5 @@
+//by Vinessa. Makes text.
+
 #include "FontEngine.h"
 
 FontEngine* FontEngine::MInstance = 0;
@@ -39,8 +41,8 @@ void FontEngine::LoadFont(const char* a_pFontSheet)
 	std::string str;
 
 	char ch;
-	doc.LoadFile(a_pFontSheet); // load the document
-	rootNode = doc.FirstChildElement("TextureAtlas");// set the root node
+	doc.LoadFile(a_pFontSheet); // load the font file
+	rootNode = doc.FirstChildElement("TextureAtlas");// root node in the xmlsheet
 	currentNode = rootNode;
 
 	childElement = currentNode->ToElement();

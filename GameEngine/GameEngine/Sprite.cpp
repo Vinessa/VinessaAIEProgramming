@@ -92,7 +92,7 @@ void Sprite::Draw()
 
 void Sprite::SetPosition(Vector3 a_v3Pos)
 {
-	m_v3Position = a_v3Pos; //ADD VECTOR3 IN FRONT OF THIS LINE TO FIX ALIGNMNET ISSUE.
+	m_v3Position = a_v3Pos; 
 
 }
 
@@ -104,7 +104,7 @@ void Sprite::SetPosition(float a_fX, float a_fY)
 }
 
 
-void Sprite::SetHitboxFlag(FlagType eFlagType, bool a_OnOff)
+void Sprite::SetHitboxFlag(FlagType eFlagType, bool a_OnOff) // toggles hitbox flag (prolly no longer needed as hit box has its own function to do this.)
 {
 	Hitbox.SetFlag(eFlagType, a_OnOff);
 }

@@ -1,3 +1,5 @@
+//by Vinessa. Basically for hitboxes.
+
 #include "CollisionObjects.h"
 
 

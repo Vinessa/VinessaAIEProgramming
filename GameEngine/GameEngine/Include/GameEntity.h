@@ -1,4 +1,4 @@
-
+//By Vinessa. For Sprites that need to call animations
 
 #ifndef _GAMEENTITY_H_
 #define _GAMEENTITY_H_

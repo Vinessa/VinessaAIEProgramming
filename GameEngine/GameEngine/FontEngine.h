@@ -1,3 +1,5 @@
+//by Vinessa, makes text.
+
 #pragma once
 #ifndef _FONT_ENGINE_H_
 #define _FONT_ENGINE_H_
@@ -6,7 +8,8 @@
 #include <tinyxml2.h>
 #include "Sprite.h"
 
-struct Char
+struct Char // makes a struct called Char that contains two structs,
+	//one dealing with Vectors and the other dealing with floats
 {
 	union
 	{
@@ -32,7 +35,7 @@ struct Char
 	};
 };
 
-struct Font
+struct Font // struct that stores the size, sheet and the kerning of the font
 {
 	Vector2 v2Size;
 	std::string sSheet;
@@ -42,12 +45,12 @@ struct Font
 class FontEngine
 {
 public:
-	static FontEngine& Instance();
-	void LoadFont(const char * a_pFontSheet);
-	void DrawString(std::string str, Vector2 pos, float scale);
+	static FontEngine& Instance(); //Static member function that dynamically instances each character's sprite.
+	void LoadFont(const char * a_pFontSheet); // self explanitory.
+	void DrawString(std::string str, Vector2 pos, float scale); // draws the string you put into it.
 
 protected:
-	static void CleanUp();
+	static void CleanUp(); // self explanitory
 
 	FontEngine(void);
 	~FontEngine(void);
@@ -55,13 +58,13 @@ protected:
 	void LoadString(std::string str);
 	Sprite iSprite;
 	Font FontAtlas;
-	std::map<char, Char> charMap;
-	std::vector<Char> DrawList;
-	int CharCount;
+	std::map<char, Char> charMap; // maps where each thing is on the XML sheet
+	std::vector<Char> DrawList; // list of hings to draw.
+	int CharCount; // how many characters are in the string
 
-	static FontEngine* MInstance;
+	static FontEngine* MInstance;  // stores the instance
 
-	GLuint PositionBuffer;
+	GLuint PositionBuffer; // buffers!
 	GLuint ColorBuffer;
 	GLuint UVBuffer;
 	GLuint MatrixBuffer;

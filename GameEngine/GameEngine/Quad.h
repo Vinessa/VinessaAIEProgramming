@@ -38,18 +38,19 @@ public:
 
 	unsigned int m_uiTexture;
 	GLFWwindow * GameWindow;
-	//used later
+	
 	unsigned int	m_uSourceBlendMode;
 	unsigned int	m_uDestinationBlendMode;
 	int tex_location;
 	int matrix_location;
 	int proj_location;
 	int view_location;
-	char* iFacing;
+	char* iFacing; // variable to track which way a quad is facing, may be obsolete now due to new structure.
 	
 
 	void Draw();
 	bool LoadVertShader(const char*);
+
 	bool LoadFragShader(const char*);
 	bool LinkShaders();
 	void LoadTexture(const char* a_pTexture);
@@ -57,8 +58,8 @@ public:
 	void SetColor();
 	void SetColor(Vector4 a_v4Color);
 	void SetColor(Vector4 a_v4Color0,Vector4 a_v4Color1,Vector4 a_v4Color2,Vector4 a_v4Color3);
-	void SwapUVs(Facing eFacing);
-	bool FacingCheck(char* facing);
+	void SwapUVs(Facing eFacing); // tries to flip the uv's to turn the sprite and flip the animation.
+	bool FacingCheck(char* facing); // checks the facing.. see above
 	
 
 private:

@@ -1,4 +1,4 @@
-// by vinessa
+// by vinessa. Global stuff.
 
 #pragma once
 #ifndef _UTIL_H_
@@ -7,10 +7,10 @@
 #include <GL\glfw3.h>
 
 
-//Terry's Math lib
+
 #include <TerrehByteMath.h>
 #include <SOIL.h>
-//other helper functions
+
 #include "gl_log.h"
 #include "TextFileReader.h"
 
@@ -34,14 +34,15 @@ using namespace tbyte;
 extern Matrix4 * Ortho;
 
 
-// keep track of window size for things like the viewport and the mouse cursor
+//Window sizes to reference to later
 extern int g_gl_width;
 extern int g_gl_height;
 
 
 
-struct Vertex
+struct Vertex // makin verts with position, color and uv
 {
+
 	union
 	{
 		struct 
@@ -66,7 +67,7 @@ struct Vertex
 	}
 };
 
-enum PlayType
+enum PlayType //play back style for animations
 {
 	ONCE,
 	LOOP,
@@ -86,7 +87,7 @@ enum Facing // TO FLIP QUAD FOR SPRITE FACING
 	DOWN
 };
 
-enum FlagType
+enum FlagType // my utility belt for handing situational events
 {
 	GROUND,
 	PLATFORM,
@@ -104,7 +105,7 @@ enum FlagType
 	ENEMY
 };
 
-typedef bool Flag;
+typedef bool Flag; // may have been rendered obsolete by new structure.
 
 	void ViewLookAt( Vector4& eye,  Vector4& to,  Vector4& up,Matrix4 * mat);
 

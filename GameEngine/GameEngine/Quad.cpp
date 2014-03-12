@@ -42,7 +42,7 @@ Quad::Quad(void)
 	glCompileShader(m_FragmentShader);
 	printShaderInfoLog(m_FragmentShader);
 
-	// Link Shaders into Shader Program
+	// Stick Shaders onto Shader Program
 	m_ShaderProgram = glCreateProgram();
 
 	glAttachShader(m_ShaderProgram, m_FragmentShader);
@@ -76,22 +76,22 @@ Quad::Quad(void)
 	{
 		0,1,2,3
 	};
-	//Gen Buffers
+	//Create the Buffarz 
 	glGenBuffers(1,&m_VBO);
 	glGenBuffers(1,&m_EBO);
 	glGenVertexArrays(1, &m_VAO);
 
-	//Bind Buffers
+	//Bind Bufferz
 	glBindVertexArray(m_VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 
-	//Put Data into buffers
+	//Put Data into bufferz
 	glBufferData(GL_ARRAY_BUFFER, 4* sizeof(Vertex), m_aoVerts, GL_STATIC_DRAW);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
 
-	//Enable some attributes
+	//Enableing attributes
 	GLint posAttrib = glGetAttribLocation(m_ShaderProgram,"position");
 	glEnableVertexAttribArray(posAttrib);
 	GLint colAttrib = glGetAttribLocation(m_ShaderProgram,"color");
@@ -122,6 +122,8 @@ Quad::Quad(void)
 
 Quad::~Quad(void)
 {
+
+	//destroys all the extra gobbly gook associated with the quad.
 		delete modelMatrix;
 		delete viewMatrix;
 		delete MVP;
@@ -244,7 +246,7 @@ void Quad::SetColor(Vector4 a_v4Color0,Vector4 a_v4Color1,Vector4 a_v4Color2,Vec
 	m_aoVerts[3].Color = a_v4Color3;
 }
 
-void Quad::SwapUVs(Facing eFacing)
+void Quad::SwapUVs(Facing eFacing) // swaps quad facing for animation
 {
 	switch (eFacing){
 	case LEFT:
@@ -304,7 +306,7 @@ void Quad::SwapUVs(Facing eFacing)
 	}
 }
 
-bool Quad::FacingCheck(char* facing)
+bool Quad::FacingCheck(char* facing) // checks facing
 { 
 	if (iFacing == facing)
 		return true;

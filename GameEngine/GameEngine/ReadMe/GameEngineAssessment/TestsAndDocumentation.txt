@@ -1,0 +1,31 @@
+Game Engine
+Tests and Documentation:
+
+Test:
+ Does it draw Simple Primitives?
+Method:
+ Attempted to draw a simple Quad.
+Results:
+ Pass
+
+Test:
+ Does it draw Sprites?
+Method:
+ Attempted to draw a sprite on Quad
+Results:
+ Pass
+
+Test: 
+ Does it handle Animated Sprites?
+Method:
+ Attempt to call Animations
+Results:
+ Pass
+
+
+Test:
+ Does it use math to preform operations on drawn objects?
+Method:
+ Attempt to move sprite across the screen on input.
+Results:
+ Pass
