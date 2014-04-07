@@ -15,7 +15,7 @@ screenProperties	= { 'width':1280, 'height':720, 'fullscreen':False, 'title':"PY
 MouseButtons 		= { 'button_one':0, 'button_two':1, 'button_three':2 }
 _level 				= None #none is the equivalent of nullptr in C++0x11 (or NULL in regular C++)
 _entity 			= None
-
+_astar              = None
 #PyInitialise 
 #    - This function is called to initialise our Python Game and returns the Screen properties for our C++ application
 #      to set up the appropriate screen resolution title and weather or not to go fullscreen
@@ -38,6 +38,8 @@ def PyLoad():
 	#Here we set up a Tank Entity, this is just a simple NPC Entity that will move to where we click the second mouse button within our window
 	global _entity
 	_entity = Entity.TankEntity()
+
+	_astar = Pathfinding.AStar(_level) #creating an instance of astar to work with ***********VINESSA************
 	
 	return 0
 	
