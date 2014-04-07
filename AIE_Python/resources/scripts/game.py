@@ -7,10 +7,11 @@
 import AIE
 import Level_Grid
 import Entity
+#import Pathfinding
 
 #Some global variables that are going to be used in this classless basefile, please note there are OO ways to pass this
 #information around, which would be overall more desirable
-screenProperties	= { 'width':1280, 'height':720, 'fullscreen':False, 'title':"Python Game Example"  }
+screenProperties	= { 'width':1280, 'height':720, 'fullscreen':False, 'title':"PYTHON GAMEY GAME"  }
 MouseButtons 		= { 'button_one':0, 'button_two':1, 'button_three':2 }
 _level 				= None #none is the equivalent of nullptr in C++0x11 (or NULL in regular C++)
 _entity 			= None

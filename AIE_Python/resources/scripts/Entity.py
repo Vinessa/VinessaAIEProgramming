@@ -49,6 +49,8 @@ class TankEntity:
 	def cleanUp(self):
 		self.turret.cleanUp()
 		AIE.DestroySprite( self.spriteID )
+
+	
 		
 #Turret
 #    This is an Entity Object that has an owner, it is up to you to implement inheritance (BaseEntity->Turret) 

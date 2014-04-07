@@ -9,7 +9,7 @@ import math
 
 class LevelGrid:
 	def __init__(self, screenProperties, tileSize ):
-		self.open_list = [] #added back in step 1 - works
+		self.tile_list = [] #added back in step 1 - works
 		self.tileSize = tileSize
 		self.buttonPressed = False
 		self.levelWidth = math.ceil(screenProperties['width']/ tileSize['width'])
@@ -22,9 +22,8 @@ class LevelGrid:
 			self.levelTiles[i] = Tile()
 			self.levelTiles[i].x = self.tileSize['width'] * (i % int(self.levelWidth))
 			self.levelTiles[i].y = self.tileSize['height'] * ( (int(i)/(int(self.levelWidth))))
-			self.open_list.append(self.levelTiles[i]) #added back in step 2 - works.
-			#print "Tile : ", self.levelTiles[i], " added to the open list." # added back in, Step 4 Works. 
-			print "Tile : ", self.open_list[i], " added to the open list."
+			self.tile_list.append(self.levelTiles[i]) #added back in step 2 - works.
+			print "Tile : ", self.tile_list[i], " added to the tile list." #added in step 5 - works.
 	
 	def loadSprites(self):
 		#load all sprites for each tile
