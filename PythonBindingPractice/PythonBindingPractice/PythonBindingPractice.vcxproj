@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2115C631-E1D4-4FE5-A7E4-2F5FB9E40510}</ProjectGuid>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>obj\</IntDir>
+    <OutDir>bin\</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <EmbedManifest>false</EmbedManifest>
+    <TargetName>$(ProjectName)_d</TargetName>
+    <IncludePath>$(ProjectDir)libs\Python34\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)libs\Python34\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>obj\</IntDir>
+    <OutDir>bin\</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>./;./include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName)_d.pdb</ProgramDatabaseFile>
+      <SubSystem>NotSet</SubSystem>
+      <AdditionalLibraryDirectories>./libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>AIE_GL_Static_Framework_d.lib;kernel32.lib;Python34.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Manifest>
+      <OutputManifestFile>$(TargetPath).manifest</OutputManifestFile>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>./;./include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>NotSet</SubSystem>
+      <AdditionalLibraryDirectories>./libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>AIE_GL_Static_Framework.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+    </Link>
+    <Manifest>
+      <OutputManifestFile>$(TargetPath).manifest</OutputManifestFile>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="resources\fonts\arial.fnt" />
+    <None Include="resources\shaders\StaticFW_Pixel.glsl" />
+    <None Include="resources\shaders\StaticFW_Vertex.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\AIE.h" />
+    <ClInclude Include="include\include\abstract.h" />
+    <ClInclude Include="include\include\accu.h" />
+    <ClInclude Include="include\include\asdl.h" />
+    <ClInclude Include="include\include\ast.h" />
+    <ClInclude Include="include\include\bitset.h" />
+    <ClInclude Include="include\include\bltinmodule.h" />
+    <ClInclude Include="include\include\boolobject.h" />
+    <ClInclude Include="include\include\bytearrayobject.h" />
+    <ClInclude Include="include\include\bytesobject.h" />
+    <ClInclude Include="include\include\bytes_methods.h" />
+    <ClInclude Include="include\include\cellobject.h" />
+    <ClInclude Include="include\include\ceval.h" />
+    <ClInclude Include="include\include\classobject.h" />
+    <ClInclude Include="include\include\code.h" />
+    <ClInclude Include="include\include\codecs.h" />
+    <ClInclude Include="include\include\compile.h" />
+    <ClInclude Include="include\include\complexobject.h" />
+    <ClInclude Include="include\include\datetime.h" />
+    <ClInclude Include="include\include\descrobject.h" />
+    <ClInclude Include="include\include\dictobject.h" />
+    <ClInclude Include="include\include\dtoa.h" />
+    <ClInclude Include="include\include\dynamic_annotations.h" />
+    <ClInclude Include="include\include\enumobject.h" />
+    <ClInclude Include="include\include\errcode.h" />
+    <ClInclude Include="include\include\eval.h" />
+    <ClInclude Include="include\include\fileobject.h" />
+    <ClInclude Include="include\include\fileutils.h" />
+    <ClInclude Include="include\include\floatobject.h" />
+    <ClInclude Include="include\include\frameobject.h" />
+    <ClInclude Include="include\include\funcobject.h" />
+    <ClInclude Include="include\include\genobject.h" />
+    <ClInclude Include="include\include\graminit.h" />
+    <ClInclude Include="include\include\grammar.h" />
+    <ClInclude Include="include\include\import.h" />
+    <ClInclude Include="include\include\intrcheck.h" />
+    <ClInclude Include="include\include\iterobject.h" />
+    <ClInclude Include="include\include\listobject.h" />
+    <ClInclude Include="include\include\longintrepr.h" />
+    <ClInclude Include="include\include\longobject.h" />
+    <ClInclude Include="include\include\marshal.h" />
+    <ClInclude Include="include\include\memoryobject.h" />
+    <ClInclude Include="include\include\metagrammar.h" />
+    <ClInclude Include="include\include\methodobject.h" />
+    <ClInclude Include="include\include\modsupport.h" />
+    <ClInclude Include="include\include\moduleobject.h" />
+    <ClInclude Include="include\include\namespaceobject.h" />
+    <ClInclude Include="include\include\node.h" />
+    <ClInclude Include="include\include\object.h" />
+    <ClInclude Include="include\include\objimpl.h" />
+    <ClInclude Include="include\include\opcode.h" />
+    <ClInclude Include="include\include\osdefs.h" />
+    <ClInclude Include="include\include\parsetok.h" />
+    <ClInclude Include="include\include\patchlevel.h" />
+    <ClInclude Include="include\include\pgen.h" />
+    <ClInclude Include="include\include\pgenheaders.h" />
+    <ClInclude Include="include\include\pyarena.h" />
+    <ClInclude Include="include\include\pyatomic.h" />
+    <ClInclude Include="include\include\pycapsule.h" />
+    <ClInclude Include="include\include\pyconfig.h" />
+    <ClInclude Include="include\include\pyctype.h" />
+    <ClInclude Include="include\include\pydebug.h" />
+    <ClInclude Include="include\include\pyerrors.h" />
+    <ClInclude Include="include\include\pyexpat.h" />
+    <ClInclude Include="include\include\pyfpe.h" />
+    <ClInclude Include="include\include\pygetopt.h" />
+    <ClInclude Include="include\include\pyhash.h" />
+    <ClInclude Include="include\include\pymacconfig.h" />
+    <ClInclude Include="include\include\pymacro.h" />
+    <ClInclude Include="include\include\pymath.h" />
+    <ClInclude Include="include\include\pymem.h" />
+    <ClInclude Include="include\include\pyport.h" />
+    <ClInclude Include="include\include\pystate.h" />
+    <ClInclude Include="include\include\pystrcmp.h" />
+    <ClInclude Include="include\include\pystrtod.h" />
+    <ClInclude Include="include\include\Python-ast.h" />
+    <ClInclude Include="include\include\Python.h" />
+    <ClInclude Include="include\include\pythonrun.h" />
+    <ClInclude Include="include\include\pythread.h" />
+    <ClInclude Include="include\include\pytime.h" />
+    <ClInclude Include="include\include\py_curses.h" />
+    <ClInclude Include="include\include\rangeobject.h" />
+    <ClInclude Include="include\include\setobject.h" />
+    <ClInclude Include="include\include\sliceobject.h" />
+    <ClInclude Include="include\include\structmember.h" />
+    <ClInclude Include="include\include\structseq.h" />
+    <ClInclude Include="include\include\symtable.h" />
+    <ClInclude Include="include\include\sysmodule.h" />
+    <ClInclude Include="include\include\token.h" />
+    <ClInclude Include="include\include\traceback.h" />
+    <ClInclude Include="include\include\tupleobject.h" />
+    <ClInclude Include="include\include\typeslots.h" />
+    <ClInclude Include="include\include\ucnhash.h" />
+    <ClInclude Include="include\include\unicodeobject.h" />
+    <ClInclude Include="include\include\warnings.h" />
+    <ClInclude Include="include\include\weakrefobject.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
