@@ -32,6 +32,7 @@ def PyLoad():
 	#Initialise the background level grid, the global keyword is used to ensure that we are affecting the global variable and not
 	#just creating a new local variable with the same name as the global one we intended to use. Python is fun like that
 	global _level
+	global _astar
 	_level = Level_Grid.LevelGrid( screenProperties, {'width':64, 'height':64 } )
 	_level.loadSprites()
 	#print _level.open_list
@@ -39,7 +40,7 @@ def PyLoad():
 	global _entity
 	_entity = Entity.TankEntity()
 
-	_astar = Pathfinding.AStar(_level) #creating an instance of astar to work with ***********VINESSA************
+	_astar = Pathfinding.AStar() #creating an instance of astar to work with ***********VINESSA************
 	
 	return 0
 	

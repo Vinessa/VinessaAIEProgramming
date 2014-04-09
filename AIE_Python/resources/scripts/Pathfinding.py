@@ -1,114 +1,81 @@
 import AIE
 import game
+import Pathfinding
+import Level_Grid
+import math
+import itertools
 
 # A Simple Script that handles AI pathfinding
 # Created by Vinessa Mayer April 2014
 
-class AStar:
-	
-	def __init__(self, _level):
+	class AStar(object)
+		def __init__(self, tiles):
+			self.steps = tiles
 
-		unsorted_list = _level.tile_list #clones the list of tiles for use as an unsorted list so we don't break stuff.
-		open_list = [] # a list of nodes that are adjasent to the current node.
-		black_list = [] # a list of nodes that have already been searched.
-		calc_list = [] # this list holds the results of calculating the stepping stone node.
+		def H(self,node,start,goal):
+			#raise NotImplementedError
 
-		current_node = 0 # variable to store where we currently are.
-		goal_node = 0 # variable to store our destination.
-		stepping_stone = 0 # variable to store next best node to walk in.
+	def findPath(self,start, goal):
+		PossibleStepSet = set()
+		FootprintsSet = set()
+		GroundBeingSearched = start
+		PossibleStepSet.append(GroundBeingSearched)
 
+		while PossibleStepSet: #While we are looking in adjasent tiles
+			GroundBeingSearched = min(PossibleStepSet, key = lambda 0:0.g + 0.h) #looks through all nodes, arranges them by smallest cost, makes the smallest GroundBeingSearched
+			if GroundStoodApon == goal:# if Ground Being Searched is the Goal
+				path = #[] Create a list to contain the entire path
+				while GroundBeingSearched.parent:
+					path.append(GroundBeingSearched) #Adds each node to the path list
+					GroundStoodApon = GroundBeingSearched.parent
+				path.append(GroundBeingSearched)
+				return path[::-1]
 
-	def resolveGridSquare(xPos, yPos): #figures out the position of the node on the grid
-		xGridPos = math.floor(xPos/self.tileSize['width'])
-		yGridPos = math.floor(yPos/self.tileSize['height'])
-		return (yGridPos * _level.levelWidth) + xGridPos
+			PossibleStepSet.remove(GroundBeingSearched)# removes the nodes from the open list
+			FootprintsSet.add(GroundBeingSearched)# Adds the ground we've already dearched to the closed list
 
-	def identifyClickedNode(): #Does the math to identify which node we clicked
-		global _level
-		global _entity
-		mouseX, mouseY = AIE.GetMouseLocation()
-		tileIndex = int(_level.resolveGridSquare(mouseX, mouseY))
-		return tileIndex
+			for step in self.steps[GroundBeingSearched]:
+				if step in FootprintsSet:
+					continue
 
-	def identifyOccupiedNode(): #does the math to identify with node we are currently on
-		global _level
-		global _entity
-		tankX, tankY = _entity.getposition()
-		tileIndex = int(_level.resolveGridSquare(tankX, tankY))
-		return tileIndex
+				if step in PossibleStepSet:
+					new_g = GroundBeingSearched.g + GroundBeingSearched.move_cost(step)
+					if step.g > new_g:
+						step.g = new_g
+						step.parent = GroundBeingSearched
 
-	def setStartNode(): # assigns the start node to the global variable and adds it to the open list
-		global _level
-		global _entity
-		start_node = IdentifyOccupiedNode()
-		open_list.append(start_node)
-		unsorted_list.remove(start_node) #removes the node from the unsorted list so it won't be checked again
+					else:
+					 step.g = GroundBeingSearched.g + GroundBeingSearched.move_cost(step)
+					 step.h = self.H(step,start,goal)
+					 step.patent = GroundBeingSearched
+					 PossibleStepSet.add(step)
+			return None
 
-	def setGoalNode():
-		global _level
-		global _entity
-		goal_node = identifyClickedNode()
-		#open_list.append(goal_node) I don't believe the goal should be on the open list, or else it will be sent to the blacklist too early.
+	class AStarStep(object):
+			def __init__(self):
+				self.g = 0
+				self.h = 0
+				self.parent = None
 
+			def move_cost(self,other):
+				raise NotImplementedError
 
-	def identifySurroundingNodes(): #identifies which nodes are surrounding the current node by Offest and places them on the open_list
-		global _level
-		global _entity
+	class AStarTerrain(AStar)
+		def heuristic(self, step, start, goal):
+			return sqrt((goal.x - step.x))**2 + (goal.y - step.y)**2)
 
-		for node in _level.tile_list:
-			node.xGridPos = math.floor(xPos/self.tileSize['width'])
-			node.yGridPos = math.floor(yPos/self.tileSize['height'])
-			if node.fabs(node.xGridPos - current_node.xGridPos) <= _level.tileSize['width'] or node.fabs(yGridPos - current_node.yGridPos) <= _level.tileSize['height']:
-				open_list.append(node)
-				print "adding node " + _level.tile_list[node] + " to the OPEN LIST"
+	class AStarTerrainStep(AStarStep):
+		def __init__(self, x, y):
+			self.x = x
+			self.y = y
+			super(AStarTerrainStep, self).__init__()
 
+		def move_cost(self, other):
+			diagonal = abs(self.x - other.x) == 1 and abs(self.y - other.y)== 1
+			if diagonal:
+				return 14
 			else:
-				print "node " + _level.tile_list[node] + " is not eligible for the open_list yet. "
-
-
-
-	def calculateCost(): #calculates the cost of each node and places them on the calc list.
-		global _level
-		global _entity
-
-		for node in self.open_list:
-			node.xGridPos = math.floor(xPos/self.tileSize['width'])
-			node.yGridPos = math.floor(yPos/self.tileSize['height'])
-
-			goal_node.xGridPos = math.floor(xPos/self.tileSize['width'])
-			goal_node.yGridPos = math.floor(yPos/self.tileSize['height'])
-
-			calc_list.append(node.fabs(node.xGridPos - goal_node.xGridPos))
-			calc_list.append(node.fabs(node.yGridPos - goal_node.yGridPos))
-
-		
-	def determineBestNode(): #calculates which node on the open list is closest to the end node and places all other nodes on the closed_list
-		global _level
-		global _entity
-
-		self.calculateCost()
-		calc_list.sort() #puts the lowest number (cheapest cost) node in index 0
-
-		for node in self.open_list:
-			node.xGridPos = math.floor(xPos/self.tileSize['width'])
-			node.yGridPos = math.floor(yPos/self.tileSize['height'])
-
-			if node.fabs(node.xGridPos - goal_node.xGridPos) == calc_list[0]: # checks to see which node belongs to the winning number.
-				self.stepping_stone = self.open_list[node] # adds the cheapest node to the stepping stone variable
-			else:
-				self.black_list.append(self.open_list[node]) #adds the item to the blacklist
-				self.open_list.remove(self.open_list[node]) # removes the item from the open list
-
-	def AStar():
-		global _level
-		global _entity
-
-		self.setStartNode()
-		self.setGoalNode()
-		self.identifySurroundingNodes()
-		self.determineBestNode()
-
-
+				return 10
 
 
 

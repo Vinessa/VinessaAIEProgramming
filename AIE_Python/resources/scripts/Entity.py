@@ -1,5 +1,6 @@
 import AIE
 import game
+import Pathfinding
 
 #Tank Entity
 #   A simple entity that can be placed on the screen with a right click, you should modify this so that the tank can be told to 
@@ -21,11 +22,13 @@ class TankEntity:
 		self.turret = Turret(self)
 		
 	def update(self, fDeltaTime ):
+		global _astar
 		mouseX, mouseY = AIE.GetMouseLocation()
-		if( AIE.GetMouseButton(1)  ):
-			self.Position = (mouseX, mouseY)
-		AIE.MoveSprite( self.spriteID, self.Position[0], self.Position[1] )
-		self.turret.update(fDeltaTime)
+		#if( AIE.GetMouseButton(1)  ):
+			#game._astar.aStar()
+			#self.Position = (_astar.stepping_stone.xPos, _astar.stepping_stone.yPos)
+		#AIE.MoveSprite( self.spriteID, self.Position[0], self.Position[1] )
+		#self.turret.update(fDeltaTime)
 	
 	def draw(self):
 		AIE.DrawSprite( self.spriteID )
