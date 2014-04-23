@@ -1,6 +1,7 @@
 #include <Python.h>
 #include "AIE_Py.h"
 #include "AIE.h"
+
 #include <iostream>
 
 char* g_pWindowTitle;
@@ -39,7 +40,10 @@ int main(int argc, char *argv[])
 	//\ ** feel free to change this to anything you would like to, "game" is purely intended as a 
 	//\    suitable example.
 	//\================================================================================================
-	PyObject* pModule = ImportPythonModule( "game" );
+
+	//PyObject* pModule = ImportPythonModule("VMGameGrid");
+
+	PyObject* pModule = ImportPythonModule("game");
 	
 	if (pModule != NULL) 
 	{

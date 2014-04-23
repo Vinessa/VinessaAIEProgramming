@@ -1,6 +1,6 @@
 import AIE
 import game
-import Pathfinding
+#import Pathfinding
 
 #Tank Entity
 #   A simple entity that can be placed on the screen with a right click, you should modify this so that the tank can be told to 
